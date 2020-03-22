@@ -1,4 +1,4 @@
-# Pagina de login/ragister cu informatii
+# Pagina de login/register cu informatii
 
 # TO DO
 
