@@ -65,9 +65,27 @@
         1px 3px 1px #919191;
   
 }
+.registerText{
+  position: absolute;
+  height:8em;
+  width:20em;
+
+  top: 35%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 1em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191;
+
+}
 
 /*tot ce are login form-ul doar ca schima orice login form sa arate asa ca recomand sa ajustez cu un id*/
-input[type=text], input[type=password] {
+input[type=text], input[type=email], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
