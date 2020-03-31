@@ -1,0 +1,185 @@
+/*Pentru a schimba fiecare pagina in parte*/
+.section#first{
+  background:#00B3B2;
+}
+.section#second{
+  background:#FF9B61;
+}
+.section#third{
+  background:#63FFFF;
+}
+.section#forth{
+  background:#B88161;
+}
+
+/*Aici se poate schimba cum arata stilul textului pe toata pagina inclusiv locatie marime daca se doresc stiluri diferite in functie de sectiune exista varianta 
+.section#[numarth] .niceCenteredText{}
+*/
+.niceCenteredText{
+
+  position: absolute;
+  top: 50%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 5em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
+}
+/*exemplu asta este titlul logoului*/
+#first .niceCenteredText{
+  top: 20%; 
+  right: 50%;
+  
+}
+.logo_webpage{
+font-family: 'Sacramento', cursive;
+font-size: 6rem;
+margin-bottom: 30px;
+}
+
+/*aici e textul de login nimic special doar mai putin flashy ca cel mare*/
+.loginText{
+  position: absolute;
+  height:8em;
+  width:25rem;
+  margin-top: 25px;
+  top: 35%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 1em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191;
+
+}
+center{
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*tot ce are login form-ul doar ca schima orice login form sa arate asa ca recomand sa ajustez cu un id*/
+input[type=text], input[type=password] ,input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#loginButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+  width: 75%;
+  display: block;
+  border-radius: 15px;
+}
+
+#loginButton:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+}
+/*Stilul butonului de remember */
+.remember_me{
+  font-size: 14px;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+/*Butonul din partea de jos a paginii aici care atrage atentia ca exista mai multe slideuri*/
+
+.attentionCatcher{
+background:#FF9B61;
+color: white;
+padding: 10px 0px;
+margin: 0px 0;  
+border: none;
+cursor: pointer;
+width: 100%;
+position: absolute;
+bottom:0px;
+height: 5%;
+transition-property: height;
+transition: 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.attentionCatcher:hover{
+background-color: orange;
+color: white;
+padding: 10px 0px;
+margin: 0px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+position: absolute;
+bottom:0px;
+height:7.5%;
+transition-property:height;
+transition: 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+/*hrefurile de login si register*/
+#login-tab{
+
+  height:8em;
+  width:20em;
+
+  top: 45%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-transform: none;
+  font-family: verdana;
+  font-size: 1em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 10px #919191;
+     
+}
+
+#register-tab{
+height:8em;
+width:20em;
+
+top: 45%; 
+right: 50%;
+transform: translate(50%,-50%);
+text-transform: none;
+font-family: verdana;
+font-size: 1em;
+font-weight: 700;
+color: #f5f5f5;
+text-shadow: 1px 1px 10px #919191;
+}
+
