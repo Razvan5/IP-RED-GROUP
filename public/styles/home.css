@@ -1,37 +1,39 @@
-.section{
-    background-color: var(--deepOrange);
-}
-body{
-    margin:0px;
-    overflow-x: hidden;
-    
-}
-nav img{
-    width:5vh;
-    height:5vh;
-    border-bottom: 2px var(--darkCyan);
+html {
+    margin: 0;
+    min-height: 100vh;
+    background: #00B3B2;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(-textShadow); 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--darkCyan); 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
-/* .menu li a {
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #00B3B2;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+}
+
+.div2 {
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.menu {
+    margin-top: 5%;
+    margin-left: 0%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #00B3B2;
+    padding: 0%;
+}
+
+.menu li a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +120,7 @@ nav img{
     transition: 0.3s;
     min-width: 30%;
     height: 20%;
-
+    margin-top: 5%;
     border-radius: 15px;
     display: flex;
     flex-flow: column;
@@ -154,6 +156,7 @@ nav img{
     transition: 0.3s;
     min-width: 30%;
     height: 20%;
+    margin-top: 5%;
     border-radius: 15px;
     display: flex;
     flex-flow: column;
@@ -204,15 +207,18 @@ nav img{
 }
 
 .card {
+    /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
     transition: 0.3s;
     height: 20%;
+    margin-top: 5%;
     border-radius: 15px;
     min-width: 40%;
 }
 
 .card2 {
+    /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
     transition: 0.3s;
@@ -222,6 +228,7 @@ nav img{
 }
 
 
+/* On mouse-over, add a deeper shadow */
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -242,6 +249,7 @@ nav img{
 }
 
 
+/* Add some padding inside the card container */
 
 .card_container {
     padding: 2px 16px;
@@ -256,7 +264,19 @@ nav img{
     border-radius: 15px;
 }
 
-
+.footer {
+    height: 50px;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 3px solid rgb(35, 199, 199);
+    justify-content: space-evenly;
+    margin-bottom: 1%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    color: white;
+}
 
 .footer_item1,
 .footer_item2 {
@@ -303,90 +323,4 @@ hr {
     border: 2px rgb(35, 199, 199) solid;
     width: 90%;
     margin: auto;
-} */
-
-footer{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    z-index:30;
-    width:100vw;
-    background-color: var(--darkCyan);
-    color:var(--milkyWhite);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    position: absolute;
-    height:50px;
-    bottom:0px;
-    
-  }
-
-  /* code new */
-  header{
-      display: flex;
-      justify-content: flex-start;
-      padding: 0px;
-      padding-left: 0px;
-  }
-  nav{
-    border: 5px solid red;
-       width:100vw;
-  }
-
-  .container{
-      display: flex;
-      justify-content: flex-start;
-      align-content: flex-start;
-      top:0px;
-      width:25vw;
-      border: 5px solid red;
-  }
-
-  .dropdown-menu{
-    top: 0px;
-    right: 0px;
-    left: unset;
-    width: 50vw;
-    box-shadow: 0px 5px 7px -1px #c1c1c1;
-    padding-bottom: 0px;
-    padding: 0px;
-
-  }
-  .dropdown-menu:before{
-    content: "";
-    top: -20px;
-    right: 12px;
-    border:10px solid #343A40;
-    border-color: transparent transparent #343A40 transparent;
-  }
-  .head{
-    padding:5px 15px;
-    border-radius: 3px 3px 0px 0px;
-
-  }
-  .footer{
-    padding:5px 15px;
-    border-radius: 0px 0px 3px 3px; 
-  }
-  .notification-box{
-    padding: 10px 0px; 
-
-  }
-  .bg-gray{
-    background-color: #eee;
-  }
-  @media (max-width: 640px) {
-      .dropdown-menu{
-        top: 50px;
-        left: -16px;  
-        width: 290px;
-      } 
-      .nav{
-        display: block;
-      }
-      .nav .nav-item,.nav .nav-item a{
-        padding-left: 0px;
-      }
-      .message{
-        font-size: 13px;
-      }
-  }
+}
