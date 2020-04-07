@@ -790,7 +790,7 @@
                     //leaving a child inside the normalScoll element is not leaving the normalScroll #3661
                     var isNormalScrollChildFocused = closest(target, normalSelector);
 
-                    if(isNormalScrollTarget || isNormalScrollChildFocused){
+                    if(isNormalScrollTarget || isNormalScrollChildFocused){
                         if(!FP.shared.isNormalScrollElement){
                             setMouseHijack(false);
 
@@ -1417,7 +1417,7 @@
         * used one to determine the direction.
         */
         function touchMoveHandler(e){
-            var activeSection = closest(e.target, SECTION_SEL) || $(SECTION_ACTIVE_SEL)[0];
+            var activeSection = closest(e.target, SECTION_SEL) || $(SECTION_ACTIVE_SEL)[0];
 
             if (isReallyTouch(e) ) {
 

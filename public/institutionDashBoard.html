@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles\institutionDashBoard.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Pacifico|Sacramento&display=swap" rel="stylesheet">
+
+    <title>Institution Dashboard</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="div2">
+            <span class="logoText ">Logo</span>
+            <a class="txt" href="login.html">
+                <div class="logout_btn">Logout</div>
+            </a>
+        </div>
+
+        <ul class="menu">
+            <li><a class="txt" href="Home.html">Homepage</a></li>
+            <li><a class="txt" href="accountDashBoard.html">Account Dashboard</a></li>
+            <li><a class="txt" href="institutionDashBoard.html">Institution Dasboard</a></li>
+        </ul>
+
+        <div class="institution">
+
+            <span class="institutionTitle"> <span>Institution Name: <br>  <br>                               
+                <form>
+                <label for="select_institution"></label>
+                <select id="select_institution" name="select_institution">
+                    <option value="Facultatea de Informatica Iasi">Facultatea de Informatica Iasi</option>
+                    <option value="Universitatea Alexandru Ioan Cuza Iasi">Universitatea Alexandru Ioan Cuza Iasi</option>
+                    <option value="UMF Grigore T. Popa Iasi">UMF Grigore T. Popa Iasi</option>
+                </select> 
+            </form>
+            </span> 
+              <br><br>
+            
+            <ul class="institution_wrapper2">
+                <li><a class="txt" id="institutionInfo">Institution Info</a></li>
+            </ul>
+            </span>
+            <hr>
+
+            <div class="institution_menu">
+
+                <ul class="institution_wrapper">
+                    <li><a class="txt" id="modifyInstitution">Modify <br>Institution</a></li>
+                    <li><a class="txt" id="institutionMembers">Institution<br>Members</a></li>
+                    <li><a class="txt" id="documentSending">Document<br> Sending</a></li>
+                    <li><a class="txt" id="documentChecking">Document <br>Receiving</a></li>
+                </ul>
+
+
+
+                <div class="card_wrapper" id="institution_info">
+                    <div class="card">
+                        <p class="card_title">Address:</p>
+                        <div class="card_container">
+                            <p>Strada General Henri Mathias Berthelot nr 16</p>
+                            <p>Iasi</p>
+                            <p>Romania</p>
+                            <p>Cod Postal: 700259</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">Subsidiary Locations:</p>
+                        <div class="card_container">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">Description:</p>
+                        <div class="card_container">
+                            <p>Facultate in cadrul Universitatii Alexandru Ioan Cuza, Iasi</p>
+                            <p>Institutie de invatamant superior, oferind specializare in domeniile:</p>
+                            <p> - Informatica</p>
+                            <p> - Inginerie de sistem</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">Services and Pricing:</p>
+                        <div class="card_container">
+                            <p>Invatamant gratuit, in limita locurilor bugetate</p>
+                            <p>Invatamant in regim cu taxa, 3600 RON/an studiu</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">Contact Info:</p>
+                        <div class="card_container">
+                            <p>Secretar-sef Lacramioara Nicoleta Leonte tel:+40 232 201102/2330</p>
+                            <p>Secretar Lavinia Pîrîu tel:+40 232 201102/2329</p>
+                            <p>Secretar Mirela Ciobanu tel:+40 232 201102/2329</p>
+                            <p>e-mail: secretariat@info.uaic.ro</p>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+
+
+
+
+
+
+                <div class="card_wrapper2" id="modify_institution">
+                    <div class="card2">
+                        <p class="card_title">Modify Institution</p>
+                        <div class="card_container">
+                            <p>
+                                <form>
+                                    <label for="modify_what">Choose what to Modify:</label>
+                                    <select id="modify_what" name="modify_what">
+                                        <option value="--">--</option>
+                                        <option value="Address">Address</option>
+                                        <option value="Contact Info">Contact Info</option>
+                                        <option value="Description">Description</option>
+                                        <option value="Members">Members</option>
+                                        <option value="Name">Name</option>
+                                        <option value="Services and pricing">Services and Pricing</option>
+                                        <option value="Subsidiary Locations">Subsidiary Locations</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <label for="new_value">New Value:</label>
+                                    <br>
+                                    <textarea  class="new_value" name="new_value", rows="10", columns="40"></textarea>
+                                    <br>
+                                    <input type="submit" class="butonul_de_submit">
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="card_wrapper2" id="institution_members">
+                    <div class="card2">
+                        <p class="card_title">Membri:</p>
+                        <div class="card_container">
+                            <p>Decan: Adrian Iftene</p>
+                            <p>Prodecan: Radulesecu Vlad</p>
+                            <p>Administrator: Radu Negrescu</p>
+                            <p>Secretar-sef & responsabil eSIMS: Lacramioara Nicoleta Leonte</p>
+                            <p>Secretar & responsabil taxe: Lavinia Pîrîu</p>
+                            <p>Secretar & responsabil probleme de studii: Alina Popescu </p>
+                            <p>Administrator de sistem: Alex Ocheana</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                <div class="card_wrapper2" id="document_sending">
+                    <div class="card2">
+                        <p class="card_title">Send document to:</p>
+                        <div class="card_container2">
+                            <form>
+                                <p>
+                                    <label for="user">Send to user:* </label>
+                                    <input type="text" name="user" placeholder="User name">
+                                </p>
+                                <p>
+                                    <label for="upload">Upload Document:* </label>
+                                    <input type="file" name="upload">
+                                </p>
+                                <p>
+                                    <input type="submit" class="butonul_de_submit">
+                                </p>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="card_wrapper" id="document_checking">
+                    <div class="card">
+                        <p class="card_title">From user: Gheorgicesei Magda</p>
+                        <div class="card_container">
+                            <p>Taxa Sem 1.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                            <p>Refacere SO.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">From user: Vranceanu Catalin </p>
+                        <div class="card_container">
+                            <p>Taxa Sem 2.doc <a href="a.txt">View</a> <a target=“_blank” href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                            <p>Refacere IP.doc <a href="a.txt">View</a> <a href="a.txt" download="Document.txt">Download
+                                </a> <button>DELETE</button></p>
+                            <p>Refacere Tehnologii Web.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                            <p>Refacere PA.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">From user: Iftode Dumitru</p>
+                        <div class="card_container">
+                            <p>Receipt.doc <a href="a.txt">View</a> <a href="a.txt" download="Document.txt">Download</a>
+                                <button>DELETE</button></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">From user: Cernovshi Mihaela</p>
+                        <div class="card_container">
+                            <p>Refacere POO.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                            <p>Taxa Sem 2.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a> <button>DELETE</button></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">From user: Balauca Bogdan</p>
+                        <div class="card_container">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p class="card_title">From user: Adrian Placinta</p>
+                        <div class="card_container">
+                            <p>Taxa Sem 1.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a>
+                                <button>DELETE</button></p>
+                            <p>Refacere Matematica.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a>
+                                <button>DELETE</button></p>
+                            <p>Taxa Sem 2.doc <a href="a.txt">View</a> <a href="a.txt"
+                                    download="Document.txt">Download</a>
+                                <button>DELETE</button></p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <a class="footer_item1" href="Terms.html">Terms</a>
+        <a class="footer_item2" href="Contact.html">Contact</a>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="institutionDashBoard.js"></script>
+
+</html>
