@@ -7,8 +7,4 @@
 * De adagat un div cu info, unul cu download/preview de fisiere , unul cu fct de upload/preview si trimitere. De luat ca exemplu ce se face la  vechiul proiect. (Sa aiba clase,fara center si sa se foloseasca flex fara exces de zel)-> (sa se poata introduce elementele div facute de Andrei la o apasare de buton din meniul facut de Laurentiu)Andrei + Rares
 * Orice alte detalii vreti sa imi spuneti pe messenger.
 =======
-# TO DO
-* de refacut toate paginile dupa stilul curent 
-* 
-*
->>>>>>> 46b84ce4acde5630765b645d051f062563f99a9a
+
