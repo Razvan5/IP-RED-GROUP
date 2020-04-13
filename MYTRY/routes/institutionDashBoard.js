@@ -6,5 +6,5 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('institutionDashBoard', {});
 });
-
+ 
 module.exports = router;

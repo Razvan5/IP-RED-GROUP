@@ -9,7 +9,7 @@ body{
     align-items: center;
     border-bottom: 10px solid var(--milkyWhite);
 }
-.wrapperInstitutions{
+.wrapperInstitutions{ 
     margin-top:20vh ;
     margin-bottom: 10vh;
     padding:0px;
@@ -28,6 +28,8 @@ body{
 .institutionItem{
   margin:20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: left;
 }
 
 /*dropdown*/
@@ -36,12 +38,12 @@ body{
     padding:10px;
     width: 0.5em;
     bottom:500px;
-    position: absolute;
+    
 }
 
+
 .dropdown {
-    position: absolute;
-    bottom:500px;
+    position: relative;
 
 }
 
@@ -56,7 +58,6 @@ body{
     vertical-align: top;
     border-radius:50%;
     pointer-events: none;
-    
 }
 
 .btn-left {
@@ -74,6 +75,7 @@ body{
 }
 
 .dropbtn {
+    position: relative !important;
     background-color: var(--darkCyan);
     position: fixed;
     color: white;
@@ -86,10 +88,9 @@ body{
     background-color: var(--deepGray);
 }
 .dropdown-content {
-
     display: none;
-    position: relative;
-    margin-top: 60px;
+    position: absolute;
+    margin-top: 20px;
     background-color: #f9f9f9;
     min-width: 160px;
     overflow: auto;
@@ -105,6 +106,10 @@ body{
 }
 
 .dropdown a:hover {background-color: #f1f1f1}
+
+#dropButtonTemplate{
+    display: none;
+}
 
 .show {display:block;}
 
