@@ -1,3 +1,15 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header{
+    margin-bottom: 20%;
+}
+
+
+
 input[type=text], input[type=password] ,input[type=email] {
     width: 100%;
     padding: 12px 20px;
@@ -15,10 +27,11 @@ input[type=text], input[type=password] ,input[type=email] {
     justify-content:center;
     align-items: center;
     bottom:0px;
-    height:100vh;
+    min-height:100vh;
     width:100vw;
 }
 .personalInfo{
+    margin-top:20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +41,7 @@ input[type=text], input[type=password] ,input[type=email] {
     color:var(--milkyWhite);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 40px;
+    margin-bottom:10%;
 }
 
 #defaultUserPhoto{
@@ -59,3 +73,18 @@ input[name="Edit"]:hover{
     
 }
 
+input[name="Edit2"],input[name="Submit"]{
+
+    margin-left: 20px;
+    width:5vh;
+    height:5vh;
+    border-radius: 50%;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border:2px solid var(--deepOrange);
+    transition: 0.5s;
+}
+input[name="Edit2"]:hover, input[name="Submit"]:hover{
+    border-radius: 10%;
+    transition: 0.5s; 
+}

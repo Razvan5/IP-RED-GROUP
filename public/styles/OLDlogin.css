@@ -122,7 +122,7 @@ nav{
  
 }
 
-input[type=username], input[type=password] ,input[type=email],input[type=lastname],input[type=firstname] {
+input[type=text], input[type=password] ,input[type=email],input[type=lastname],input[type=firstname] {
   width: 100%;
   padding: 10px 20px;
   margin: 8px 0;
@@ -134,7 +134,7 @@ input[type=username], input[type=password] ,input[type=email],input[type=lastnam
   margin-top: 15px;
 }
 
-#register-form input[type=text],#register-form input[type=password],#register-form input[type=email],#register-form input[type=lastname],#register-form input[type=firstname],#register-form input[type=username] {
+#register-form input[type=text],#register-form input[type=password],#register-form input[type=email],#register-form input[type=lastname],#register-form input[type=firstname] {
   height:5%;
 }
 

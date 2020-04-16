@@ -1,5 +1,3 @@
-
-
 function changeLanguage(language) {
   var element = document.getElementById("url");
   element.value = language;
@@ -37,7 +35,6 @@ window.onclick = function (event) {
   window.onload = function (event) {
     var myInstitutions = document.getElementsByClassName("institutionItem");
     var myDropButton = document.getElementById("dropButtonTemplate");
-
     var i;
     for (i = 0; i < myInstitutions.length; i++) {
       var clone = myDropButton.cloneNode(true);
