@@ -1,0 +1,90 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header{
+    margin-bottom: 20%;
+}
+
+
+
+input[type=text], input[type=password] ,input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 15px;
+    outline-color: var(--milkyWhite);
+}
+.personalInfoWrapper{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    bottom:0px;
+    min-height:100vh;
+    width:100vw;
+}
+.personalInfo{
+    margin-top:20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:60vh;
+    height:auto;
+    background-color: var(--darkCyan);
+    color:var(--milkyWhite);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 40px;
+    margin-bottom:10%;
+}
+
+#defaultUserPhoto{
+    width:15vh;
+    height: 15vh;
+    border-radius: 50%;
+}
+
+.inputContainer{
+    display:flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+input[name="Edit"]{
+
+    margin-left: 20px;
+    width:5vh;
+    height:5vh;
+    border-radius: 50%;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border:2px solid var(--deepOrange);
+    transition: 0.5s;
+}
+input[name="Edit"]:hover{
+    border-radius: 10%;
+    transition: 0.5s;
+    
+}
+
+input[name="Edit2"],input[name="Submit"]{
+
+    margin-left: 20px;
+    width:5vh;
+    height:5vh;
+    border-radius: 50%;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border:2px solid var(--deepOrange);
+    transition: 0.5s;
+}
+input[name="Edit2"]:hover, input[name="Submit"]:hover{
+    border-radius: 10%;
+    transition: 0.5s; 
+}
