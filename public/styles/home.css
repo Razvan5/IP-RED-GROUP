@@ -8,10 +8,7 @@
     --milkyWhite:#f5f5f5;
     --deepGray:rgb(83, 83, 83);
 }
-#first{
-    background-image: url(imgs/bg1.jpg);
-    background-color: var(--deepOrange);
-}
+
 .newsFeed>h1{
     color: var(--milkyWhite);
     border-bottom: 2px solid var(--textShadow);
