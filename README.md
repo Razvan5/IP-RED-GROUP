@@ -28,15 +28,15 @@ app.use('/institutionDashboard', institutionDashboardRouter);
 app.use('/contact', contactRouter);
 app.use('/terms', termsRouter);
 
-A `route` is a way for us to split our webpage resources in different folders. Let's say our page has the URL: `localhoast:3000`The logic follows like this for `app.use('/login', loginRouter)` :
->  when we acces `localhost:3000/loghin` in the server will give the responsability of responding the to resquest to the `loginRouter`  object.
+A `route` is a way for us to split our webpage resources in different folders. Let's say our page has the URL: `localhost:3000`The logic follows like this for `app.use('/login', loginRouter)` :
+>  when we acces `localhost:3000/login` in the server will give the responsability of responding the to resquest to the `loginRouter`  object.
 
 Let's say our request is a simple `GET` request at /login. In order to respond to this request we have to write in the `loginRouter`  object the following: 
 > router.get('/', function (req, res, next) {
 res.sendFile(path.join(__dirname, '../public/pages/login.html'));
 });
 
-Remember! We are in the `/login` route. This function indicates to the app that when we get a `GET` request at the URL : `/loghin` we send a certain file.
+Remember! We are in the `/login` route. This function indicates to the app that when we get a `GET` request at the URL : `/login` we send a certain file.
 **Another example!**
 > router.post('/test', function (req, res, next) {
 res.send("This is a test response");
