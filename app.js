@@ -16,6 +16,7 @@ var contactRouter = require('./routes/contact');
 var termsRouter = require('./routes/terms');
 var logoutRouter = require('./routes/logout');
 
+
 var app = express();
 
 // view engine setup
@@ -43,6 +44,7 @@ app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/accountDashboard', accountDashboardRouter);
 app.use('/institutionDashboard', institutionDashboardRouter);
+app.use('/createInstitution', createInstitutionRouter);
 app.use('/contact', contactRouter);
 app.use('/terms', termsRouter);
 app.use('/logout', logoutRouter);
