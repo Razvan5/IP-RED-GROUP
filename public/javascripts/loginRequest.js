@@ -34,7 +34,8 @@
                 }
                 else {
                     var newData = JSON.parse(xmlhttp.responseText);
-                    alert(newdata);
+                    alert(JSON.stringify(newData));
+                    window.location.href = '/home';
                 }
             };
 

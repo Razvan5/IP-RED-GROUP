@@ -18,8 +18,8 @@ router.post('/', function (req, res, next) {
     console.log(loginData);
 
     // our path with parameters: email and hashedPassword.
-    var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.hashedPassword;
-
+    var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password;
+    console.log(params);
     var options = {
       hostname: rootPath,
       port: 80,
@@ -44,6 +44,8 @@ router.post('/', function (req, res, next) {
         } else {
           responseBody = JSON.parse(responseBody);
           console.log(responseBody);
+          req.session.password = responseBody.hashedPassword;
+          req.session.email = responseBody.email;
           // here we have to look at the responseStatus.status! TO DO
           res.json(responseBody);
         }
