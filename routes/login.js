@@ -18,16 +18,19 @@ router.post('/', function (req, res, next) {
     console.log(loginData);
 
     // our path with parameters: email and hashedPassword.
-    var parameterisedPath = '/Account/Login.php'+ '?email=' + loginData.email + '&hashedPassword=' + loginData.hashedPassword;
-
+    var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password;
+    console.log(params);
     var options = {
       hostname: rootPath,
       port: 80,
-      path: parameterisedPath,
-      method: 'POST'
+      path: '/Account/Login.php',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     }
 
-    const apiRequest = http.request(options, (apiResponse) =>{ // initiate request to api
+    const apiRequest = http.request(options, (apiResponse) => { // initiate request to api
       console.log(`statusCode: ${apiResponse.statusCode}`);
 
       var responseBody = '';
@@ -36,20 +39,26 @@ router.post('/', function (req, res, next) {
       });
       apiResponse.on('end', () => {   //when data is collected manage the response.
 
-        responseBody = JSON.parse(responseBody);
-        console.log(responseBody);
-        // here we have to look at the responseStatus.status! TO DO
-        res.json(responseBody); 
+        if (apiResponse.statusCode != 200) {
+          res.send(apiResponse.statusCode);
+        } else {
+          responseBody = JSON.parse(responseBody);
+          console.log(responseBody);
+          req.session.password = loginData.password; // we set session variables!
+          req.session.email = loginData.email;
+          req.session.loggedIn = true;
+          // here we have to look at the responseStatus.status! TO DO
+          res.json(responseBody);
+        }
       });
-
       apiResponse.on('error', (error) => {//if we get error.
         console.error(error);
         res.send(error);
       });
 
-    } );
-
+    });
+    apiRequest.write(params);
     apiRequest.end();
   });
 });
-  module.exports = router;
+module.exports = router;

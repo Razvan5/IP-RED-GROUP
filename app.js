@@ -4,15 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
-var homeRouter = require('./routes/home')
-var accountDashboardRouter = require('./routes/accountDashboard')
-var institutionDashboardRouter = require('./routes/institutionDashboard')
-var contactRouter = require('./routes/contact')
-var termsRouter = require('./routes/terms')
-
+var homeRouter = require('./routes/home');
+var accountDashboardRouter = require('./routes/accountDashboard');
+var institutionDashboardRouter = require('./routes/institutionDashboard');
+var contactRouter = require('./routes/contact');
+var termsRouter = require('./routes/terms');
+var logoutRouter = require('./routes/logout');
 
 var app = express();
 
@@ -27,6 +29,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(session({
+ secret:'bunica',
+ resave: false,
+ saveUninitialized: false
+}));
 
 //roots
 app.use('/', loginRouter);
@@ -37,6 +45,7 @@ app.use('/accountDashboard', accountDashboardRouter);
 app.use('/institutionDashboard', institutionDashboardRouter);
 app.use('/contact', contactRouter);
 app.use('/terms', termsRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
