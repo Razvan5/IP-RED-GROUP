@@ -64,6 +64,8 @@ input[type=text], input[type=password] ,input[type=email] {
     border-radius: 20px;
     transition: 0.5s;
     margin: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
     
 }
 
