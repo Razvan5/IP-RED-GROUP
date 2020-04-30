@@ -44,8 +44,9 @@ router.post('/', function (req, res, next) {
         } else {
           responseBody = JSON.parse(responseBody);
           console.log(responseBody);
-          req.session.password = responseBody.hashedPassword;
-          req.session.email = responseBody.email;
+          req.session.password = loginData.password; // we set session variables!
+          req.session.email = loginData.email;
+          req.session.loggedIn = true;
           // here we have to look at the responseStatus.status! TO DO
           res.json(responseBody);
         }
