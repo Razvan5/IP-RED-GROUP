@@ -11,6 +11,7 @@ var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
 var accountDashboardRouter = require('./routes/accountDashboard');
+var createInstitutionRouter = require('./routes/createInstitution')
 var institutionDashboardRouter = require('./routes/institutionDashboard');
 var contactRouter = require('./routes/contact');
 var termsRouter = require('./routes/terms');
