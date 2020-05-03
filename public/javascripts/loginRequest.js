@@ -34,23 +34,8 @@
                 }
                 else {
                     var newData = JSON.parse(xmlhttp.responseText);
-
-                    if(newData.responseStatus.error=="USER_NOT_FOUND"){
-                        alert("USER NOT FOUND \n Please make sure you typed in your email and password correctly. \n OR \n If you don't have an account, please create one before logging in.");
-                    }
-
-                    else if(newData.responseStatus.error=="")
-                        window.location.href = '/home';
-
-                    else if(newData.responseStatus.error=="USER_INACTIVE")
-                        alert("Your account is inactive.\n Please check you email to activate your account.");
-
-                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
-                        alert("Wrong password. Please check your spelling.");
-
-                    else{
-                        alert(JSON.stringify(newData));
-                        }
+                    alert(JSON.stringify(newData));
+                    window.location.href = '/home';
                 }
             };
 

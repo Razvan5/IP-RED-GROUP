@@ -8,7 +8,6 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 var loginRouter = require('./routes/login');
-var newAccountRouter= require('./routes/newAccount');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
 var accountDashboardRouter = require('./routes/accountDashboard');
@@ -42,7 +41,6 @@ app.use(session({
 //roots
 app.use('/', loginRouter);
 app.use('/login', loginRouter);
-app.use('/newAccount', newAccountRouter);
 app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/accountDashboard', accountDashboardRouter);
