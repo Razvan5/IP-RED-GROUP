@@ -38,11 +38,11 @@ router.post('/', function (req, res, next) {
         responseBody = responseBody + d;
       });
       apiResponse.on('end', () => {   //when data is collected manage the response.
-
-        if (apiResponse.statusCode != 200) {
+        responseBody = JSON.parse(responseBody);
+        if (responseBody.responseStatus.status === "FAILURE") {
+          req.session.destroy();
           res.send(apiResponse.statusCode);
         } else {
-          responseBody = JSON.parse(responseBody);
           console.log(responseBody);
           req.session.password = loginData.password; // we set session variables!
           req.session.email = loginData.email;
