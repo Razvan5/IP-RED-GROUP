@@ -42,6 +42,9 @@
                     else if(newData.responseStatus.error=="")
                         window.location.href = '/home';
 
+                    else if(newData.responseStatus.error=="USER_INACTIVE")
+                        alert("Your account is inactive.\n Please check you email to activate your account.");
+
                     else{
                         alert(JSON.stringify(newData));
                         }
