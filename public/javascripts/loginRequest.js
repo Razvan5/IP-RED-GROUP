@@ -45,6 +45,9 @@
                     else if(newData.responseStatus.error=="USER_INACTIVE")
                         alert("Your account is inactive.\n Please check you email to activate your account.");
 
+                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
+                        alert("Wrong password. Please check your spelling.");
+
                     else{
                         alert(JSON.stringify(newData));
                         }

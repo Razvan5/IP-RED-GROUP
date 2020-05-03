@@ -52,6 +52,9 @@
                         else if(newData.responseStatus.error=="")
                             window.location.href = '/home';
 
+                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
+                            alert("Wrong password. Please check your spelling.");
+
                         else{
                              alert(JSON.stringify(newData));
                              }
