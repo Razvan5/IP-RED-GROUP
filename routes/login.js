@@ -41,7 +41,7 @@ router.post('/', function (req, res, next) {
         responseBody = JSON.parse(responseBody);
         if (responseBody.responseStatus.status === "FAILURE") {
           req.session.destroy();
-          res.send(apiResponse.statusCode);
+          res.send(responseBody);
         } else {
           console.log(responseBody);
           req.session.password = loginData.password; // we set session variables!
