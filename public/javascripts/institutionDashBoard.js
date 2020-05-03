@@ -19,11 +19,9 @@ window.onclick = function(event) {
             var spans = div.getElementsByTagName("span");
             //  alert(spans[0].innerText);
             var xmlhttp = new XMLHttpRequest();
-            console.log(spans[0].innerText);
             let data = { institutionName: spans[0].innerText };
             var myJSON = JSON.stringify(data);
             data = myJSON;
-            console.log(data);
             xmlhttp.open("POST", "/institutionDashboard");
             xmlhttp.setRequestHeader("Content-Type", "application/javascript");
             xmlhttp.send(data);
@@ -34,7 +32,6 @@ window.onclick = function(event) {
                 if (xmlhttp.status != 200) {
                     alert("NOT WORKING");
                 } else {
-                    console.log(xmlhttp.responseText);
                     var newJson = JSON.parse(xmlhttp.responseText);
                     if (newJson.responseStatus.status === "SUCCESS") {
                         if (div.parentNode) {
@@ -75,9 +72,7 @@ window.onload = function(event) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "institutionDashboard/RetrieveAll");
     xmlhttp.onload = function() {
-        console.log(xmlhttp.responseText);
         var newData = JSON.parse(xmlhttp.responseText);
-        console.log(newData);
         renderHTML(newData);
     };
     xmlhttp.send("1");

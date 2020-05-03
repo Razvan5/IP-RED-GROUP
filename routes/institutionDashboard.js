@@ -53,11 +53,8 @@ router.post('/', function(req, res, next) {
     });
     req.on('end', () => { // when data (body component of http request) is collected
         var loginData = JSON.parse(body); //parse the body into JSON object
-        console.log(loginData.institutionName + "WTSFDSFS");
         // our path with parameters: email and hashedPassword.
         var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName;
-        console.log(loginData.institutionName);
-        console.log(params);
         var options = {
             hostname: rootPath,
             port: 80,
