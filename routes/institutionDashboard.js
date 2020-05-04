@@ -26,13 +26,13 @@ router.post('/getInfo', function(req, res, next) {
         var options = {
             hostname: rootPath,
             port: 80,
-            path: '/Institution/Retrieve.php' + params,
+            path: encodeURI('/Institution/Retrieve.php' + params),
             method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
-
+        
         const apiRequest = http.request(options, (apiResponse) => { // initiate request to api
             console.log(`statusCode: ${apiResponse.statusCode}`);
             var responseBody = '';
