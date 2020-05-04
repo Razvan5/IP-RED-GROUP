@@ -1,3 +1,25 @@
+    function toJSONString(form) {
+        var obj = {};
+        var elements = form.querySelectorAll("input");
+        for (var i = 0; i < elements.length; ++i) {
+            var element = elements[i];
+            var name = element.name;
+            var value = element.value;
+
+            if (name) {
+                obj[name] = value;
+            }
+        }
+        return JSON.stringify(obj);
+}
+
+
+
+
+
+
+var modifyRoleForm=document.getElementById("modifyRoleForm");
+
 var listInstitution = document.getElementsByClassName("institutionList");
 
 function changeLanguage(language) {
@@ -34,8 +56,8 @@ window.onclick = function(event) {
                 } else {
                     var newJson = JSON.parse(xmlhttp.responseText);
                     if (newJson.responseStatus.status === "SUCCESS") {
-                        if (div.parentNode.parentNode) {
-                            div.parentNode.parentNode.removeChild(div);
+                        if (div.parentNode) {
+                            div.parentNode.removeChild(div);
                         }
                     } else {
                         alert(newJson.responseStatus.error);
@@ -43,40 +65,63 @@ window.onclick = function(event) {
                 }
             };
 
-        } else if (target.innerText == "Info") {
+        }else if (target.innerText == "Modify Role") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
-            var externspan = div.parentNode.getElementsByTagName("span");
-            //  alert(spans[0].innerText);
-            if (externspan.length == 1) {
+            modifyRoleForm.institutionName.value=spans[0].innerText;
+            var modifyRoleWrapper=document.getElementById("modifyRoleWrapper");
+            modifyRoleWrapper.style.display="flex";
+            
+
+            var cancelButton=document.getElementById("cancelButton");
+            cancelButton.addEventListener("click",function(){
+                modifyRoleWrapper.style.display="none";
+
+            });
+
+
+
+
+            modifyRoleForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var checkboxes=document.getElementsByClassName("rightsInput");
+                for(i=0;i<checkboxes.length;i++)
+                {
+                    if(checkboxes[i].checked==true)
+                        checkboxes[i].value="1";
+                    else  
+                        checkboxes[i].value="0";
+                }
+
+                modifyRoleForm=document.getElementById("modifyRoleForm");
+                var loginData = toJSONString(modifyRoleForm);
+                console.log(loginData);
                 var xmlhttp = new XMLHttpRequest();
-                let data = { institutionName: spans[0].innerText };
-                var myJSON = JSON.stringify(data);
-                data = myJSON;
-                xmlhttp.open("POST", "/institutionDashboard/getInfo");
+                xmlhttp.open("POST", "/institutionDashboard/institutionModifyRole");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
-                xmlhttp.send(data);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.send(loginData);
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
-                xmlhttp.onload = function() {
-                    if (xmlhttp.status != 200) {
-                        alert("NOT WORKING");
-                    } else {
-                        var newJson = JSON.parse(xmlhttp.responseText);
-                        if (newJson.responseStatus.status === "SUCCESS") {
-                            infoHtml(newJson, spans);
-                        } else {
-                            alert(newJson.responseStatus.error);
-                        }
+            
+                xmlhttp.onload = function () {
+                    if (xmlhttp.status != 200) { 
+                        alert(xmlhttp.responseText);
+                    }
+                    else {
+                        var newData = JSON.parse(xmlhttp.responseText);
+                        console.log(newData.responseStatus.error);
+    
+                                 alert(JSON.stringify(newData));
                     }
                 };
-            } else
-            if (externspan[1].parentNode) {
-                externspan[1].parentNode.removeChild(externspan[1]);
-            }
-        } else
-            alert(target.innerHTML);
+    
+            }, false);
+
+        }else
+            alert(target.innerHTML);  
+            
+            
     } else if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
@@ -113,29 +158,11 @@ window.onload = function(event) {
 function renderHTML(data) {
     var htmlString = "";
     for (i = 0; i < data.returnedObject.institutions.length; i++) {
-        htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institutions[i] + "</span></div> </li> ";
+        htmlString += "<li class='institutionItem'> <span>" + data.returnedObject.institutions[i] + "</span> </li> ";
     }
     listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
     nowAdd();
 
-};
-
-function infoHtml(data, spanLocation) {
-    var htmlString = "";
-    htmlString += "<span class='institutionItemSpan'>";
-    for (i = 0; i < data.returnedObject.addresses.length; i++) {
-        if (i != 0)
-            htmlString += "<br>";
-        htmlString += "<br>Address " + (i + 1) + "<br>Country:" + data.returnedObject.addresses[i].country + " <br>Region:" + data.returnedObject.addresses[i].region + " <br> City:" + data.returnedObject.addresses[i].city +
-            " <br>Street:" + data.returnedObject.addresses[i].street + " <br>Number:" + data.returnedObject.addresses[i].number + "<br> Building:" + data.returnedObject.addresses[i].building +
-            " <br>Floor:" + data.returnedObject.addresses[i].floor + "<br> Apartment:" + data.returnedObject.addresses[i].apartment + " <br>Main Address:";
-        if (data.returnedObject.addresses[i].isMainAddress == "0")
-            htmlString += "NO";
-        else
-            htmlString += "YES";
-    }
-    htmlString += "</span>";
-    spanLocation[0].parentNode.insertAdjacentHTML('afterend', htmlString);
 };
 
 function nowAdd() {
@@ -144,13 +171,10 @@ function nowAdd() {
     var i;
     for (i = 0; i < myInstitutions.length; i++) {
         var clone = myDropButton.cloneNode(true);
-        var div = myInstitutions[i].getElementsByTagName("div");
         clone.setAttribute("id", i);
         clone.style.display = "block";
         clone.getElementsByClassName("dropbtn")[0].setAttribute("id", i);
-        div[0].insertAdjacentElement("afterbegin", clone);
-        div[0].setAttribute("id", "institutionItemDiv" + i);
-        div[0].setAttribute("class", "institutionItemDiv");
+        myInstitutions[i].insertAdjacentElement("afterbegin", clone);
         myInstitutions[i].setAttribute("id", "institutionItem." + i);
     }
 };
