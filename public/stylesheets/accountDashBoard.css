@@ -73,7 +73,7 @@ input[name="Edit"]:hover{
     
 }
 
-.Edit2,input[name="Submit"]{
+input[name="Edit2"],input[name="Submit"]{
 
     margin-left: 20px;
     width:5vh;
@@ -84,7 +84,7 @@ input[name="Edit"]:hover{
     border:2px solid var(--deepOrange);
     transition: 0.5s;
 }
-.Edit2:hover, input[name="Submit"]:hover{
+input[name="Edit2"]:hover, input[name="Submit"]:hover{
     border-radius: 10%;
     transition: 0.5s; 
 }

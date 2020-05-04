@@ -51,7 +51,8 @@
                   <div class="sec new">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile2.jpg">
+                        <img class="profile"
+                          src="images\\profile2.jpg">
                       </div>
                       <div class="txt">Annita liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/7 - 2:13 pm</div>
@@ -60,7 +61,8 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile3.jpg">
+                        <img class="profile"
+                          src="images\\profile3.jpg">
                       </div>
                       <div class="txt">Brie liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/6 - 9:35 pm</div>
@@ -78,7 +80,8 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile5.jpg">
+                        <img class="profile"
+                          src="images\\profile5.jpg">
                       </div>
                       <div class="txt">Ted liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/6 - 10:37 am</div>
@@ -87,7 +90,8 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile6.jpg">
+                        <img class="profile"
+                          src="images\\profile6.jpg">
                       </div>
                       <div class="txt">Tommas liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/5 - 7:30 pm</div>
@@ -133,50 +137,38 @@
 
     <div class="personalInfo">
       <img id="defaultUserPhoto" src="images/userImage.png" alt="User custom image">
-
-
-      <form id="fNameForm" action="/accountDashboard/modifyAccount" method="post"><label>First Name</label>
+      <form>
+        <label>First Name</label>
         <div class="inputContainer">
-          <input name="fName" type="text" placeholder="First Name" readonly required /><input id="editFName" class="Edit" name="Edit" type="submit"
-            value="Edit">
+          <input type="text" placeholder="First Name" readonly required /><input name="Edit" type="button"
+            value="Edit ">
         </div>
-      </form>
-
-      <form id="lNameForm" action="/accountDashboard/modifyAccount" method="post">
         <label>Last Name</label>
         <div class="inputContainer">
-          <input  name="lName" type="text" placeholder="Last Name" required readonly /><input id="editLName" class="Edit" name="Edit" type="submit"
-            value="Edit">
+          <input type="text" placeholder="Last Name" required readonly /><input name="Edit" type="button" value="Edit ">
         </div>
-      </form>
-
-      <form id="emailForm" action="/accountDashboard/modifyAccount" method="post">
         <label>Email ID</label>
         <div class="inputContainer">
-          <input name="email" type="email" placeholder="Email" required readonly /><input id="editEmail" class="Edit" name="Edit" type="submit"
-            value="Edit">
+          <input type="email" placeholder="Email" required readonly /><input name="Edit" type="button" value="Edit ">
         </div>
-      </form>
 
-      <form id="passwordForm" action="/accountDashboard/modifyAccount" method="post">
         <label>Password</label>
         <div class="inputContainer">
-          <input name="password" name="fName" type="text"  placeholder="Password" required readonly /><input id="editPassword" class="Edit"
-            name="Edit" type="submit" value="Edit" >
+          <input type="text" id="PasswordRequired1" placeholder="Password" required readonly /><input name="Edit2" type="Button" value="Edit "
+            id="PasswordRequired2">
         </div>
-      </form>
 
-      <form id="retryPassForm" action="/accountDashboard/modifyAccount" method="post">
         <div id="RetypePassword">
           <label>Retype Password</label>
           <div class="inputContainer">
-            <input type="text" placeholder="Insert Old Password" id='OldPassword' /><input id="editRetypePass" name="Submit" type="button"
+            <input type="text" placeholder="Insert Old Password" id='OldPassword'/><input name="Submit" type="Button"
               value="Done">
           </div>
+        </div>
+
+
       </form>
     </div>
-
-  </div>
   </div>
 
   <footer>
@@ -190,6 +182,4 @@
 
 <script src="javascripts/accountDashBoard.js"></script>
 <script src="javascripts/logout.js"></script>
-<script src="javascripts/modifyAccount.js"></script>
-
 </html>

@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 
-$('input[class="Edit"]').on('click', function() {
+$('input[name="Edit"]').on('click', function() {
     var prev = $(this).prev('input'),
         ro   = prev.prop('readonly');
     prev.prop('readonly', !ro).focus();
