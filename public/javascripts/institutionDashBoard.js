@@ -1,3 +1,25 @@
+function toJSONString(form) {
+    var obj = {};
+    var elements = form.querySelectorAll("input");
+    for (var i = 0; i < elements.length; ++i) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if (name) {
+            obj[name] = value;
+        }
+    }
+    return JSON.stringify(obj);
+}
+
+
+
+
+
+
+var modifyRoleForm = document.getElementById("modifyRoleForm");
+
 var listInstitution = document.getElementsByClassName("institutionList");
 
 function changeLanguage(language) {
@@ -50,6 +72,57 @@ window.onclick = function(event) {
                     }
                 }
             };
+
+        } else if (target.innerText == "Modify Role") {
+            var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = div.getElementsByTagName("span");
+            modifyRoleForm.institutionName.value = spans[0].innerText;
+            var modifyRoleWrapper = document.getElementById("modifyRoleWrapper");
+            modifyRoleWrapper.style.display = "flex";
+
+
+            var cancelButton = document.getElementById("cancelButton");
+            cancelButton.addEventListener("click", function() {
+                modifyRoleWrapper.style.display = "none";
+
+            });
+
+
+
+
+            modifyRoleForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                var checkboxes = document.getElementsByClassName("rightsInput");
+                for (i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked == true)
+                        checkboxes[i].value = "1";
+                    else
+                        checkboxes[i].value = "0";
+                }
+
+                modifyRoleForm = document.getElementById("modifyRoleForm");
+                var loginData = toJSONString(modifyRoleForm);
+                console.log(loginData);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "/institutionDashboard/institutionModifyRole");
+                xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+                xmlhttp.send(loginData);
+                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                    console.log("ERROR");
+                };
+
+                xmlhttp.onload = function() {
+                    if (xmlhttp.status != 200) {
+                        alert(xmlhttp.responseText);
+                    } else {
+                        var newData = JSON.parse(xmlhttp.responseText);
+                        console.log(newData.responseStatus.error);
+
+                        alert(JSON.stringify(newData));
+                    }
+                };
+
+            }, false);
 
         } else if (target.innerText == "Info") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);

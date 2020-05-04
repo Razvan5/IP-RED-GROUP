@@ -108,7 +108,8 @@
                                             <div class="profCont">
                                                 <img class="profile" src="images\\profile8.jpg">
                                             </div>
-                                            <div class="txt">Jerimaiah liked your post: "Pure css notification box"</div>
+                                            <div class="txt">Jerimaiah liked your post: "Pure css notification box"
+                                            </div>
                                             <div class="txt sub">11/5 - 1:34 pm</div>
                                         </a>
                                     </div>
@@ -150,6 +151,7 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a class="dropdown-element" href="#">Info</a>
                     <a class="dropdown-element" href="#">Edit</a>
+                    <a class="dropdown-element" href="#">Modify Role</a>
                     <a class="dropdown-element" href="#">Send Document</a>
                     <a class="dropdown-element" href="#">Document History</a>
                     <a type="submit" class="dropdown-element" href="#">Delete</a>
@@ -157,7 +159,169 @@
             </div>
 
         </div>
+
+
+
+        
+        <!-- Formularul de modificat rolul -->
+
+        <div class="modifyRoleWrapper" id="modifyRoleWrapper">
+
+            <div class="modifyRole">
+
+                <form  id="modifyRoleForm">
+                    <label>Institution Name</label>
+                    <div class="inputContainer">
+                        <input  name="institutionName" id="institutionName" type="text" placeholder="Institution Name" readonly required />
+                    </div>
+
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="email" type="email" placeholder="User Email" required />
+                    </div>
+
+
+                    <label>Password</label>
+                    <div class="inputContainer">
+                        <input name="password" id="password" type="password" id="PasswordRequired1" placeholder="Password" required />
+                    </div>
+
+
+                    <label>Old Role</label>
+                    <div class="inputContainer">
+                        <input name="oldRole" id="oldRole" type="text" placeholder="Old Role" required />
+                    </div>
+
+                    <label>New Role</label>
+                    <div class="inputContainer">
+                        <input name="newRole" id="newRole" type="text" placeholder="New Role" required />
+                    </div>
+
+                    <br>
+
+                    <label>User Rights:</label>
+                    <br><br>
+                    <div class="inputContainer" id="rightsContainer">
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Modify_Institution" name="Can_Modify_Institution" value="1">
+                            <label class="rightsLabel" for="Can_Modify_Institution">Can Modify Institution</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Delete_Institution" name="Can_Delete_Institution" value="1">
+                            <label class="rightsLabel" for="Can_Delete_Institution">Can Delete Institution</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Add_Members" name="Can_Add_Members" value="1">
+                            <label class="rightsLabel" for="Can_Add_Members">Can Add Members</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Members" name="Can_Remove_Members" value="1">
+                            <label class="rightsLabel" for="Can_Remove_Members">Can Remove Members</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Upload_Documents" name="Can_Upload_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Upload_Documents">Can Upload Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Uploaded_Documents" name="Can_Preview_Uploaded_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Preview_Uploaded_Documents">Can Preview Uploaded
+                                Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Uploaded_Documents" name="Can_Remove_Uploaded_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Remove_Uploaded_Documents">Can Remove Uploaded
+                                Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Send_Documents" name="Can_Send_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Send_Documents">Can Send Documents</label>
+                        </div>
+
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Received_Documents" name="Can_Preview_Received_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Preview_Received_Documents">Can Preview Received
+                                Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Specific_Received_Document" name="Can_Preview_Specific_Received_Document" value="1">
+                            <label class="rightsLabel" for="Can_Preview_Specific_Received_Document">Can Preview
+                                Specific Received Document</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Received_Documents" name="Can_Remove_Received_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Remove_Received_Documents">Can Remove Received
+                                Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Download_Documents" name="Can_Download_Documents" value="1">
+                            <label class="rightsLabel" for="Can_Download_Documents">Can Download Documents</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Add_Roles" name="Can_Add_Roles" value="1">
+                            <label class="rightsLabel" for="Can_Add_Roles">Can Add Roles</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Roles" name="Can_Remove_Roles" value="1">
+                            <label class="rightsLabel" for="Can_Remove_Roles">Can Remove Roles</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Modify_Roles" name="Can_Modify_Roles" value="1">
+                            <label class="rightsLabel" for="Can_Modify_Roles">Can Modify Roles</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Assign_Roles" name="Can_Assign_Roles" value="1"> 
+                            <label class="rightsLabel" for="Can_Assign_Roles">Can Assign Roles</label>
+                        </div>
+
+                        <div class="labelAndInput">
+                            <input class="rightsInput" type="checkbox" id="Can_Deassign_Roles" name="Can_Deassign_Roles" value="1">
+                            <label class=".rightsLabel" for="Can_Deassign_Roles">Can Deassign Roles</label>
+                        </div>
+
+                        <br>
+
+                        <button type="reset" id="cancelButton" class="formButtons"> Cancel</button><br>
+
+                        <br>
+
+                        <button class="formButtons" type="submit">Submit</button>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+        <!-- Sfarsitul formularului de modificat rolul -->
+
+
+
     </div>
+
+
+
+
+
+
+
 
     <div class="institutionInfo">
         <div class="fullBanner">
@@ -168,8 +332,12 @@
 
         </div>
         <div class="info">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur necessitatibus alias nemo exercitationem minus ullam veritatis voluptatibus vero maxime, delectus quibusdam aut distinctio beatae itaque at velit qui eum nesciunt. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Praesentium, deserunt tempora odio sapiente repudiandae veritatis in vero dolor accusamus sunt inventore! Neque iure voluptate pariatur corrupti, alias incidunt perspiciatis sit.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur necessitatibus alias nemo
+            exercitationem minus ullam veritatis voluptatibus vero maxime, delectus quibusdam aut distinctio beatae
+            itaque at velit qui eum nesciunt. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Praesentium, deserunt tempora odio sapiente repudiandae veritatis in
+            vero dolor accusamus sunt inventore! Neque iure voluptate pariatur corrupti, alias incidunt perspiciatis
+            sit.
         </div>
         <div class="edit">
 
