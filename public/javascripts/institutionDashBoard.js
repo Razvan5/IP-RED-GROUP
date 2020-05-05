@@ -54,6 +54,7 @@ window.onclick = function(event) {
                 if (xmlhttp.status != 200) {
                     alert("NOT WORKING");
                 } else {
+                    console.log(xmlhttp.responseText);
                     var newJson = JSON.parse(xmlhttp.responseText);
                     if (newJson.responseStatus.status === "SUCCESS") {
                         if (div.parentNode.parentNode) {

@@ -55,11 +55,12 @@ router.post('/', function(req, res, next) {
         var loginData = JSON.parse(body); //parse the body into JSON object
         // our path with parameters: email and hashedPassword.
         var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName;
+        console.log(params);
         var options = {
             hostname: rootPath,
             port: 80,
-            path: encodeURI('/Institution/Retrieve.php' + params),
-            method: 'GET',
+            path: '/Institution/Delete.php',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -85,7 +86,6 @@ router.post('/', function(req, res, next) {
         apiRequest.end();
     });
 });
-
 
 
 
