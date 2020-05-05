@@ -38,6 +38,7 @@ window.onclick = function(event) {
         var target = event.target;
         if (target.innerText == "Delete") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var divparent = document.getElementById(div.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
             //  alert(spans[0].innerText);
             var xmlhttp = new XMLHttpRequest();
