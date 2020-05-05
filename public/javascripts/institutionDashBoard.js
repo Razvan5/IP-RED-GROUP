@@ -38,9 +38,17 @@ window.onclick = function(event) {
         var target = event.target;
         if (target.innerText == "Delete") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
-            var divparent = document.getElementById(div.parentNode.parentNode.id);
+            var divparent = document.getElementById(target.parentNode.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
             //  alert(spans[0].innerText);
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
             var xmlhttp = new XMLHttpRequest();
             let data = { institutionName: spans[0].innerText };
             var myJSON = JSON.stringify(data);
@@ -58,19 +66,11 @@ window.onclick = function(event) {
                     console.log(xmlhttp.responseText);
                     var newJson = JSON.parse(xmlhttp.responseText);
                     if (newJson.responseStatus.status === "SUCCESS") {
-                        if (div.parentNode.parentNode) {
-                            div.parentNode.parentNode.removeChild(div);
+                        if (div.parentNode) {
+                            divparent.parentNode.removeChild(divparent);
                         }
                     } else {
                         alert(newJson.responseStatus.error);
-                    }
-                }
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
                     }
                 }
             };
