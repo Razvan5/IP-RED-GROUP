@@ -219,9 +219,12 @@ function renderHTML(data) {
 
 };
 
+
 function infoHtml(data, spanLocation) {
     var htmlString = "";
     htmlString += "<span class='institutionItemSpan'>";
+    if (data.returnedObject.addresses.length == 0)
+        var htmlString = "<span class='institutionItemSpan'>No information about this Institution.</span>";
     for (i = 0; i < data.returnedObject.addresses.length; i++) {
         if (i != 0)
             htmlString += "<br>";
