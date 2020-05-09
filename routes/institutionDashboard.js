@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 var http = require('http');
-const rootPath = 'fiscaldocumentseditest.azurewebsites.net'
+const rootPath = 'fiscaldocumentsapi.azurewebsites.net'
 router.get('/', function(req, res, next) {
     if (req.session.loggedIn === true) {
         console.log('Pass: ' + req.session.password);
