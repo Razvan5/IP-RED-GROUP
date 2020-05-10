@@ -45,7 +45,6 @@ window.onclick = function(event) {
         let data = { institutionName: spans[0].innerText, roleName: roleParagraf[0].innerText };
         var myJSON = JSON.stringify(data);
         data = myJSON;
-        console.log(data);
         xmlhttp.open("POST", "/institutionDashboard/roleDelete");
         xmlhttp.setRequestHeader("Content-Type", "application/javascript");
         xmlhttp.send(data);
@@ -321,15 +320,13 @@ function infoHtml(data, spanLocation) {
 
 function retrieveRolesHtml(data, spanLocation) {
     var htmlString = "";
-    htmlString += "<span class='institutionItemSpan'><br> Roles:<br>";
+    htmlString += "<span class='institutionItemSpan'><br> Roles:";
     if (data.returnedObject.roles.length == 0)
         var htmlString = "<span class='institutionItemSpan'>There are no roles currently created for this institution</span>";
     else {
         for (i = 0; i < data.returnedObject.roles.length; i++) {
-            if (i != 0)
-                htmlString += "<br>";
             htmlString += '<div class="institutionItemDiv" id=' + "role" + i + "><p>" +
-                data.returnedObject.roles[i] + '</p>  <button class="stergeAsta" > Delete</button></div>' + "<br>";
+                data.returnedObject.roles[i] + '</p>  <button class="stergeAsta" > Delete</button></div>';
         }
     }
     htmlString += "</span>";
