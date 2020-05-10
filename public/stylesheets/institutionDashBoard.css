@@ -275,3 +275,11 @@ input[name="Submit"]:hover {
     justify-self: right;
     align-self: flex-start;
 }
+
+.stergeAsta {
+    margin-left: 5%;
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-self: center;
+}
