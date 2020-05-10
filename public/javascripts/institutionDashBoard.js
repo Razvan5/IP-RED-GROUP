@@ -20,7 +20,6 @@ function toJSONString(form) {
 
 var modifyRoleForm = document.getElementById("modifyRoleForm");
 var createRoleForm =document.getElementById("createRoleForm");
-
 var listInstitution = document.getElementsByClassName("institutionList");
 
 function changeLanguage(language) {
@@ -122,11 +121,14 @@ window.onclick = function(event) {
             var createRoleCancelButton = document.getElementById("createRoleCancelButton");
             createRoleCancelButton.addEventListener("click", function() {
                 createRoleWrapper.style.display = "none";
-
             });
 
+            
 
-            createRoleForm.addEventListener("submit", function(e) {
+
+            createRoleForm.addEventListener("submit",f,false);
+            
+            function  f(e) {
                 e.preventDefault();
                 createRoleWrapper.style.display = "none";
 
@@ -148,12 +150,29 @@ window.onclick = function(event) {
                         var newData = JSON.parse(xmlhttp.responseText);
                         console.log(newData.responseStatus.error);
 
+                        if(newData.responseStatus.error=="")
+                        alert("Role created");
+
+                        else if(newData.responseStatus.error=="DUPLICATE_ROLE")
+                        alert("DUPLICATE ROLE");
+
+                        else if(newData.responseStatus.error=="ROLE_DUPLICATE_SAME_RIGHTS")
+                        alert("REDUNDANT ROLE: THE ROLE YOU ARE TRYING TO CREATE\n HAS THE SAME RIGHTS AS AN ALREADY EXISTING ROLE");
+
+                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
+                        alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+
+                        else if(newData.responseStatus.error=="USER_NOT_FOUND")
+                        alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
+
+                        else{
                         alert(JSON.stringify(newData));
+                        }
                     }
                 };
 
-
-            }, false);
+               createRoleForm.removeEventListener("submit",f);
+            }
 
         } else if (target.innerText == "Modify Role") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
@@ -166,13 +185,16 @@ window.onclick = function(event) {
             var cancelButton = document.getElementById("cancelButton");
             cancelButton.addEventListener("click", function() {
                 modifyRoleWrapper.style.display = "none";
+                window.location.href = '/institutionDashBoard';
 
             });
 
 
 
 
-            modifyRoleForm.addEventListener("submit", function(e) {
+            modifyRoleForm.addEventListener("submit",g, false);
+            
+            function g(e) {
                 e.preventDefault();
                 modifyRoleWrapper.style.display = "none";
                 var checkboxes = document.getElementsByClassName("rightsInput");
@@ -194,6 +216,7 @@ window.onclick = function(event) {
                     console.log("ERROR");
                 };
 
+                console.log("HELLO")
                 xmlhttp.onload = function() {
                     if (xmlhttp.status != 200) {
                         alert(xmlhttp.responseText);
@@ -201,11 +224,31 @@ window.onclick = function(event) {
                         var newData = JSON.parse(xmlhttp.responseText);
                         console.log(newData.responseStatus.error);
 
+                        if(newData.responseStatus.error=="")
+                        alert("Role modified successfully");
+
+                        
+                        else if(newData.responseStatus.error=="ROLE_DUPLICATE_SAME_RIGHTS")
+                        alert("CAN'T MODIFY ROLE. ANOTHER ROLE WITH THE SAME RIGHTS ALREADY EXISTS");
+
+                        else if(newData.responseStatus.error=="ROLE_NOT_FOUND")
+                        alert("ROLE NOT FOUND");
+
+                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
+                        alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+                        
+
+                        else if(newData.responseStatus.error=="USER_NOT_FOUND")
+                        alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
+
+                        else{
                         alert(JSON.stringify(newData));
+                        }
                     }
+                    modifyRoleForm.removeEventListener("submit",g);
                 };
 
-            }, false);
+            }
 
 
         } else if (target.innerText == "Retrieve Roles") { //institution Retrieve Roles
