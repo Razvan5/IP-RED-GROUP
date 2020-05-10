@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="stylesheets/fullpage.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Pacifico|Sacramento&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="javascripts/fullpage.js"></script>
+    <script src="javascripts/login.js"></script>
+    <script src="javascripts/loginRequest.js"></script>
+    <script src="javascripts/newAccount.js"></script>
+
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    <header>
+        <img class="logo-image" src="images/logo.png" alt="Specter-free invoicing and receipt handling">
+        <span class="logo-title">Specter</span>
+        <nav>
+            <a class="nav-link" href="#page1">Sign-up</a>
+            <a class="nav-link" href="#page2">Reviews</a>
+            <a class="nav-link" href="#page3">Features</a>
+            <a class="nav-link" href="#page4">FAQ</a>
+            <a class="nav-link" href="#page5">Contact</a>
+        </nav>
+    </header>
+
+    <div id="wrapper">
+        <div class="section" data-anchor="page1" id="first">
+            <img id="backgroundLogin" data-src="images\loginImage1.jpg">
+            <div class="loginForm">
+                <span class="loginText">
+                
+                <form id="login-form" action="/login" method="post"> 
+                    <div class="container">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Enter Email" name="email" required id="email" maxlength="50">
+                    
+                        <label for="psw">Password</label>
+                        <input type="password" placeholder="Enter Password" name="password" required id="loginPassword"  maxlength="50">
+                            
+                        <button id="loginButton" type="submit">Login</button>
+                        <label>
+                            <span class="remember_me">
+                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                            </span>
+                        </label>
+                        <label>
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#page1#register-form" role="tab" aria-controls="register" aria-selected="false">You don't have an account? Register!</a>
+                        </label>
+            </div>
+            </form>
+
+
+            <form id="register-form"  action="/register" method="post">
+                <div class="container">
+
+                    <label for="fname">First Name</label>
+                    <input type="firstname" placeholder="Enter First Name" name="firstname" required id="firstname">
+
+                    <label for="lname">Last Name</label>
+                    <input type="lastname" placeholder="Enter Last Name" name="lastname" required id="lastname">
+
+                    <label for="email">E-mail</label>
+                    <input type="email" placeholder="Enter Email" name="email" required id="email">
+
+                    <label for="password"> Password</label>
+                    <input type="password" placeholder="Enter Password" name="password" required id="registerPassword">
+
+                    <label for="psw-again">Password Again</label>
+                    <input type="password" placeholder="Enter Password Again" name="psw-again" required id="psw-again">
+
+                    <button id="loginButton" type="submit">Register</button>
+                    <label for="login-link">
+                      <a class="nav-link active" id="login-tab" data-toggle="tab" href="#page1#login-form" role="tab" aria-controls="login" aria-selected="true">Already have an account?Login!</a>
+                      </label>
+                </div>
+            </form>
+
+            </span>
+        </div>
+        <a href="#page2"><button class="attentionCatcher">For more info!</button></a>
+    </div>
+
+    <div class="section" data-anchor="page2" id="second">
+        <div class="customerCollection">
+            <section class="customerReview">
+                <img class="customerReview-photo" src="images/customer1.png" alt="Happy Customer">
+                <p class="customerReview-text">"I love Specter, it made me able to easily gather all my institutions invoices and receipts and my job is now a pleasure!"</p>
+            </section>
+            <section class="customerReview">
+                <img class="customerReview-photo" src="images/customer2.jpg" alt="Happy Customer">
+                <p class="customerReview-text">"I was pretty skeptical at first but after i tried the mobile app i realized Specter offered me so many options and so much versatility!."</p>
+            </section>
+            <section class="customerReview">
+                <img class="customerReview-photo" src="images/customer3.jpg" alt="Happy Customer">
+                <p class="customerReview-text">"Who would have think that such a small app can change my life so much more than expected. I am so happy our institution has choosen this app."</p>
+            </section>
+            <section class="customerReview">
+                <img class="customerReview-photo" src="images/customer4.jpg" alt="Happy Customer">
+                <p class="customerReview-text">"Not the conventional great app, but a creative one i can say surely! When i have problems the tech team always helps me! Great guys!"</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="section" data-anchor="page3" id="third">
+        <img id="backgroundLogin" data-src="images\loginImage2.jpg">
+
+        <div class="flexFeatureWrapper">
+            <div class="appFeatures">
+
+                <div class="feature1">
+                    <img src="images\feature1.png" alt="feature-one">
+                    <h3>Effortless Invoicing</h3>
+                    <p>Send professional and elegant looking receipts and invoices.</p>
+                </div>
+                <div class="feature2">
+                    <img src="images\feature2.png" alt="feature-two">
+                    <h3>Accept Online Payments</h3>
+                    <p>Receive instant online invoice payments from anywhere, any time!</p>
+                </div>
+                <div class="feature3">
+                    <img src="images\feature3.png" alt="feature-three">
+                    <h3>Track Time, Expenses & Mileage</h3>
+                    <p>Turn hours, miles and expenses into invoices and bills at the click of a button.</p>
+                </div>
+                <div class="feature4">
+                    <img src="images\feature5.png" alt="feature-four">
+                    <h3>Manage Multiple institutions</h3>
+                    <p>Setting up multiple institutions has never been this simple.</p>
+                </div>
+                <div class="feature5">
+                    <img src="images\feature6.png" alt="feature-five">
+                    <h3>Your Finances In One Place</h3>
+                    <p>Stay on track with your finances by having a custom feed just for you!</p>
+                </div>
+                <div class="feature6">
+                    <img src="images\feature4.png" alt="feature-six">
+                    <h3>Accesible for anyone</h3>
+                    <p>With a clear and easy to use layout anyone can start using the app today!</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" data-anchor="page4" id="forth">
+        <div class="faq">
+            <span>
+                    <h4>Is Specter really free?</h4>
+                    Absolutely. We only have the free plan that allows you to send unlimited invoices to an unlimited number of clients, using an unlimited number of institutions. 
+                    <h4>Are my invoices/receipts safe?</h4>
+                    Keeping your data secure is one of our top priorities — that's why we did not spare any expenses when it comes to our encrypted server systems. This industry-leading setup enables us to sync your private invoicing data to the cloud.
+                    <h4>Does Specter work on my Mac, PC and mobile device?</h4>
+                    Absolutely — since Specter is a web-based application you'll be able to keep track of your invoicing needs using any device with an internet connection — whether you're at home, in the office or on the go. Moreover we have a mobile app too!
+                </span>
+        </div>
+    </div>
+
+    <div class="section" data-anchor="page5" id="fifth">
+
+        <div class="business-card-collection">
+            <img id="backgroundLogin" data-src="images\loginImage3.jpg">
+
+            <div class="business-card1 middle1">
+                <div class="front">
+                    <h2>Nistor Sergiu</h2>
+                    <span>Scrum Master</span>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-mobile-alt"></i> +073565313
+                        </li>
+                        <li>
+                            <i class="far fa-envelope"></i> nistorsergiu@gmail.com
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i> Iași, România
+                        </li>
+                    </ul>
+                </div>
+                <div class="back">
+                    <span>Specter Team</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="business-card2 middle2">
+            <div class="front">
+                <h2>Georgiana Butiuc</h2>
+                <span>Web Design Team</span>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-mobile-alt"></i> +0765745389
+                    </li>
+                    <li>
+                        <i class="far fa-envelope"></i> georgianabutiuc@gmail.com
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i> Iași, România
+                    </li>
+                </ul>
+            </div>
+            <div class="back">
+                <span>Specter Team</span>
+            </div>
+        </div>
+        <footer>
+            <span niceCenteredText="loginText">Specter©-free invoicing and receipt handling</span>
+        </footer>
+
+    </div>
+
+    </div>
+
+    </div>
+
+</body>
+
+
+
+</html>
