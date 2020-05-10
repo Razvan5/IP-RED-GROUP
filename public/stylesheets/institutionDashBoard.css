@@ -189,7 +189,7 @@ input[type=email] {
     outline-color: var(--milkyWhite);
 }
 
-.modifyRoleWrapper {
+.modifyRoleWrapper, .createRoleWrapper {
     margin-top: 20vh;
     display: none;
     justify-content: center;
@@ -199,7 +199,7 @@ input[type=email] {
     width: 61vw;
 }
 
-.modifyRole {
+.modifyRole, .createRole {
     margin-top: 20%;
     display: flex;
     flex-direction: column;
@@ -226,6 +226,17 @@ input[type=email] {
 }
 
 .formButtons {
+    margin-left: 30%;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 50%;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border: 2px solid var(--deepOrange);
+    transition: 0.5s;
+}
+
+.formButtons2 {
     margin-left: 20px;
     width: 5vw;
     height: 5vh;
@@ -236,9 +247,18 @@ input[type=email] {
     transition: 0.5s;
 }
 
-.formButtons:hover {
+
+.formButtons:hover, .formButtons2:hover {
     border-radius: 10%;
     transition: 0.5s;
+}
+
+.center{
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 input[name="Edit2"],
@@ -259,7 +279,7 @@ input[name="Submit"]:hover {
     transition: 0.5s;
 }
 
-#rightsContainer {
+#rightsContainer, #ButtonContainer {
     display: flex;
     flex-direction: column;
     min-width: 22vw;
@@ -274,4 +294,12 @@ input[name="Submit"]:hover {
 .rightsLabel {
     justify-self: right;
     align-self: flex-start;
+}
+
+.stergeAsta {
+    margin-left: 5%;
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-self: center;
 }
