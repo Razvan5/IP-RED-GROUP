@@ -3,7 +3,7 @@ var router = express.Router();
 const path = require('path');
 var http = require('http');
 const rootPath = 'fiscaldocumentsapi.azurewebsites.net'
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     if (req.session.loggedIn === true) {
         console.log('Pass: ' + req.session.password);
         console.log('Email: ' + req.session.email);
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
         res.redirect('/login');
     }
 });
-router.get('/RetrieveAll', function(req, res, next) {
+router.get('/RetrieveAll', function (req, res, next) {
     var params = '?email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionsPerPage=20&pageNumber=1&orderByAsc=1';
     console.log(params);
     var options = {
@@ -249,7 +249,7 @@ router.post('/institutionModifyRole', function(req, res, next) {
 
 
 
-router.post('/getInfo', function(req, res, next) {
+router.post('/getInfo', function (req, res, next) {
     let body = '';
     req.on('data', (chunk) => { // collect all data from client(browser)
         body += chunk;
@@ -290,6 +290,40 @@ router.post('/getInfo', function(req, res, next) {
 
     });
 });
+
+router.get('/getInstitutionMembers/:institutionName', function (req, res, next) {
+
+    console.log(req.params);
+
+    var parameters = '?email=' + req.session.email +'&hashedPassword=' + req.session.password + '&institutionName=' + req.params.institutionName;
+    console.log(parameters)
+    var options = {
+        hostname: rootPath,
+        port: 80,
+        path: encodeURI('/Institution/Member/Retrieve.php' + parameters),
+        method: 'GET'
+    }
+
+    const apiRequest = http.request(options, (apiResponse) => { // initiate request to api
+        console.log(`statusCode: ${apiResponse.statusCode}`);
+        var responseBody = '';
+        apiResponse.on('data', (d) => { //collect all data
+            responseBody = responseBody + d;
+        });
+        apiResponse.on('end', () => { //when data is collected manage the response.
+            console.log(responseBody);
+            res.send(responseBody);
+        });
+        apiResponse.on('error', (error) => { //if we get error.
+            console.error(error);
+            res.send(error);
+        });
+
+    });
+    apiRequest.end();
+
+});
+
 
 router.post('/roleDelete', function(req, res, next) {
     let body = '';
