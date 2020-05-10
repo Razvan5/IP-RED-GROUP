@@ -19,6 +19,7 @@ function toJSONString(form) {
 
 
 var modifyRoleForm = document.getElementById("modifyRoleForm");
+var createRoleForm =document.getElementById("createRoleForm");
 
 var listInstitution = document.getElementsByClassName("institutionList");
 
@@ -109,6 +110,51 @@ window.onclick = function(event) {
                 }
             };
 
+
+        } else if (target.innerText == "Create Role") {
+            var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = div.getElementsByTagName("span");
+            createRoleForm.institutionName.value = spans[0].innerText;
+            var createRoleWrapper = document.getElementById("createRoleWrapper");
+            createRoleWrapper.style.display = "flex";
+
+
+            var createRoleCancelButton = document.getElementById("createRoleCancelButton");
+            createRoleCancelButton.addEventListener("click", function() {
+                createRoleWrapper.style.display = "none";
+
+            });
+
+
+            createRoleForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                createRoleWrapper.style.display = "none";
+
+                createRoleForm = document.getElementById("createRoleForm");
+                var loginData = toJSONString(createRoleForm);
+                console.log(loginData);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "/institutionDashboard/institutionCreateRole");
+                xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+                xmlhttp.send(loginData);
+                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                    console.log("ERROR");
+                };
+
+                xmlhttp.onload = function() {
+                    if (xmlhttp.status != 200) {
+                        alert(xmlhttp.responseText);
+                    } else {
+                        var newData = JSON.parse(xmlhttp.responseText);
+                        console.log(newData.responseStatus.error);
+
+                        alert(JSON.stringify(newData));
+                    }
+                };
+
+
+            }, false);
+
         } else if (target.innerText == "Modify Role") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
@@ -128,6 +174,7 @@ window.onclick = function(event) {
 
             modifyRoleForm.addEventListener("submit", function(e) {
                 e.preventDefault();
+                modifyRoleWrapper.style.display = "none";
                 var checkboxes = document.getElementsByClassName("rightsInput");
                 for (i = 0; i < checkboxes.length; i++) {
                     if (checkboxes[i].checked == true)
