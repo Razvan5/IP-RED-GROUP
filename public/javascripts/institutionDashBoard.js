@@ -34,7 +34,42 @@ function showDropdown() {
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-    if (event.target.matches('.dropdown-element')) {
+
+    if (event.target.matches('.stergeAsta')) {
+        var target = event.target;
+        var roleP = document.getElementById(target.parentNode.id);
+        var roleParagraf = roleP.getElementsByTagName("p");
+        var roleParent = document.getElementById(roleP.parentNode.parentNode.id);
+        var spans = roleParent.getElementsByTagName("span");
+        var xmlhttp = new XMLHttpRequest();
+        let data = { institutionName: spans[0].innerText, roleName: roleParagraf[0].innerText };
+        var myJSON = JSON.stringify(data);
+        data = myJSON;
+        console.log(data);
+        xmlhttp.open("POST", "/institutionDashboard/roleDelete");
+        xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+        xmlhttp.send(data);
+        xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+            console.log("ERROR");
+        };
+        xmlhttp.onload = function() {
+            if (xmlhttp.status != 200) {
+                alert("NOT WORKING");
+            } else {
+                console.log(xmlhttp.responseText);
+                var newJson = JSON.parse(xmlhttp.responseText);
+                if (newJson.responseStatus.status === "SUCCESS") {
+                    if (roleP.parentNode) {
+                        roleP.parentNode.removeChild(roleP);
+                    }
+                } else {
+                    alert(newJson.responseStatus.error);
+                }
+            }
+        };
+
+
+    } else if (event.target.matches('.dropdown-element')) {
         var target = event.target;
         if (target.innerText == "Delete") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
@@ -126,8 +161,8 @@ window.onclick = function(event) {
 
             }, false);
 
-        
-        } else if (target.innerText == "Retrieve Roles") {         //institution Retrieve Roles
+
+        } else if (target.innerText == "Retrieve Roles") { //institution Retrieve Roles
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
             var externspan = div.parentNode.getElementsByTagName("span");
@@ -167,7 +202,7 @@ window.onclick = function(event) {
                     openDropdown.classList.remove('show');
                 }
             }
-        
+
         } else if (target.innerText == "Info") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
@@ -287,15 +322,16 @@ function infoHtml(data, spanLocation) {
 function retrieveRolesHtml(data, spanLocation) {
     var htmlString = "";
     htmlString += "<span class='institutionItemSpan'><br> Roles:<br>";
-    if (data.returnedObject.roles.length ==0)
+    if (data.returnedObject.roles.length == 0)
         var htmlString = "<span class='institutionItemSpan'>There are no roles currently created for this institution</span>";
-        else{
-    for (i = 0; i < data.returnedObject.roles.length; i++) {
-        if (i != 0)
-            htmlString += "<br>";
-        htmlString += data.returnedObject.roles[i] + "<br>";
+    else {
+        for (i = 0; i < data.returnedObject.roles.length; i++) {
+            if (i != 0)
+                htmlString += "<br>";
+            htmlString += '<div class="institutionItemDiv" id=' + "role" + i + "><p>" +
+                data.returnedObject.roles[i] + '</p>  <button class="stergeAsta" > Delete</button></div>' + "<br>";
+        }
     }
-}
     htmlString += "</span>";
     spanLocation[0].parentNode.insertAdjacentHTML('afterend', htmlString);
 };

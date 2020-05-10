@@ -244,5 +244,45 @@ router.post('/getInfo', function(req, res, next) {
     });
 });
 
+router.post('/roleDelete', function(req, res, next) {
+    let body = '';
+    req.on('data', (chunk) => { // collect all data from client(browser)
+        body += chunk;
+    });
+    req.on('end', () => { // when data (body component of http request) is collected
+        var loginData = JSON.parse(body); //parse the body into JSON object
+        // our path with parameters: email and hashedPassword.
+        var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.roleName;
+        console.log(params);
+        var options = {
+            hostname: rootPath,
+            port: 80,
+            path: '/Institution/Delete.php',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        const apiRequest = http.request(options, (apiResponse) => { // initiate request to api
+            console.log(`statusCode: ${apiResponse.statusCode}`);
+
+            var responseBody = '';
+            apiResponse.on('data', (d) => { //collect all data
+                responseBody = responseBody + d;
+            });
+            apiResponse.on('end', () => { //when data is collected manage the response.
+                res.send(responseBody);
+            });
+            apiResponse.on('error', (error) => { //if we get error.
+                console.error(error);
+                res.send(error);
+            });
+
+        });
+        apiRequest.write(params);
+        apiRequest.end();
+    });
+});
 
 module.exports = router;
