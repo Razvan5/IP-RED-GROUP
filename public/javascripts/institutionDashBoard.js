@@ -126,6 +126,48 @@ window.onclick = function(event) {
 
             }, false);
 
+        
+        } else if (target.innerText == "Retrieve Roles") {         //institution Retrieve Roles
+            var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = div.getElementsByTagName("span");
+            var externspan = div.parentNode.getElementsByTagName("span");
+            //  alert(spans[0].innerText);
+            if (externspan.length == 1) {
+                var xmlhttp = new XMLHttpRequest();
+                let data = { institutionName: spans[0].innerText };
+                var myJSON = JSON.stringify(data);
+                data = myJSON;
+                xmlhttp.open("POST", "/institutionDashboard/institutionRetreieveRoles");
+                xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+                xmlhttp.send(data);
+                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                    console.log("ERROR");
+                };
+                xmlhttp.onload = function() {
+                    if (xmlhttp.status != 200) {
+                        alert("NOT WORKING");
+                    } else {
+                        var newJson = JSON.parse(xmlhttp.responseText);
+                        if (newJson.responseStatus.status === "SUCCESS") {
+                            retrieveRolesHtml(newJson, spans);
+                        } else {
+                            alert(newJson.responseStatus.error);
+                        }
+                    }
+                };
+            } else
+            if (externspan[1].parentNode) {
+                externspan[1].parentNode.removeChild(externspan[1]);
+            }
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        
         } else if (target.innerText == "Info") {
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
@@ -241,6 +283,24 @@ function infoHtml(data, spanLocation) {
     htmlString += "</span>";
     spanLocation[0].parentNode.insertAdjacentHTML('afterend', htmlString);
 };
+
+function retrieveRolesHtml(data, spanLocation) {
+    var htmlString = "";
+    htmlString += "<span class='institutionItemSpan'><br> Roles:<br>";
+    if (data.returnedObject.roles.length ==0)
+        var htmlString = "<span class='institutionItemSpan'>There are no roles currently created for this institution</span>";
+        else{
+    for (i = 0; i < data.returnedObject.roles.length; i++) {
+        if (i != 0)
+            htmlString += "<br>";
+        htmlString += data.returnedObject.roles[i] + "<br>";
+    }
+}
+    htmlString += "</span>";
+    spanLocation[0].parentNode.insertAdjacentHTML('afterend', htmlString);
+};
+
+
 
 function nowAdd() {
     var myInstitutions = document.getElementsByClassName("institutionItem");
