@@ -19,8 +19,11 @@ function toJSONString(form) {
 
 
 var modifyRoleForm = document.getElementById("modifyRoleForm");
-var createRoleForm =document.getElementById("createRoleForm");
+var createRoleForm = document.getElementById("createRoleForm");
+var changeButton = document.getElementById("changeButton");
+var myOrAllInstitutions = document.getElementById("myOrAllInstitutions"); 
 var listInstitution = document.getElementsByClassName("institutionList");
+
 
 function changeLanguage(language) {
     var element = document.getElementById("url");
@@ -204,7 +207,6 @@ window.onclick = function(event) {
             var cancelButton = document.getElementById("cancelButton");
             cancelButton.addEventListener("click", function () {
                 modifyRoleWrapper.style.display = "none";
-                window.location.href = '/institutionDashBoard';
 
             });
 
@@ -480,18 +482,68 @@ window.onclick = function(event) {
 
 window.onload = function (event) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "institutionDashboard/RetrieveAll");
+    xmlhttp.open("GET", "institutionDashboard/RetrieveYourInstitutions");
     xmlhttp.onload = function () {
         var newData = JSON.parse(xmlhttp.responseText);
-        renderHTML(newData);
+        retrieveYourInstitutionsHTML(newData);
     };
     xmlhttp.send("1");
+}
+
+
+changeButton.onclick = function(){
+    if(changeButton.innerText == "View All Institutions"){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "institutionDashboard/RetrieveAll");
+        xmlhttp.onload = function () {
+            var newData = JSON.parse(xmlhttp.responseText);
+            retrieveAllInstitutionsHTML(newData);
+        };
+        xmlhttp.send("1");
+        changeButton.innerText = "View Your Institutions"
+        myOrAllInstitutions.innerText = "All Institutions:"
+
+    }else if(changeButton.innerText == "View Your Institutions"){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "institutionDashboard/RetrieveYourInstitutions");
+        xmlhttp.onload = function () {
+            var newData = JSON.parse(xmlhttp.responseText);
+            retrieveYourInstitutionsHTML(newData);
+        };
+        xmlhttp.send("1");
+        changeButton.innerText = "View All Institutions"
+        myOrAllInstitutions.innerText = "My Institutions:"
+
+    }
 }
 
 function renderHTML(data) {
     var htmlString = "";
     for (i = 0; i < data.returnedObject.institutions.length; i++) {
         htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institutions[i].name + "</span></div> </li> ";
+    }
+    listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
+    nowAdd();
+
+};
+
+function retrieveAllInstitutionsHTML(data) {
+    listInstitution[0].innerHTML="";
+    var htmlString = "";
+    for (i = 0; i < data.returnedObject.institutions.length; i++) {
+        htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institutions[i].name + "</span></div> </li> ";
+    }
+    listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
+    nowAdd();
+
+};
+
+function retrieveYourInstitutionsHTML(data) {
+    listInstitution[0].innerHTML="";
+    console.log(data);
+    var htmlString = "";
+    for (i = 0; i < data.returnedObject.institution.length; i++) {
+        htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institution[i].institutionName + "</span></div> </li> ";
     }
     listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
     nowAdd();
@@ -543,7 +595,7 @@ function retrieveRolesHtml(data, spanLocation) {
     else {
         for (i = 0; i < data.returnedObject.roles.length; i++) {
             htmlString += '<div class="institutionItemDiv" id=' + "role" + i + "><p>" +
-                data.returnedObject.roles[i] + '</p>  <button class="stergeAsta" > Delete</button></div>';
+                data.returnedObject.roles[i].name + '</p>  <button class="stergeAsta" > Delete</button></div>';
         }
     }
     htmlString += "</span>";

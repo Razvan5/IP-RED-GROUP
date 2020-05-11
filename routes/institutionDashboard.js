@@ -47,6 +47,41 @@ router.get('/RetrieveAll', function (req, res, next) {
 });
 
 
+router.get('/RetrieveYourInstitutions', function (req, res, next) {
+    var params = '?email=' + req.session.email + '&hashedPassword=' + req.session.password;
+    console.log(params);
+    var options = {
+        hostname: rootPath,
+        port: 80,
+        path: '/Institution/Member/RetrieveInstitutions.php' + params,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+
+    const apiRequest = http.request(options, (apiResponse) => { // initiate request to api
+        console.log(`statusCode: ${apiResponse.statusCode}`);
+
+        var responseBody = '';
+        apiResponse.on('data', (d) => { //collect all data
+            responseBody = responseBody + d;
+        });
+        apiResponse.on('end', () => { //when data is collected manage the response.
+            console.log(responseBody);
+            res.send(responseBody);
+        });
+        apiResponse.on('error', (error) => { //if we get error.
+            console.error(error);
+            res.send(error);
+        });
+
+    });
+    apiRequest.write(params);
+    apiRequest.end();
+});
+
+
 
 
 
