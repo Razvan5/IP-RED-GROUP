@@ -491,7 +491,7 @@ window.onload = function (event) {
 function renderHTML(data) {
     var htmlString = "";
     for (i = 0; i < data.returnedObject.institutions.length; i++) {
-        htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institutions[i] + "</span></div> </li> ";
+        htmlString += "<li class='institutionItem'><div> <span>" + data.returnedObject.institutions[i].name + "</span></div> </li> ";
     }
     listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
     nowAdd();
