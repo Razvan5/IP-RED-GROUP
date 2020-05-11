@@ -62,7 +62,10 @@ router.post('/modifyData', function (req, res, next) {
         if (responseBody.responseStatus.status === "FAILURE") {
           res.send(responseBody);
         } else {
-          req.session.password = loginData.password
+          if(loginData.password){
+            console.log("Bunica");
+          req.session.password = loginData.password;
+          }
           console.log(responseBody);
           res.json(responseBody);
         }

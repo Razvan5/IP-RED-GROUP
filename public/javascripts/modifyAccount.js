@@ -37,7 +37,12 @@
                     console.log("ERROR");
                 };
                 xmlhttp.onload = function () {
-                    alert(xmlhttp.responseText);
+                    var newData = JSON.parse(xmlhttp.responseText);
+                    console.log(newData);
+                    if(newData.responseStatus.error=="")
+                    alert("Success!");
+                    else
+                    alert("Something went wrong. Please try again.");
                 };
 
             } else {
@@ -60,7 +65,12 @@
                     console.log("ERROR");
                 };
                 xmlhttp.onload = function () {
-                    alert(xmlhttp.responseText);
+                    var newData = JSON.parse(xmlhttp.responseText);
+                    console.log(newData);
+                    if(newData.responseStatus.error=="")
+                    alert("Success!");
+                    else
+                    alert("Something went wrong. Please try again.");
                 };
             } else {
                 console.log("not yet");
@@ -81,7 +91,12 @@
                     console.log("ERROR");
                 };
                 xmlhttp.onload = function () {
-                    alert(xmlhttp.responseText);
+                    var newData = JSON.parse(xmlhttp.responseText);
+                    console.log(newData);
+                    if(newData.responseStatus.error=="")
+                    alert("Success!");
+                    else
+                    alert("Something went wrong. Please try again.");
                 };
             } else {
                 console.log("not yet");
@@ -102,7 +117,12 @@
                     console.log("ERROR");
                 };
                 xmlhttp.onload = function () {
-                    alert(xmlhttp.responseText);
+                    var newData = JSON.parse(xmlhttp.responseText);
+                    console.log(newData);
+                    if(newData.responseStatus.error=="")
+                    alert("Success!");
+                    else
+                    alert("Something went wrong. Please try again.");
                 };
             } else {
                 console.log("not yet");

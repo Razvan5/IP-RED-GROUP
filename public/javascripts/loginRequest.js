@@ -46,7 +46,7 @@
                         alert("Your account is inactive.\n Please check you email to activate your account.");
 
                         else if(newData.responseStatus.error=="WRONG_PASSWORD")
-                        alert("Wrong password. Please check your spelling.");
+                        alert("USER NOT FOUND \n Please make sure you typed in your email and password correctly. \n OR \n If you don't have an account, please create one before logging in.");
 
                     else{
                         alert(JSON.stringify(newData));

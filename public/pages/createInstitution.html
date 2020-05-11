@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="stylesheets\institutionDashBoard.css">
     <link rel="stylesheet" href="stylesheets\main.css">
     <link rel="stylesheet" href="stylesheets/createInstitution.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Pacifico|Sacramento&display=swap" rel="stylesheet">
@@ -136,71 +137,77 @@
     <div class="flexContainer">
         <div class="wrapperInstitutions">
 
-            <form action="">
-                <span id="contactInstitution">Information</span>
-                <br>
+            <form class="institutionCreationForm" action="">
+                <span id="contactInstitution">Create Institution</span>
+        
                 <label for="numeInstitutie">Name:</label>
-                <input class="institutionInformation" type="text" name="numeInstitutie" id="numeInstitutie"
-                    placeholder="Name of the institution">
-                <br>
-                <label for="institutionLocation">Adress:</label>
-                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionLocation"
-                    placeholder="Adress of the institution">
-                <br>
-                <label for="institutionType">Type</label>
-                <input class="institutionInformation" type="text" name="institutionType" id="institutionType"
-                    placeholder="Type of the institution">
-                <br>
+                
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="numeInstitutie" id="institutionName"
+                     placeholder="Name of the institution">
+                </div>
+                
+                <label for="institutionCIF">CIF:</label>
+                
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionCIF" id="institutionCIF"
+                        placeholder="CIF of the institution">
+                </div>
 
-                <span id="contactInstitution">Contact   </span>
-                <br>
-                <label for="faxInstitution">Fax:</label>
-                <input class="institutionInformation" type="text" name="faxInstitution" id="faxInstitution" placeholder="Add the fax of the institution">
-                <br>
-                <label for="phone1Institution">Phone:</label>
-                <input class="institutionInformation" type="text" name="phone1Institution" id="phone1Institution" placeholder="Add the phone of the institution">
-                <br>
-                <label for="emailInstitution">E-mail:</label>
-                <input class="institutionInformation" type="email" name="emailInstitution" id="emailInstituion" placeholder="Add the e-mail of the institution">
-                <br>
+                <label for="institutionLocation">Country:</label>
+                <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCountry"
+                    placeholder="Country">
+                </div>
+                
+                
+                <label for="institutionLocation">Region:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionRegion"
+                        placeholder="Region">
+                </div>
+                
+                <label for="institutionLocation">City:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCity"
+                        placeholder="City">
+                </div>
+                
+                <label for="institutionLocation">Street:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionStreet"
+                        placeholder="Street">
+                </div>
+                
+                <label for="institutionLocation">Number:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionNumber"
+                        placeholder="Number">
+                </div>
+                
+                <label for="institutionLocation">Building:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionBuilding"
+                        placeholder="Building">
+                </div>
+                
+                <label for="institutionLocation">Floor:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionFloor"
+                        placeholder="Floor">
+                </div>
+                
+                <label for="institutionLocation">Apartment:</label>
+                <div class="textCorrectitude">
+                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionApartment"
+                        placeholder="Appartment">
+                </div>
+                
                 <input class="submitButton" type="button" name="submitButton" id="submitButton" value="Submit">
-
-
             </form>
-
         </div>
+
     </div>
-
-    <div class="institutionInfo">
-        <div class="fullBanner">
-            <img class="banner" src="images/facultyOfComputerScience.png" alt="Banner of the institution">
-            <div class="institutionTitle">
-                Faculty of Computer Science
-            </div>
-
-        </div>
-        <div class="info">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur necessitatibus alias nemo
-            exercitationem minus ullam veritatis voluptatibus vero maxime, delectus quibusdam aut distinctio beatae
-            itaque at velit qui eum nesciunt.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deserunt tempora odio sapiente
-            repudiandae veritatis in vero dolor accusamus sunt inventore! Neque iure voluptate pariatur corrupti, alias
-            incidunt perspiciatis sit.
-        </div>
-        <div class="edit">
-
-        </div>
-        <div class="institutionMembers">
-
-        </div>
-        <div class="documentsSend">
-
-        </div>
-        <div class="documentsRecv">
-
-        </div>
-    </div>
-
 
     <footer>
         <a href="Terms.html">Terms</a>
@@ -210,5 +217,6 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="javascripts/institutionDashBoard.js"></script>
+<script src="javascripts/createInstitution.js"></script>
 
 </html>
