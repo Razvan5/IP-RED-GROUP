@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="images/logo.png" type="image/png">
+  <link rel="shortcut icon" href="../images/logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheets\accountDashBoard.css">
-  <link rel="stylesheet" href="stylesheets\main.css">
+  <link rel="stylesheet" href="../stylesheets/accountDashBoard.css">
+  <link rel="stylesheet" href="../stylesheets/main.css">
 
 
   <title>Account Dash Board</title>
@@ -15,7 +15,7 @@
 
 <body>
   <header>
-    <img class="logo-image" src="images/logo.png" alt="Specter-free invoicing and receipt handling">
+    <img class="logo-image" src="../images/logo.png" alt="Specter-free invoicing and receipt handling">
     <span class="logo-title">Specter</span>
     <nav>
       <a class="nav-link" href="home">Home</a>
@@ -27,7 +27,7 @@
       <div class="notification">
         <a href="#">
           <div class="notBtn" href="#">
-            <img id="notificationBell" src="images/bell.png" alt="notification bell">
+            <img id="notificationBell" src="../images/bell.png" alt="notification bell">
             <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
             <div class="number">99</div>
             <i class="fas fa-bell"></i>
@@ -42,7 +42,7 @@
                   <div class="sec new">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile1.jpg">
+                        <img class="profile" src="../images/profile1.jpg">
                       </div>
                       <div class="txt">James liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/7 - 2:30 pm</div>
@@ -51,7 +51,7 @@
                   <div class="sec new">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile2.jpg">
+                        <img class="profile" src="../images/profile2.jpg">
                       </div>
                       <div class="txt">Annita liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/7 - 2:13 pm</div>
@@ -60,7 +60,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile3.jpg">
+                        <img class="profile" src="../images/profile3.jpg">
                       </div>
                       <div class="txt">Brie liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/6 - 9:35 pm</div>
@@ -69,7 +69,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile4.jpg">
+                        <img class="profile" src="../images/profile4.jpg">
                       </div>
                       <div class="txt">Madison liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/6 - 4:04 pm</div>
@@ -78,7 +78,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile5.jpg">
+                        <img class="profile" src="../images/profile5.jpg">
                       </div>
                       <div class="txt">Ted liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/6 - 10:37 am</div>
@@ -87,7 +87,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile6.jpg">
+                        <img class="profile" src="../images/profile6.jpg">
                       </div>
                       <div class="txt">Tommas liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/5 - 7:30 pm</div>
@@ -96,7 +96,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile7.jpg">
+                        <img class="profile" src="../images/profile7.jpg">
                       </div>
                       <div class="txt">Claire liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/5 - 2:30 pm</div>
@@ -105,7 +105,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile8.jpg">
+                        <img class="profile" src="../images/profile8.jpg">
                       </div>
                       <div class="txt">Jerimaiah liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/5 - 1:34 pm</div>
@@ -114,7 +114,7 @@
                   <div class="sec">
                     <a href="https://codepen.io/Golez/">
                       <div class="profCont">
-                        <img class="profile" src="images\\profile9.jpg">
+                        <img class="profile" src="../images/profile9.jpg">
                       </div>
                       <div class="txt">Debra liked your post: "Pure css notification box"</div>
                       <div class="txt sub">11/5 - 10:20 am</div>
@@ -132,17 +132,17 @@
   <div class="personalInfoWrapper">
 
     <div class="personalInfo">
-      <img id="defaultUserPhoto" src="images/userImage.png" alt="User custom image">
+      <img id="defaultUserPhoto" src="../images/userImage.png" alt="User custom image">
 
 
-      <form id="fNameForm" action="/accountDashboard/modifyAccount" method="post"><label>First Name</label>
+      <form id="fNameForm" action="../accountDashboard/modifyAccount" method="post"><label>First Name</label>
         <div class="inputContainer">
           <input name="fName" type="text" placeholder="First Name" readonly required /><input id="editFName" class="Edit" name="Edit" type="submit"
             value="Edit">
         </div>
       </form>
 
-      <form id="lNameForm" action="/accountDashboard/modifyAccount" method="post">
+      <form id="lNameForm" action="../accountDashboard/modifyAccount" method="post">
         <label>Last Name</label>
         <div class="inputContainer">
           <input  name="lName" type="text" placeholder="Last Name" required readonly /><input id="editLName" class="Edit" name="Edit" type="submit"
@@ -150,7 +150,7 @@
         </div>
       </form>
 
-      <form id="emailForm" action="/accountDashboard/modifyAccount" method="post">
+      <form id="emailForm" action="../accountDashboard/modifyAccount" method="post">
         <label>Email ID</label>
         <div class="inputContainer">
           <input name="email" type="email" placeholder="Email" required readonly /><input id="editEmail" class="Edit" name="Edit" type="submit"
@@ -158,7 +158,7 @@
         </div>
       </form>
 
-      <form id="passwordForm" action="/accountDashboard/modifyAccount" method="post">
+      <form id="passwordForm" action="../accountDashboard/modifyAccount" method="post">
         <label>Password</label>
         <div class="inputContainer">
           <input name="password" name="fName" type="text"  placeholder="Password" required readonly /><input id="editPassword" class="Edit"
@@ -166,7 +166,7 @@
         </div>
       </form>
 
-      <form id="retryPassForm" action="/accountDashboard/modifyAccount" method="post">
+      <form id="retryPassForm" action="../accountDashboard/modifyAccount" method="post">
         <div id="RetypePassword">
           <label>Retype Password</label>
           <div class="inputContainer">
@@ -188,8 +188,8 @@
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script src="javascripts/accountDashBoard.js"></script>
-<script src="javascripts/logout.js"></script>
-<script src="javascripts/modifyAccount.js"></script>
+<script src="../javascripts/accountDashBoard.js"></script>
+<script src="../javascripts/logout.js"></script>
+<script src="../javascripts/modifyAccount.js"></script>
 
 </html>
