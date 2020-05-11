@@ -157,6 +157,7 @@
                     <a class="dropdown-element" href="#">Send Document</a>
                     <a class="dropdown-element" href="#">Document History</a>
                     <a class="dropdown-element" href="#">Get Members</a>
+                    <a class="dropdown-element" href="#">Add Members</a>
                     <a type="submit" class="dropdown-element" href="#">Delete</a>
                 </div>
             </div>
@@ -383,6 +384,45 @@
 
 
         <!-- Sfarsitul formularului de modificat rolul -->
+
+        <!--Formularul pentru crearea unui rol-->
+
+        <div class="addMembersWrapper" id="addMembersWrapper">
+
+            <div class="addMembers">
+
+                <form id="addMembersForm">
+
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="addMembersEmail" type="email" placeholder="User Email" required />
+                    </div>
+
+                    <label>Institution Name</label>
+                    <div class="inputContainer">
+                        <input name="institutionName" id="addMembersInstitutionName" type="text"
+                            placeholder="Institution Name" readonly required />
+                    </div>
+
+                    <label>Role</label>
+                    <div class="inputContainer">
+                        <input name="roleName" id="addMembersRole" type="text" placeholder=" Role" required />
+                    </div>
+
+                    <br>
+                    <div class="center">
+                        <button type="reset" id="addMembersCancelButton" class="formButtons"> Cancel</button><br>
+                    </div>
+
+                    <br>
+
+                    <div class="center">
+                        <button class="formButtons" type="submit">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
 
 
 
