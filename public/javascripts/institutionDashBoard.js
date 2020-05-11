@@ -377,6 +377,72 @@ window.onclick = function(event) {
                 }
             }
 
+        }else if(target.innerText == "Add Members"){   ////////////// ADD MEMBERS
+
+
+            var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = div.getElementsByTagName("span");
+            addMembersForm.institutionName.value = spans[0].innerText;
+            var addMembersWrapper = document.getElementById("addMembersWrapper");
+            addMembersWrapper.style.display = "flex";
+
+
+            var addMembersCancelButton = document.getElementById("addMembersCancelButton");
+            addMembersCancelButton.addEventListener("click", function() {
+                addMembersWrapper.style.display = "none";
+            });
+
+            
+
+
+            addMembersForm.addEventListener("submit",f,false);
+            
+            function  f(e) {
+                e.preventDefault();
+                addMembersWrapper.style.display = "none";
+
+                addMembersForm = document.getElementById("addMembersForm");
+                var addMemberData = toJSONString(addMembersForm);
+                console.log(addMemberData);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "/institutionDashboard/institutionAddMembers");
+                xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+                xmlhttp.send(addMemberData);
+                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                    console.log("ERROR");
+                };
+
+                xmlhttp.onload = function() {
+                    if (xmlhttp.status != 200) {
+                        alert(xmlhttp.responseText);
+                    } else {
+                        var newData = JSON.parse(xmlhttp.responseText);
+                        console.log(newData.responseStatus.error);
+
+                        if(newData.responseStatus.error=="")
+                        alert("Role created");
+
+                        else if(newData.responseStatus.error=="DUPLICATE_ROLE")
+                        alert("DUPLICATE ROLE");
+
+                        else if(newData.responseStatus.error=="ROLE_DUPLICATE_SAME_RIGHTS")
+                        alert("REDUNDANT ROLE: THE ROLE YOU ARE TRYING TO CREATE\n HAS THE SAME RIGHTS AS AN ALREADY EXISTING ROLE");
+
+                        else if(newData.responseStatus.error=="WRONG_PASSWORD")
+                        alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+
+                        else if(newData.responseStatus.error=="USER_NOT_FOUND")
+                        alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
+
+                        else{
+                        alert(JSON.stringify(newData));
+                        }
+                    }
+                };
+
+               addMembersForm.removeEventListener("submit",f);
+            }
+
         } else {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;

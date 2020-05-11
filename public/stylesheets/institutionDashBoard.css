@@ -189,7 +189,7 @@ input[type=email] {
     outline-color: var(--milkyWhite);
 }
 
-.modifyRoleWrapper, .createRoleWrapper {
+.modifyRoleWrapper, .createRoleWrapper, .addMembersWrapper {
     margin-top: 20vh;
     display: none;
     justify-content: center;
@@ -199,7 +199,7 @@ input[type=email] {
     width: 61vw;
 }
 
-.modifyRole, .createRole {
+.modifyRole, .createRole, .addMembers{
     margin-top: 20%;
     display: flex;
     flex-direction: column;

@@ -36,7 +36,7 @@ router.post('/modifyData', function (req, res, next) {
     var params =
       'email=' + modifyData.email +
       '&currentHashedPassword=' + modifyData.password +
-      "&newHashedPassword=" + modifyData.password +
+      "&newHashedPassword=" + modifyData.newPassword +
       "&newFirstName=" + modifyData.newFName +
       "&newLastName=" + modifyData.newLName;
 
@@ -62,6 +62,7 @@ router.post('/modifyData', function (req, res, next) {
         if (responseBody.responseStatus.status === "FAILURE") {
           res.send(responseBody);
         } else {
+          req.session.password = loginData.password
           console.log(responseBody);
           res.json(responseBody);
         }
