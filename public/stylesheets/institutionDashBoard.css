@@ -21,7 +21,7 @@ body {
     z-index: 20;
 }
 
-.font{
+.font {
     font-size: 2em;
     color: var(--milkyWhite);
     margin-left: 10%;
@@ -52,8 +52,8 @@ body {
     margin-left: 40px;
 }
 
-#titleAndButton{
-    display:flex;
+#titleAndButton {
+    display: flex;
     flex-direction: row;
 }
 
@@ -65,13 +65,13 @@ body {
     cursor: pointer;
     width: 180px;
     border-radius: 15px;
-    margin-left:5vw;
-  }
-  
- #changeButton:hover {
+    margin-left: 5vw;
+}
+
+#changeButton:hover {
     opacity: 0.5;
-    transition:opacity 1s ease-out;
-  }
+    transition: opacity 1s ease-out;
+}
 
 
 /*dropdown*/
@@ -145,7 +145,7 @@ body {
     padding: 4px 10px;
     text-decoration: none;
     display: block;
-    font-size:16px;
+    font-size: 16px;
 }
 
 .dropdown a:hover {
@@ -215,7 +215,9 @@ input[type=email] {
     outline-color: var(--milkyWhite);
 }
 
-.modifyRoleWrapper, .createRoleWrapper, .addMembersWrapper {
+.modifyRoleWrapper,
+.createRoleWrapper,
+.addMembersWrapper {
     margin-top: 20vh;
     display: none;
     justify-content: center;
@@ -225,7 +227,9 @@ input[type=email] {
     width: 61vw;
 }
 
-.modifyRole, .createRole, .addMembers{
+.modifyRole,
+.createRole,
+.addMembers {
     margin-top: 20%;
     display: flex;
     flex-direction: column;
@@ -273,13 +277,13 @@ input[type=email] {
     transition: 0.5s;
 }
 
-
-.formButtons:hover, .formButtons2:hover {
+.formButtons:hover,
+.formButtons2:hover {
     border-radius: 10%;
     transition: 0.5s;
 }
 
-.center{
+.center {
     align-self: center;
     justify-self: center;
     align-content: center;
@@ -305,7 +309,8 @@ input[name="Submit"]:hover {
     transition: 0.5s;
 }
 
-#rightsContainer, #ButtonContainer {
+#rightsContainer,
+#ButtonContainer {
     display: flex;
     flex-direction: column;
     min-width: 22vw;
@@ -323,6 +328,14 @@ input[name="Submit"]:hover {
 }
 
 .stergeAsta {
+    margin-left: 5%;
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-self: center;
+}
+
+.removeAsta {
     margin-left: 5%;
     display: flex;
     height: 50%;
