@@ -178,8 +178,23 @@ body {
 }
 
 .institutionInfo {
+    display:flex;
     height: auto;
-    min-height: 100vh;
+    min-height: 30vh;
+    justify-content: center;
+    margin-bottom: 10vh;
+}
+
+.documents{
+    min-height: 30vh;
+    min-width:85vw;
+    background-color: var(--darkCyan);
+    box-shadow: 10px 10px 30px rgb(32, 32, 32);
+}
+
+#documentsTitle{
+    margin-top: 10px;
+    font-size: 2em;
 }
 
 .fullBanner {
