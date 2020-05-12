@@ -648,3 +648,77 @@ function nowAdd() {
         myInstitutions[i].setAttribute("id", "institutionItem." + i);
     }
 };
+//razvan 
+$('#submitButtonEditInstitution').on("click",function() {
+
+    const institution={
+        oldName:document.getElementById('oldInstitutionName').value,
+        name: document.getElementById('newInstitutionName').value,
+        address:{
+            country:document.getElementById('institutionCountry').value,
+            region:document.getElementById('institutionRegion').value,
+            city:document.getElementById('institutionCity').value,
+            street:document.getElementById('institutionStreet').value,
+            number:document.getElementById('institutionNumber').value,
+            building:document.getElementById('institutionBuilding').value,
+            floor:document.getElementById('institutionFloor').value,
+            apartment:document.getElementById('institutionApartment').value,
+        }
+    }
+
+    document.getElementById('oldInstitutionName').value="";
+    document.getElementById('newInstitutionName').value="";
+
+   document.getElementById('institutionCountry').value="";
+     document.getElementById('institutionRegion').value="";
+     document.getElementById('institutionCity').value="";
+     document.getElementById('institutionStreet').value="";
+      document.getElementById('institutionNumber').value="";
+     document.getElementById('institutionBuilding').value="";
+       document.getElementById('institutionFloor').value="";
+        document.getElementById('institutionApartment').value="";
+
+    console.log(institution);
+    
+    if(validateData(institution)){
+
+        $.ajax({
+            type: "POST",
+            url: "/InstitutionDashboard/modify",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: JSON.stringify({ institution: institution }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){alert("Modified Institution. Please Refresh");},
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+
+    }
+    else{
+        console.log('error');
+    }
+}); 
+
+var validateData = function(institution){
+
+    // if(!(institution.name && institution.CIF)){
+    //     console.log("Numele Companiei sau CIF-ul sunt nule!");
+    //     return false;
+    // }
+    // if(!(institution.address.country && institution.address.region && institution.address.city && institution.address.street && institution.address.number && institution.address.building && institution.address.floor && institution.address.apartment)){
+    //     console.log("Adresa are un paramtru null!");
+    //     return false;
+    // }
+    // if(!institution.CIF.match(/RO[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]C/)){
+    //     console.log("CIF introdus gresit, format:RO#########C!");
+    //     return false;
+    // }
+
+    // console.log("Verficare cu succes!");
+
+    // console.log(institution);
+    
+    return true;
+}

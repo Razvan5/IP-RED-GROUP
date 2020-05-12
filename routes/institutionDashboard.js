@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const axios = require('axios');
+const qs = require('qs');
 const path = require('path');
 var http = require('http');
 const rootPath = 'fiscaldocumentsapi.azurewebsites.net'
@@ -483,4 +485,71 @@ router.post('/removeMember', function(req, res, next) {
         apiRequest.end();
     });
 });
+
+//Razvan modify institution
+
+router.post('/modify' , function(req,res,next){
+  
+    const institution=req.body.institution;
+    console.log(institution);
+  
+    var object =[
+        {
+            Country:institution.address.country,
+            Region:institution.address.region,
+            City:institution.address.city,
+            Street:institution.address.street,
+            Number:institution.address.number,
+            Building:institution.address.building,
+            Floor:institution.address.floor,
+            Apartment:institution.address.apartment,
+            isMainAddress:0
+        },
+        {   
+            Country:institution.address.country,
+            Region:institution.address.region,
+            City:institution.address.city,
+            Street:institution.address.street,
+            Number:institution.address.number,
+            Building:institution.address.building,
+            Floor:institution.address.floor,
+            Apartment:20,
+            isMainAddress:1
+        }
+    ];
+  
+    console.log("IMPORTANT"+object);
+    console.log("IMPORTANT"+req.session.email);
+    //console.log("IMPORTANT"+req.session.password);
+    console.log("Nume:"+institution.oldName);
+    console.log("Nume2"+institution.name);
+  
+    var json = JSON.stringify(object);
+    console.log("IMPORTANTWOW"+json);
+    axios({
+      method: 'post',
+      url: 'https://fiscaldocumentsapi.azurewebsites.net/Institution/Modify.php',
+      data: qs.stringify({
+        email:req.session.email,
+        hashedPassword:req.session.password,
+        institutionName:institution.oldName,
+        newInstitutionName:institution.name,
+        newInstitutionAddresses:json
+      }),
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    })
+    .then(function (response) {
+      return res.status(200).json({
+        success: true
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  
+    
+  });
 module.exports = router;
