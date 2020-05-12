@@ -14,6 +14,16 @@ $('#submitButton').on("click",function() {
             apartment:document.getElementById('institutionApartment').value,
         }
     }
+        document.getElementById('institutionName').value="";
+        document.getElementById('institutionCIF').value="";
+       document.getElementById('institutionCountry').value="";
+         document.getElementById('institutionRegion').value="";
+         document.getElementById('institutionCity').value="";
+         document.getElementById('institutionStreet').value="";
+          document.getElementById('institutionNumber').value="";
+         document.getElementById('institutionBuilding').value="";
+           document.getElementById('institutionFloor').value="";
+            document.getElementById('institutionApartment').value="";
 
     console.log(institution);
     
@@ -26,7 +36,7 @@ $('#submitButton').on("click",function() {
             data: JSON.stringify({ institution: institution }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data){console.log(data);},
+            success: function(data){alert("Created Institution. Please Refresh");},
             failure: function(errMsg) {
                 alert(errMsg);
             }
