@@ -156,15 +156,15 @@
                 </ul>
                 <!-- menu aici se verifica si tipul de -->
                 <div id="myDropdown" class="dropdown-content">
-                    <a class="dropdown-element" href="#">Info</a>
-                    <a class="dropdown-element" href="#">Edit</a>
-                    <a class="dropdown-element" href="#">Create Role</a>
-                    <a class="dropdown-element" href="#">Retrieve Roles</a>
-                    <a class="dropdown-element" href="#">Modify Role</a>
-                    <a class="dropdown-element" href="#">Send Document</a>
-                    <a class="dropdown-element" href="#">Document History</a>
-                    <a class="dropdown-element" href="#">Get Members</a>
-                    <a class="dropdown-element" href="#">Add Members</a>
+                    <a class="dropdown-element">Info</a>
+                    <a class="dropdown-element">Edit</a>
+                    <a class="dropdown-element">Create Role</a>
+                    <a class="dropdown-element">Retrieve Roles</a>
+                    <a class="dropdown-element">Modify Role</a>
+                    <a class="dropdown-element">Send Document</a>
+                    <a class="dropdown-element">Document History</a>
+                    <a class="dropdown-element">Get Members</a>
+                    <a class="dropdown-element">Add Members</a>
                     <a type="submit" class="dropdown-element" href="#">Delete</a>
                 </div>
             </div>
@@ -414,84 +414,74 @@
     </div>
 
 
+    <div class="modifyInstitutionWrapper" id="modifyInstitutionWrapper">
+
+        <span id="modifyInstitutionTitle">Modify Institution</span>
+        <form id="editInstitution">
+
+            <label for="numeInstitutie">Old Name:</label>
+            <div class="textCorrectitude">
+                <label id="modifyInstitutionOldNameLabel"> </label>
+            </div>
+
+            <label for="numeInstitutie">New Name:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="newInstitutionName" id="newInstitutionName" placeholder="Name of the institution">
+            </div>
+
+            <label for="institutionLocation">Country:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCountry" placeholder="Country">
+            </div>
+
+
+            <label for="institutionLocation">Region:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionRegion" placeholder="Region">
+            </div>
+
+            <label for="institutionLocation">City:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCity" placeholder="City">
+            </div>
+
+            <label for="institutionLocation">Street:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionStreet" placeholder="Street">
+            </div>
+
+            <label for="institutionLocation">Number:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionNumber" placeholder="Number">
+            </div>
+
+            <label for="institutionLocation">Building:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionBuilding" placeholder="Building">
+            </div>
+
+            <label for="institutionLocation">Floor:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionFloor" placeholder="Floor">
+            </div>
+
+            <label for="institutionLocation">Apartment:</label>
+            <div class="textCorrectitude">
+                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionApartment" placeholder="Appartment">
+            </div>
+            <input class="submitButton" type="button" name="submitButton" id="submitButtonEditInstitution" value="Submit">
+
+        </form>
+
+    </div>
 
     <div class="institutionInfo">
 
         <div class="documents">
-        <p class="font" id="documentsTitle">Documents: </p>
+            <p class="font" id="documentsTitle">Documents: </p>
         </div>
     </div>
 
-     <div class="modifyInstitutionWrapper">
-        
-            <span id="modifyInstitutionTitle">Modify Institution</span>
-            <form id="editInstitution">
-        
-                <label for="numeInstitutie">Old Name:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="oldInstitutionName" id="oldInstitutionName"
-                     placeholder="Old name of the institution">
-                </div>
-
-                <label for="numeInstitutie">New Name:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="newInstitutionName" id="newInstitutionName"
-                     placeholder="Name of the institution">
-                </div>
-                
-                <label for="institutionLocation">Country:</label>
-                <div class="textCorrectitude">
-                <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCountry"
-                    placeholder="Country">
-                </div>
-                
-                
-                <label for="institutionLocation">Region:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionRegion"
-                        placeholder="Region">
-                </div>
-                
-                <label for="institutionLocation">City:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionCity"
-                        placeholder="City">
-                </div>
-                
-                <label for="institutionLocation">Street:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionStreet"
-                        placeholder="Street">
-                </div>
-                
-                <label for="institutionLocation">Number:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionNumber"
-                        placeholder="Number">
-                </div>
-                
-                <label for="institutionLocation">Building:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionBuilding"
-                        placeholder="Building">
-                </div>
-                
-                <label for="institutionLocation">Floor:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionFloor"
-                        placeholder="Floor">
-                </div>
-                
-                <label for="institutionLocation">Apartment:</label>
-                <div class="textCorrectitude">
-                    <input class="institutionInformation" type="text" name="institutionLocation" id="institutionApartment"
-                        placeholder="Appartment">
-                </div>
-                <input class="submitButton" type="button" name="submitButton" id="submitButtonEditInstitution" value="Submit">
-
-            </form>
-
-        </div> 
 
 
     <footer>
