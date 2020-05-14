@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     }
 });
 router.get('/RetrieveAll', function(req, res, next) {
-    var params = '?email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionsPerPage=40&pageNumber=1&orderByAsc=1';
+    var params = '?email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionsPerPage=20&pageNumber=1&orderByAsc=1';
     console.log(params);
     var options = {
         hostname: rootPath,
@@ -187,7 +187,7 @@ router.post('/institutionCreateRole', function(req, res, next) {
     req.on('end', () => { // when data (body component of http request) is collected
         var loginData = JSON.parse(body); //parse the body into JSON object
         // our path with parameters: email and hashedPassword.
-        var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.roleName;
+        var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.roleName;
         console.log(params);
         var options = {
             hostname: rootPath,
@@ -231,7 +231,7 @@ router.post('/institutionModifyRole', function(req, res, next) {
     req.on('end', () => { // when data (body component of http request) is collected
         var loginData = JSON.parse(body); //parse the body into JSON object
         // our path with parameters: email and hashedPassword.
-        var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.oldRole + '&newRoleName=' + loginData.newRole + '&newRoleRights={' +
+        var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.oldRole + '&newRoleName=' + loginData.newRole + '&newRoleRights={' +
             '"Can_Modify_Institution"' + ':' + loginData.Can_Modify_Institution + ',' +
             '"Can_Delete_Institution"' + ':' + loginData.Can_Delete_Institution + ',' +
             '"Can_Add_Members"' + ':' + loginData.Can_Add_Members + ',' +
@@ -488,67 +488,68 @@ router.post('/removeMember', function(req, res, next) {
 
 //Razvan modify institution
 
-router.post('/modify', function(req, res, next) {
-
-    const institution = req.body.institution;
+router.post('/modify' , function(req,res,next){
+  
+    const institution=req.body.institution;
     console.log(institution);
-
-    var object = [{
-            Country: institution.address.country,
-            Region: institution.address.region,
-            City: institution.address.city,
-            Street: institution.address.street,
-            Number: institution.address.number,
-            Building: institution.address.building,
-            Floor: institution.address.floor,
-            Apartment: institution.address.apartment,
-            isMainAddress: 0
-        },
+  
+    var object =[
         {
-            Country: institution.address.country,
-            Region: institution.address.region,
-            City: institution.address.city,
-            Street: institution.address.street,
-            Number: institution.address.number,
-            Building: institution.address.building,
-            Floor: institution.address.floor,
-            Apartment: 20,
-            isMainAddress: 1
+            Country:institution.address.country,
+            Region:institution.address.region,
+            City:institution.address.city,
+            Street:institution.address.street,
+            Number:institution.address.number,
+            Building:institution.address.building,
+            Floor:institution.address.floor,
+            Apartment:institution.address.apartment,
+            isMainAddress:0
+        },
+        {   
+            Country:institution.address.country,
+            Region:institution.address.region,
+            City:institution.address.city,
+            Street:institution.address.street,
+            Number:institution.address.number,
+            Building:institution.address.building,
+            Floor:institution.address.floor,
+            Apartment:20,
+            isMainAddress:1
         }
     ];
-
-    console.log("IMPORTANT" + object);
-    console.log("IMPORTANT" + req.session.email);
+  
+    console.log("IMPORTANT"+object);
+    console.log("IMPORTANT"+req.session.email);
     //console.log("IMPORTANT"+req.session.password);
-    console.log("Nume:" + institution.oldName);
-    console.log("Nume2" + institution.name);
-
+    console.log("Nume:"+institution.oldName);
+    console.log("Nume2"+institution.name);
+  
     var json = JSON.stringify(object);
-    console.log("IMPORTANTWOW" + json);
+    console.log("IMPORTANTWOW"+json);
     axios({
-            method: 'post',
-            url: 'https://fiscaldocumentsapi.azurewebsites.net/Institution/Modify.php',
-            data: qs.stringify({
-                email: req.session.email,
-                hashedPassword: req.session.password,
-                institutionName: institution.oldName,
-                newInstitutionName: institution.name,
-                newInstitutionAddresses: json
-            }),
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-            }
-        })
-        .then(function(response) {
-            return res.status(200).json({
-                success: true
-            });
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-
-
-
-});
+      method: 'post',
+      url: 'https://fiscaldocumentsapi.azurewebsites.net/Institution/Modify.php',
+      data: qs.stringify({
+        email:req.session.email,
+        hashedPassword:req.session.password,
+        institutionName:institution.oldName,
+        newInstitutionName:institution.name,
+        newInstitutionAddresses:json
+      }),
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    })
+    .then(function (response) {
+      return res.status(200).json({
+        success: true
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  
+    
+  });
 module.exports = router;
