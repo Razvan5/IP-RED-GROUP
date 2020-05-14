@@ -245,7 +245,6 @@ input[type=email] {
 .modifyRole,
 .createRole,
 .addMembers {
-    margin-top: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -523,3 +522,31 @@ label{
     transform: rotate(-90deg);
 }
 /*red x sign*/
+
+#membersDashboardTab{
+    display: none;
+    padding-left: 2em;
+}
+#membersDashboardTab > *{
+    margin: 1em;
+}
+#actualInstitutionName{
+    margin: 0em;
+}
+#instNameAndAddButton{
+    display: block;
+}
+#membersDashboardTabAddMember{
+    margin:0;
+    width: auto;
+    height: 3em;
+    display: flex;
+    align-content: center;
+
+}
+#membersDashboardTabBack{
+    margin-top: 3em;
+    margin-left: 0em;
+    margin-bottom: 1em;
+}
+

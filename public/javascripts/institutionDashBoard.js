@@ -40,10 +40,10 @@ function getMembers(institutionName, callback) {
 
     xmlhttp.open("GET", "institutionDashboard/getInstitutionMembers/" + institutionName);
     xmlhttp.send("data");
-    xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+    xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
         console.log("ERROR");
     };
-    xmlhttp.onload = function() {
+    xmlhttp.onload = function () {
         if (xmlhttp.status != 200) {
             callback({});
         } else {
@@ -55,24 +55,29 @@ function getMembers(institutionName, callback) {
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
+window.onclick = function (event) {
+    console.log(event.target.innerText);
     if (event.target.matches('.removeAsta')) {
         var target = event.target;
         var memberEmail = document.getElementById(target.id);
         console.log(memberEmail.value);
         var memberInstitution = document.getElementById(target.parentNode.parentNode.parentNode.id);
         var spans = memberInstitution.getElementsByTagName("span");
+        var instNameWow = document.getElementById("actualInstitutionName").innerText;
+        let data;
         var xmlhttp = new XMLHttpRequest();
-        let data = { institutionName: spans[0].innerText, memberEmail: memberEmail.value };
+        data = { institutionName: instNameWow, memberEmail: memberEmail.value };
+
+        console.log(data);
         var myJSON = JSON.stringify(data);
         data = myJSON;
         xmlhttp.open("POST", "/institutionDashboard/removeMember");
         xmlhttp.setRequestHeader("Content-Type", "application/javascript");
         xmlhttp.send(data);
-        xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+        xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
             console.log("ERROR");
         };
-        xmlhttp.onload = function() {
+        xmlhttp.onload = function () {
             if (xmlhttp.status != 200) {
                 alert("NOT WORKING");
             } else {
@@ -100,10 +105,10 @@ window.onclick = function(event) {
         xmlhttp.open("POST", "/institutionDashboard/roleDelete");
         xmlhttp.setRequestHeader("Content-Type", "application/javascript");
         xmlhttp.send(data);
-        xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+        xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
             console.log("ERROR");
         };
-        xmlhttp.onload = function() {
+        xmlhttp.onload = function () {
             if (xmlhttp.status != 200) {
                 alert("NOT WORKING");
             } else {
@@ -142,10 +147,10 @@ window.onclick = function(event) {
             xmlhttp.open("POST", "/institutionDashboard");
             xmlhttp.setRequestHeader("Content-Type", "application/javascript");
             xmlhttp.send(data);
-            xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+            xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                 console.log("ERROR");
             };
-            xmlhttp.onload = function() {
+            xmlhttp.onload = function () {
                 if (xmlhttp.status != 200) {
                     alert("NOT WORKING");
                 } else {
@@ -171,7 +176,7 @@ window.onclick = function(event) {
 
 
             var createRoleCancelButton = document.getElementById("createRoleCancelButton");
-            createRoleCancelButton.addEventListener("click", function() {
+            createRoleCancelButton.addEventListener("click", function () {
                 createRoleWrapper.style.display = "none";
             });
 
@@ -191,11 +196,11 @@ window.onclick = function(event) {
                 xmlhttp.open("POST", "/institutionDashboard/institutionCreateRole");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
                 xmlhttp.send(loginData);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
 
-                xmlhttp.onload = function() {
+                xmlhttp.onload = function () {
                     if (xmlhttp.status != 200) {
                         alert(xmlhttp.responseText);
                     } else {
@@ -235,7 +240,7 @@ window.onclick = function(event) {
 
 
             var cancelButton = document.getElementById("cancelButton");
-            cancelButton.addEventListener("click", function() {
+            cancelButton.addEventListener("click", function () {
                 modifyRoleWrapper.style.display = "none";
 
             });
@@ -263,12 +268,12 @@ window.onclick = function(event) {
                 xmlhttp.open("POST", "/institutionDashboard/institutionModifyRole");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
                 xmlhttp.send(loginData);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
 
                 console.log("HELLO")
-                xmlhttp.onload = function() {
+                xmlhttp.onload = function () {
                     if (xmlhttp.status != 200) {
                         alert(xmlhttp.responseText);
                     } else {
@@ -315,10 +320,10 @@ window.onclick = function(event) {
                 xmlhttp.open("POST", "/institutionDashboard/institutionRetreieveRoles");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
                 xmlhttp.send(data);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
-                xmlhttp.onload = function() {
+                xmlhttp.onload = function () {
                     if (xmlhttp.status != 200) {
                         alert("NOT WORKING");
                     } else {
@@ -331,9 +336,9 @@ window.onclick = function(event) {
                     }
                 };
             } else
-            if (externspan[1].parentNode) {
-                externspan[1].parentNode.removeChild(externspan[1]);
-            }
+                if (externspan[1].parentNode) {
+                    externspan[1].parentNode.removeChild(externspan[1]);
+                }
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -356,10 +361,10 @@ window.onclick = function(event) {
                 xmlhttp.open("POST", "/institutionDashboard/getInfo");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
                 xmlhttp.send(data);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
-                xmlhttp.onload = function() {
+                xmlhttp.onload = function () {
                     if (xmlhttp.status != 200) {
                         alert("NOT WORKING");
                     } else {
@@ -374,9 +379,9 @@ window.onclick = function(event) {
                     }
                 };
             } else
-            if (externspan[1].parentNode) {
-                externspan[1].parentNode.removeChild(externspan[1]);
-            }
+                if (externspan[1].parentNode) {
+                    externspan[1].parentNode.removeChild(externspan[1]);
+                }
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -385,6 +390,28 @@ window.onclick = function(event) {
                     openDropdown.classList.remove('show');
                 }
             }
+        } else if (target.innerText == "Members Dashboard") { /////////////// HERE
+            console.log(target);
+            var wrapperInstitutions = document.getElementById("wrapperInstitutions");
+            var membersDashboardTab = document.getElementById("membersDashboardTab");
+            var Label = document.getElementById("actualInstitutionName");
+
+            var parentDiv = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = parentDiv.getElementsByTagName("span");
+            var actualInstitutionName = spans[0].innerHTML;
+
+            wrapperInstitutions.style.display = "none";
+            membersDashboardTab.style.display = "block";
+            console.log(target.parentElement);
+            console.log(actualInstitutionName);
+            Label.innerText = actualInstitutionName;
+
+            var membersList = document.getElementById("currentInstiutionMembers").getElementsByClassName("currentInstiutionMember");
+            getMembers(actualInstitutionName, (returnedObject) => {
+                console.log(returnedObject);
+                membersAddHtml(returnedObject, membersList);
+            });
+
         } else if (target.innerText == "Get Members") {
 
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
@@ -397,9 +424,9 @@ window.onclick = function(event) {
                     membersAddHtml(returnedObject, spans);
                 });
             } else
-            if (externspan[1].parentNode) {
-                externspan[1].parentNode.removeChild(externspan[1]);
-            }
+                if (externspan[1].parentNode) {
+                    externspan[1].parentNode.removeChild(externspan[1]);
+                }
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -411,7 +438,7 @@ window.onclick = function(event) {
 
         } else if (target.innerText == "Add Members") { ////////////// ADD MEMBERS
 
-
+            console.log("WOWOWOWOWOWOW");
             var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
             var spans = div.getElementsByTagName("span");
             addMembersForm.institutionName.value = spans[0].innerText;
@@ -420,7 +447,7 @@ window.onclick = function(event) {
 
 
             var addMembersCancelButton = document.getElementById("addMembersCancelButton");
-            addMembersCancelButton.addEventListener("click", function() {
+            addMembersCancelButton.addEventListener("click", function () {
                 addMembersWrapper.style.display = "none";
             });
 
@@ -440,11 +467,11 @@ window.onclick = function(event) {
                 xmlhttp.open("POST", "/institutionDashboard/institutionAddMembers");
                 xmlhttp.setRequestHeader("Content-Type", "application/javascript");
                 xmlhttp.send(addMemberData);
-                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
                     console.log("ERROR");
                 };
 
-                xmlhttp.onload = function() {
+                xmlhttp.onload = function () {
                     if (xmlhttp.status != 200) {
                         alert(xmlhttp.responseText);
                     } else {
@@ -510,10 +537,10 @@ window.onclick = function(event) {
     }
 }
 
-window.onload = function(event) {
+window.onload = function (event) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "institutionDashboard/RetrieveYourInstitutions");
-    xmlhttp.onload = function() {
+    xmlhttp.onload = function () {
         var newData = JSON.parse(xmlhttp.responseText);
         retrieveYourInstitutionsHTML(newData);
     };
@@ -521,11 +548,11 @@ window.onload = function(event) {
 }
 
 
-changeButton.onclick = function() {
+changeButton.onclick = function () {
     if (changeButton.innerText == "View All Institutions") {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "institutionDashboard/RetrieveAll");
-        xmlhttp.onload = function() {
+        xmlhttp.onload = function () {
             var newData = JSON.parse(xmlhttp.responseText);
             retrieveAllInstitutionsHTML(newData);
         };
@@ -536,7 +563,7 @@ changeButton.onclick = function() {
     } else if (changeButton.innerText == "View Your Institutions") {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "institutionDashboard/RetrieveYourInstitutions");
-        xmlhttp.onload = function() {
+        xmlhttp.onload = function () {
             var newData = JSON.parse(xmlhttp.responseText);
             retrieveYourInstitutionsHTML(newData);
         };
@@ -608,7 +635,7 @@ function membersAddHtml(data, spanLocation) {
     //if (data.members.length == 0)
     //    var htmlString = "<span class='memberSpan'>No information about this Institution.</span>";
     for (i = 0; i < data.members.length; i++) {
-        htmlString += '<div class="institutionItemDiv"> Email:' + data.members[i].email + " Role:" + data.members[i].role + '<button class="removeAsta" value= ' + data.members[i].email + ' id=' + "memberRemove" + i + '> Remove</button></div>';
+        htmlString += '<div class="institutionItemDiv"> Email:' + data.members[i].email + "<br> Role:" + data.members[i].role + '<button class="removeAsta" value= ' + data.members[i].email + ' id=' + "memberRemove" + i + '> Remove</button></div>';
     }
     // add members here!!!!!!! nu mai pune span-uri XD
     htmlString += "</span>";
@@ -648,39 +675,120 @@ function nowAdd() {
         myInstitutions[i].setAttribute("id", "institutionItem." + i);
     }
 };
-//razvan 
-$('#submitButtonEditInstitution').on("click",function() {
+//wow
+$('#membersDashboardTabBack').on("click", function () {
+    var wrapperInstitutions = document.getElementById("wrapperInstitutions");
+    var membersDashboardTab = document.getElementById("membersDashboardTab");
+    membersDashboardTab.style.display = "none";
+    wrapperInstitutions.style.display = "block";
 
-    const institution={
-        oldName:document.getElementById('oldInstitutionName').value,
+
+    var oldElements = membersDashboardTab.getElementsByClassName("memberSpan");
+    for (let i = 0; i < oldElements.length; i++) {
+        oldElements[i].remove();
+    }
+});
+
+$('#membersDashboardTabAddMember').on("click", function () {
+    console.log("WOWOWOWOWOWOW");
+    var target = document.getElementById('membersDashboardTabAddMember');
+    var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+    var instNameWow = document.getElementById('actualInstitutionName').innerText;
+    addMembersForm.institutionName.value = instNameWow;
+    var addMembersWrapper = document.getElementById("addMembersWrapper");
+    addMembersWrapper.style.display = "flex";
+
+
+    var addMembersCancelButton = document.getElementById("addMembersCancelButton");
+    addMembersCancelButton.addEventListener("click", function () {
+        addMembersWrapper.style.display = "none";
+    });
+
+
+
+
+    addMembersForm.addEventListener("submit", f, false);
+
+    function f(e) {
+        e.preventDefault();
+        addMembersWrapper.style.display = "none";
+
+        addMembersForm = document.getElementById("addMembersForm");
+        var addMemberData = toJSONString(addMembersForm);
+        console.log(addMemberData);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "/institutionDashboard/institutionAddMembers");
+        xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+        xmlhttp.send(addMemberData);
+        xmlhttp.onerror = function () { // only triggers if the request couldn't be made at all
+            console.log("ERROR");
+        };
+
+        xmlhttp.onload = function () {
+            if (xmlhttp.status != 200) {
+                alert(xmlhttp.responseText);
+            } else {
+                var newData = JSON.parse(xmlhttp.responseText);
+                console.log(newData.responseStatus.error);
+
+                if (newData.responseStatus.error == "")
+                    alert("Role created");
+
+                else if (newData.responseStatus.error == "DUPLICATE_ROLE")
+                    alert("DUPLICATE ROLE");
+
+                else if (newData.responseStatus.error == "ROLE_DUPLICATE_SAME_RIGHTS")
+                    alert("REDUNDANT ROLE: THE ROLE YOU ARE TRYING TO CREATE\n HAS THE SAME RIGHTS AS AN ALREADY EXISTING ROLE");
+
+                else if (newData.responseStatus.error == "WRONG_PASSWORD")
+                    alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+
+                else if (newData.responseStatus.error == "USER_NOT_FOUND")
+                    alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
+
+                else {
+                    alert(JSON.stringify(newData));
+                }
+            }
+        };
+
+        addMembersForm.removeEventListener("submit", f);
+    };
+});
+
+//razvan 
+$('#submitButtonEditInstitution').on("click", function () {
+
+    const institution = {
+        oldName: document.getElementById('oldInstitutionName').value,
         name: document.getElementById('newInstitutionName').value,
-        address:{
-            country:document.getElementById('institutionCountry').value,
-            region:document.getElementById('institutionRegion').value,
-            city:document.getElementById('institutionCity').value,
-            street:document.getElementById('institutionStreet').value,
-            number:document.getElementById('institutionNumber').value,
-            building:document.getElementById('institutionBuilding').value,
-            floor:document.getElementById('institutionFloor').value,
-            apartment:document.getElementById('institutionApartment').value,
+        address: {
+            country: document.getElementById('institutionCountry').value,
+            region: document.getElementById('institutionRegion').value,
+            city: document.getElementById('institutionCity').value,
+            street: document.getElementById('institutionStreet').value,
+            number: document.getElementById('institutionNumber').value,
+            building: document.getElementById('institutionBuilding').value,
+            floor: document.getElementById('institutionFloor').value,
+            apartment: document.getElementById('institutionApartment').value,
         }
     }
 
-    document.getElementById('oldInstitutionName').value="";
-    document.getElementById('newInstitutionName').value="";
+    document.getElementById('oldInstitutionName').value = "";
+    document.getElementById('newInstitutionName').value = "";
 
-   document.getElementById('institutionCountry').value="";
-     document.getElementById('institutionRegion').value="";
-     document.getElementById('institutionCity').value="";
-     document.getElementById('institutionStreet').value="";
-      document.getElementById('institutionNumber').value="";
-     document.getElementById('institutionBuilding').value="";
-       document.getElementById('institutionFloor').value="";
-        document.getElementById('institutionApartment').value="";
+    document.getElementById('institutionCountry').value = "";
+    document.getElementById('institutionRegion').value = "";
+    document.getElementById('institutionCity').value = "";
+    document.getElementById('institutionStreet').value = "";
+    document.getElementById('institutionNumber').value = "";
+    document.getElementById('institutionBuilding').value = "";
+    document.getElementById('institutionFloor').value = "";
+    document.getElementById('institutionApartment').value = "";
 
     console.log(institution);
-    
-    if(validateData(institution)){
+
+    if (validateData(institution)) {
 
         $.ajax({
             type: "POST",
@@ -689,19 +797,19 @@ $('#submitButtonEditInstitution').on("click",function() {
             data: JSON.stringify({ institution: institution }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data){alert("Modified Institution. Please Refresh");},
-            failure: function(errMsg) {
+            success: function (data) { alert("Modified Institution. Please Refresh"); },
+            failure: function (errMsg) {
                 alert(errMsg);
             }
         });
 
     }
-    else{
+    else {
         console.log('error');
     }
-}); 
+});
 
-var validateData = function(institution){
+var validateData = function (institution) {
 
     // if(!(institution.name && institution.CIF)){
     //     console.log("Numele Companiei sau CIF-ul sunt nule!");
@@ -719,6 +827,6 @@ var validateData = function(institution){
     // console.log("Verficare cu succes!");
 
     // console.log(institution);
-    
+
     return true;
 }
