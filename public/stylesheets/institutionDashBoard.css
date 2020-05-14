@@ -178,21 +178,21 @@ body {
 }
 
 .institutionInfo {
-    display:flex;
+    display: flex;
     height: auto;
     min-height: 30vh;
     justify-content: center;
     margin-bottom: 10vh;
 }
 
-.documents{
+.documents {
     min-height: 30vh;
-    min-width:85vw;
+    min-width: 85vw;
     background-color: var(--darkCyan);
     box-shadow: 10px 10px 30px rgb(32, 32, 32);
 }
 
-#documentsTitle{
+#documentsTitle {
     margin-top: 10px;
     font-size: 2em;
 }
@@ -357,44 +357,46 @@ input[name="Submit"]:hover {
     align-self: center;
 }
 
+
 /* Edit page */
 
-.modifyInstitutionWrapper{
+.modifyInstitutionWrapper {
     margin-top: 10em;
     margin-bottom: 10em;
-    display: flex;
+    display: none;
     justify-content: center;
-  
 }
-#editInstitution{
+
+#editInstitution {
     display: grid;
     grid-template-columns: 1fr 10fr 1fr 10fr;
     grid-template-rows: auto;
-    grid-gap:20px;
+    grid-gap: 20px;
     width: 80vw;
     padding-top: 11vh;
     padding-left: 50px;
-    padding-right: 50px ;
+    padding-right: 50px;
     background-color: var(--darkCyan);
     box-shadow: 10px 10px 30px rgb(32, 32, 32);
-
 }
-#modifyInstitutionTitle{
+
+#modifyInstitutionTitle {
     height: 1.25em;
-    color:#fff;
-    border-bottom:4px solid #fff ;
+    color: #fff;
+    border-bottom: 4px solid #fff;
     position: absolute;
-    margin:20px;
+    margin: 20px;
     font-size: 2em;
 }
-.submitButton{
+
+.submitButton {
     margin-left: 20px;
-    width:15vw;
-    height:5vh;
+    width: 15vw;
+    height: 5vh;
     border-radius: 12px;
     color: var(--milkyWhite);
     background-color: var(--deepOrange);
-    border:2px solid var(--deepOrange);
+    border: 2px solid var(--deepOrange);
     transition: 0.5s;
     margin: auto;
     margin-bottom: 25px;
@@ -402,123 +404,138 @@ input[name="Submit"]:hover {
     position: relative;
 }
 
-.submitButton:hover{
+.submitButton:hover {
     border-radius: 20px;
     transition: 0.5s;
     margin: auto;
     margin-bottom: 25px;
     margin-top: 20px;
-    
 }
 
-label{
-    margin-top:20px;
+label {
+    margin-top: 20px;
     color: white;
     position: relative;
 }
-.addMemberFormWrapper{
+
+.addMemberFormWrapper {
     display: flex;
     justify-content: center;
 }
-#addMemeber{
-    margin-top:30vh;
-    margin-bottom:10vh;
-  
+
+#addMemeber {
+    margin-top: 30vh;
+    margin-bottom: 10vh;
     width: 50vh;
-    height:auto;
+    height: auto;
     padding-top: 11vh;
     padding-left: 50px;
-    padding-right: 50px ;
+    padding-right: 50px;
     background-color: var(--darkCyan);
     box-shadow: 10px 10px 30px rgb(32, 32, 32);
-
 }
-#addMemeberTitle{
+
+#addMemeberTitle {
     height: 1.25em;
-    color:#fff;
-    border-bottom:4px solid #fff ;
+    color: #fff;
+    border-bottom: 4px solid #fff;
     position: relative;
     font-size: 2em;
 }
-.textCorrectitude{
+
+.textCorrectitude {
     margin-top: 20px;
 }
+
+
 /*Checkmark image*/
+
 .checkmark {
-    display:inline-block;
+    display: inline-block;
     width: 2em;
-    height:2em;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    height: 2em;
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Chrome, Safari, Opera */
     transform: rotate(45deg);
 }
 
 .checkmark_circle {
     position: absolute;
-    width:2em;
-    height:2em;
+    width: 2em;
+    height: 2em;
     background-color: green;
-    border-radius:50%;
-    left:0;
-    top:0;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
 }
 
 .checkmark_stem {
     position: absolute;
-    width:0.27em;
-    height:0.81em;
-    background-color:#fff;
-    left:1em;
-    top:0.54em;
+    width: 0.27em;
+    height: 0.81em;
+    background-color: #fff;
+    left: 1em;
+    top: 0.54em;
 }
 
 .checkmark_kick {
     position: absolute;
-    width:0.27em;
-    height:0.27em;
-    background-color:#fff;
-    left:0.72em;
-    top:1.09em;
+    width: 0.27em;
+    height: 0.27em;
+    background-color: #fff;
+    left: 0.72em;
+    top: 1.09em;
 }
+
+
 /*CheckMark Sign*/
+
+
 /*red x sign*/
+
 .failmark {
-    display:inline-block;
+    display: inline-block;
     width: 2em;
-    height:2em;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    height: 2em;
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Chrome, Safari, Opera */
     transform: rotate(45deg);
 }
 
 .failmark_circle {
     position: absolute;
-    width:2em;
-    height:2em;
+    width: 2em;
+    height: 2em;
     background-color: var(--deepOrange);
-    border-radius:50%;
-    left:0;
-    top:0;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
 }
 
 .failmark_side1 {
     position: absolute;
-    width:0.27em;
-    height:1em;
-    background-color:#fff;
-    left:0.9em;
-    top:0.5em;
+    width: 0.27em;
+    height: 1em;
+    background-color: #fff;
+    left: 0.9em;
+    top: 0.5em;
 }
 
 .failmark_side2 {
     position: absolute;
-    width:0.27em;
-    height:1em;
-    background-color:#fff;
-    left:0.9em;
-    top:0.5em;
-    -ms-transform: rotate(-90deg); /* IE 9 */
-    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    width: 0.27em;
+    height: 1em;
+    background-color: #fff;
+    left: 0.9em;
+    top: 0.5em;
+    -ms-transform: rotate(-90deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-90deg);
+    /* Chrome, Safari, Opera */
     transform: rotate(-90deg);
 }
 /*red x sign*/
@@ -550,3 +567,6 @@ label{
     margin-bottom: 1em;
 }
 
+
+
+/*red x sign*/

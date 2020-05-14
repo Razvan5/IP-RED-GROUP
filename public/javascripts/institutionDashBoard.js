@@ -502,6 +502,21 @@ window.onclick = function (event) {
                 addMembersForm.removeEventListener("submit", f);
             }
 
+        } else if (target.innerText == "Edit") {
+            var modifyInstitutionWrapper = document.getElementById("modifyInstitutionWrapper");
+            modifyInstitutionWrapper.style.display = "flex";
+            var modifyInstitutionOldNameLabel = document.getElementById("modifyInstitutionOldNameLabel");
+            var div = document.getElementById(target.parentNode.parentNode.parentNode.id);
+            var spans = div.getElementsByTagName("span");
+            modifyInstitutionOldNameLabel.innerText = spans[0].innerText;
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
         } else {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -757,10 +772,10 @@ $('#membersDashboardTabAddMember').on("click", function () {
 });
 
 //razvan 
-$('#submitButtonEditInstitution').on("click", function () {
+$('#submitButtonEditInstitution').on("click", function() {
 
     const institution = {
-        oldName: document.getElementById('oldInstitutionName').value,
+        oldName: document.getElementById('modifyInstitutionOldNameLabel').innerText,
         name: document.getElementById('newInstitutionName').value,
         address: {
             country: document.getElementById('institutionCountry').value,
@@ -774,22 +789,21 @@ $('#submitButtonEditInstitution').on("click", function () {
         }
     }
 
-    document.getElementById('oldInstitutionName').value = "";
-    document.getElementById('newInstitutionName').value = "";
-
-    document.getElementById('institutionCountry').value = "";
-    document.getElementById('institutionRegion').value = "";
-    document.getElementById('institutionCity').value = "";
-    document.getElementById('institutionStreet').value = "";
-    document.getElementById('institutionNumber').value = "";
-    document.getElementById('institutionBuilding').value = "";
-    document.getElementById('institutionFloor').value = "";
-    document.getElementById('institutionApartment').value = "";
 
     console.log(institution);
-
     if (validateData(institution)) {
-
+        document.getElementById('modifyInstitutionOldNameLabel').innerText = "";
+        document.getElementById('newInstitutionName').value = "";
+        document.getElementById('institutionCountry').value = "";
+        document.getElementById('institutionRegion').value = "";
+        document.getElementById('institutionCity').value = "";
+        document.getElementById('institutionStreet').value = "";
+        document.getElementById('institutionNumber').value = "";
+        document.getElementById('institutionBuilding').value = "";
+        document.getElementById('institutionFloor').value = "";
+        document.getElementById('institutionApartment').value = "";
+        var modifyInstitutionWrapper = document.getElementById("modifyInstitutionWrapper");
+        modifyInstitutionWrapper.style.display = "none";
         $.ajax({
             type: "POST",
             url: "/InstitutionDashboard/modify",
@@ -797,8 +811,8 @@ $('#submitButtonEditInstitution').on("click", function () {
             data: JSON.stringify({ institution: institution }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (data) { alert("Modified Institution. Please Refresh"); },
-            failure: function (errMsg) {
+            success: function(data) { alert("Modified Institution. Please Refresh"); },
+            failure: function(errMsg) {
                 alert(errMsg);
             }
         });
@@ -809,21 +823,16 @@ $('#submitButtonEditInstitution').on("click", function () {
     }
 });
 
-var validateData = function (institution) {
+var validateData = function(institution) {
 
-    // if(!(institution.name && institution.CIF)){
-    //     console.log("Numele Companiei sau CIF-ul sunt nule!");
-    //     return false;
-    // }
-    // if(!(institution.address.country && institution.address.region && institution.address.city && institution.address.street && institution.address.number && institution.address.building && institution.address.floor && institution.address.apartment)){
-    //     console.log("Adresa are un paramtru null!");
-    //     return false;
-    // }
-    // if(!institution.CIF.match(/RO[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]C/)){
-    //     console.log("CIF introdus gresit, format:RO#########C!");
-    //     return false;
-    // }
-
+    if (!(institution.name)) {
+        alert("Numele Companiei este null!");
+        return false;
+    }
+    if (!(institution.address.country && institution.address.region && institution.address.city && institution.address.street && institution.address.number && institution.address.building && institution.address.floor && institution.address.apartment)) {
+        alert("Adresa are un paramtru null!");
+        return false;
+    }
     // console.log("Verficare cu succes!");
 
     // console.log(institution);
