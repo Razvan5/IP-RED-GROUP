@@ -138,6 +138,7 @@ footer{
     box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
     height: 110px;
     vertical-align: middle;
+    top:0;
   }
   
   h1{
@@ -397,3 +398,102 @@ footer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width:80%
   }
+
+  .notWhite{
+    color:black;
+  }
+
+  .newsDelete{
+    align-self: flex-end;
+  }
+
+  .formButtons {
+    width: 9vw;
+    height: 6vh;
+    border-radius: 40%;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border: 2px solid var(--deepOrange);
+    transition: 0.5s;
+    font-size: 1em;
+}
+
+  .formButtons:hover {
+    border-radius: 10%;
+    transition: 0.5s;
+}
+
+  /*portiunea pentru formularul de adaugat newsfeed:*/
+
+.textInput,
+input[type=password],
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 15px;
+    outline-color: var(--milkyWhite);
+}
+
+#createNewsFeedRelativeContainer{
+  display:none;
+  position: relative;
+  min-width: 1%;
+  min-height:1%;
+  margin-top:102.5vh;
+}
+
+.createNewsFeedWrapper
+ {
+   position:absolute;
+   z-index:29;
+  margin-top: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  min-height: 100vh;
+  width: 61vw;
+  margin-left:50%;
+}
+
+
+.createNewsFeed
+ {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60vh;
+  height: auto;
+  background-color: var(--darkCyan);
+  color: var(--milkyWhite);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 40px;
+  margin-bottom: 10%;
+}
+
+.inputContainer {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.center {
+  align-self: center;
+  justify-self: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 10vw;
+}

@@ -130,24 +130,7 @@
 
     <div id="wrapper">
         <div class="section" data-anchor="page1" id="first">
-            <div class="newsFeed">
-                <h1>News Feed</h1>
-                <article class="newsPiece">
-                    <h1>Title1</h1>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas quia eaque asperiores eos temporibus quibusdam repellat alias tenetur odit nobis vero perspiciatis incidunt doloribus voluptates nam vitae esse, aspernatur dicta.
-                </article>
-                <article class="newsPiece">
-                    <h1>Title2</h1>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas quia eaque asperiores eos temporibus quibusdam repellat alias tenetur odit nobis vero perspiciatis incidunt doloribus voluptates nam vitae esse, aspernatur dicta.
-                </article>
-                <article class="newsPiece">
-                    <h1>Title3</h1>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas quia eaque asperiores eos temporibus quibusdam repellat alias tenetur odit nobis vero perspiciatis incidunt doloribus voluptates nam vitae esse, aspernatur dicta.
-                </article>
-                <article class="newsPiece">
-                    <h1>Title4</h1>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas quia eaque asperiores eos temporibus quibusdam repellat alias tenetur odit nobis vero perspiciatis incidunt doloribus voluptates nam vitae esse, aspernatur dicta.
-                </article>
+            <div class="newsFeed" id="newsFeed">
             </div>
             <div class="searchInstitution">      
                 <div class="search-box">
@@ -186,6 +169,67 @@
 
     </section>
     
+
+
+    <!--Formularul de postat newsfeed-->
+
+    <div id="createNewsFeedRelativeContainer">
+        <div class="createNewsFeedWrapper" id="createNewsFeedWrapper">
+
+            <div class="createNewsFeed">
+
+                <form id="createNewsFeedForm">
+
+                    <label>Title</label>
+                    <div class="inputContainer">
+                        <input name="newsFeedTitle" id="newsFeedTitle" class="textInput" type="text" placeholder="Title"
+                            required />
+                    </div>
+
+
+
+                    <label>Content</label>
+                    <div class="inputContainer">
+                        <textarea name="newsFeedContent" id="newsFeedContent" rows="10" cols="50"></textarea>
+                    </div>
+
+                    <label>Link</label>
+                    <div class="inputContainer">
+                        <input name="newsFeedLink" id="newsFeedLink" class="textInput" type="text" placeholder="Link">
+                    </div>
+
+                    <label>Tags</label>
+                    <div class="inputContainer">
+                        <textarea name="newsFeedTags" id="newsFeedTags" rows="3" cols="50"
+                            placeholder="Please type a comma after each tag"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="inputContainer" id="buttonContainer">
+
+                        <br>
+
+                        <button type="reset" id="cancelButton" class="formButtons"> Cancel</button><br>
+
+                        <br>
+
+                        <button class="formButtons"id="submitButton" type="submit">Submit</button>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Sfarsitul formularului de postat newsfeed-->
+
+
+
+
+
     <footer>
         <a href="terms">Terms</a>
         <a href="contact">Contact</a>
@@ -196,4 +240,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="javascripts/fullpage.js"></script>
     <script src="javascripts/logout.js"></script>
+    <script src="javascripts/home.js"></script>
 </html>
