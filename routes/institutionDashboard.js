@@ -187,7 +187,7 @@ router.post('/institutionCreateRole', function(req, res, next) {
     req.on('end', () => { // when data (body component of http request) is collected
         var loginData = JSON.parse(body); //parse the body into JSON object
         // our path with parameters: email and hashedPassword.
-        var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.roleName;
+        var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password+ '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.roleName;
         console.log(params);
         var options = {
             hostname: rootPath,
@@ -231,7 +231,7 @@ router.post('/institutionModifyRole', function(req, res, next) {
     req.on('end', () => { // when data (body component of http request) is collected
         var loginData = JSON.parse(body); //parse the body into JSON object
         // our path with parameters: email and hashedPassword.
-        var params = 'email=' + loginData.email + '&hashedPassword=' + loginData.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.oldRole + '&newRoleName=' + loginData.newRole + '&newRoleRights={' +
+        var params = 'email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + loginData.institutionName + '&roleName=' + loginData.oldRole + '&newRoleName=' + loginData.newRole + '&newRoleRights={' +
             '"Can_Modify_Institution"' + ':' + loginData.Can_Modify_Institution + ',' +
             '"Can_Delete_Institution"' + ':' + loginData.Can_Delete_Institution + ',' +
             '"Can_Add_Members"' + ':' + loginData.Can_Add_Members + ',' +
