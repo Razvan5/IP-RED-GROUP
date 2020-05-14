@@ -36,7 +36,10 @@ $('#submitButton').on("click",function() {
             data: JSON.stringify({ institution: institution }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data){alert("Created Institution. Please Refresh");},
+            success: function(data){
+                alert("Created Institution. Please Refresh");
+                window.location.href = '/institutionDashBoard'
+            },
             failure: function(errMsg) {
                 alert(errMsg);
             }

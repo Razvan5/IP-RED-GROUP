@@ -18,7 +18,6 @@ var contactRouter = require('./routes/contact');
 var termsRouter = require('./routes/terms');
 var logoutRouter = require('./routes/logout');
 
-
 var app = express();
 
 // view engine setup
