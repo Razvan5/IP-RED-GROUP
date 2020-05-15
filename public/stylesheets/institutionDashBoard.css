@@ -339,9 +339,18 @@ input[name="Submit"]:hover {
 .rightsLabel {
     justify-self: right;
     align-self: flex-start;
+    margin-top: 0px;
 }
 
 .stergeAsta {
+    margin-left: 5%;
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-self: center;
+}
+
+.modifyAsta {
     margin-left: 5%;
     display: flex;
     height: 50%;
@@ -538,35 +547,71 @@ label {
     /* Chrome, Safari, Opera */
     transform: rotate(-90deg);
 }
+
+
 /*red x sign*/
 
-#membersDashboardTab{
+#membersDashboardTab {
     display: none;
     padding-left: 2em;
 }
-#membersDashboardTab > *{
+
+#membersDashboardTab>* {
     margin: 1em;
 }
-#actualInstitutionName{
+
+#actualInstitutionName {
     margin: 0em;
 }
-#instNameAndAddButton{
+
+#instNameAndAddButton {
     display: block;
 }
-#membersDashboardTabAddMember{
-    margin:0;
+
+#membersDashboardTabAddMember {
+    margin: 0;
     width: auto;
     height: 3em;
     display: flex;
     align-content: center;
-
 }
-#membersDashboardTabBack{
+
+#membersDashboardTabBack {
     margin-top: 3em;
     margin-left: 0em;
     margin-bottom: 1em;
 }
 
 
-
 /*red x sign*/
+
+#membersRolesTab {
+    display: none;
+    padding-left: 2em;
+}
+
+#membersRolesTab>* {
+    margin: 1em;
+}
+
+#actualInstitutionNameRole {
+    margin: 0em;
+}
+
+#instNameRoleAndAddButton {
+    display: block;
+}
+
+#membersRolesTabAddRole {
+    margin: 0;
+    width: auto;
+    height: 3em;
+    display: flex;
+    align-content: center;
+}
+
+#membersRolesTabBack {
+    margin-top: 3em;
+    margin-left: 0em;
+    margin-bottom: 1em;
+}
