@@ -16,8 +16,9 @@ function toJSONString(form) {
 
 
 
-
-
+var timeStamp = 0;
+var rolesMembersRights;
+var roleNumber = 0;
 var modifyRoleForm = document.getElementById("modifyRoleForm");
 var createRoleForm = document.getElementById("createRoleForm");
 var changeButton = document.getElementById("changeButton");
@@ -135,75 +136,99 @@ window.onclick = function(event) {
         modifyRoleForm.oldRole.value = roleParagraf[0].innerText;
         var modifyRoleWrapper = document.getElementById("modifyRoleWrapper");
         modifyRoleWrapper.style.display = "flex";
-
-
         var cancelButton = document.getElementById("cancelButton");
         cancelButton.addEventListener("click", function() {
             modifyRoleWrapper.style.display = "none";
 
         });
-
-
-
+        var checkboxes = document.getElementsByClassName("rightsInput");
+        var allCurentRoles = rolesMembersRights.returnedObject.roles;
+        console.log(allCurentRoles);
+        for (i = 0; i < allCurentRoles.length; i++) {
+            if (allCurentRoles[i].name == roleParagraf[0].innerText) {
+                console.log(allCurentRoles[i].rights);
+                for (j = 0; j < checkboxes.length; j++) {
+                    if (allCurentRoles[i].rights[checkboxes[j].id] == "1") {
+                        checkboxes[j].value = "1";
+                        checkboxes[j].checked = true;
+                    } else {
+                        checkboxes[j].value = "0";
+                        checkboxes[j].checked = false;
+                    }
+                }
+                break;
+            }
+        }
 
         modifyRoleForm.addEventListener("submit", g, false);
 
         function g(e) {
             e.preventDefault();
-            modifyRoleWrapper.style.display = "none";
-            var checkboxes = document.getElementsByClassName("rightsInput");
-            for (i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked == true)
-                    checkboxes[i].value = "1";
-                else
-                    checkboxes[i].value = "0";
-            }
-
-            modifyRoleForm = document.getElementById("modifyRoleForm");
-            var loginData = toJSONString(modifyRoleForm);
-            console.log(loginData);
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "/institutionDashboard/institutionModifyRole");
-            xmlhttp.setRequestHeader("Content-Type", "application/javascript");
-            xmlhttp.send(loginData);
-            xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
-                console.log("ERROR");
-            };
-
-            console.log("HELLO")
-            xmlhttp.onload = function() {
-                if (xmlhttp.status != 200) {
-                    alert(xmlhttp.responseText);
-                } else {
-                    var newData = JSON.parse(xmlhttp.responseText);
-                    console.log(newData.responseStatus.error);
-
-                    if (newData.responseStatus.error == "")
-                        alert("Role modified successfully");
-
-
-                    else if (newData.responseStatus.error == "ROLE_DUPLICATE_SAME_RIGHTS")
-                        alert("CAN'T MODIFY ROLE. ANOTHER ROLE WITH THE SAME RIGHTS ALREADY EXISTS");
-
-                    else if (newData.responseStatus.error == "ROLE_NOT_FOUND")
-                        alert("ROLE NOT FOUND");
-
-                    else if (newData.responseStatus.error == "WRONG_PASSWORD")
-                        alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
-
-
-                    else if (newData.responseStatus.error == "USER_NOT_FOUND")
-                        alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
-
-                    else {
-                        alert(JSON.stringify(newData));
-                    }
+            console.log(e.timeStamp);
+            if (timeStamp == 0 || timeStamp != e.timeStamp) {
+                timeStamp = e.timeStamp;
+                modifyRoleWrapper.style.display = "none";
+                var checkboxes = document.getElementsByClassName("rightsInput");
+                for (i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked == true)
+                        checkboxes[i].value = "1";
+                    else
+                        checkboxes[i].value = "0";
                 }
-                modifyRoleForm.removeEventListener("submit", g);
-            };
+                modifyRoleForm = document.getElementById("modifyRoleForm");
+                var loginData = toJSONString(modifyRoleForm);
+                console.log(loginData);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "/institutionDashboard/institutionModifyRole");
+                xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+                xmlhttp.send(loginData);
+                xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                    console.log("ERROR");
+                };
 
+                console.log("HELLO")
+                xmlhttp.onload = function() {
+                    if (xmlhttp.status != 200) {
+                        alert(xmlhttp.responseText);
+                    } else {
+                        var newData = JSON.parse(xmlhttp.responseText);
+                        console.log(newData.responseStatus.error);
+
+                        if (newData.responseStatus.error == "") {
+                            alert("Role modified successfully");
+                            var json = JSON.parse(loginData);
+                            roleParagraf[0].innerText = json.newRole;
+                            for (i = 0; i < rolesMembersRights.returnedObject.roles.length; i++) {
+                                if (rolesMembersRights.returnedObject.roles[i].name == roleParagraf[0].innerText) {
+                                    for (j = 0; j < checkboxes.length; j++) {
+                                        if (rolesMembersRights.returnedObject.roles[i].rights[checkboxes[j].id] != checkboxes[j].value) {
+                                            rolesMembersRights.returnedObject.roles[i].rights[checkboxes[j].id] = checkboxes[j].value;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        } else if (newData.responseStatus.error == "ROLE_DUPLICATE_SAME_RIGHTS") {
+                            alert("CAN'T MODIFY ROLE. ANOTHER ROLE WITH THE SAME RIGHTS ALREADY EXISTS");
+                        } else if (newData.responseStatus.error == "ROLE_NOT_FOUND")
+                            alert("ROLE NOT FOUND");
+
+                        else if (newData.responseStatus.error == "WRONG_PASSWORD")
+                            alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+
+
+                        else if (newData.responseStatus.error == "USER_NOT_FOUND")
+                            alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
+
+                        else {
+                            alert(JSON.stringify(newData));
+                        }
+                    }
+                    modifyRoleForm.removeEventListener("submit", g);
+                };
+
+            }
         }
-
 
     } else if (event.target.matches('.dropdown-element')) {
         var target = event.target;
@@ -366,6 +391,7 @@ window.onclick = function(event) {
             membersRolesTab.style.display = "block";
             Label.innerText = actualInstitutionName;
             var membersList = document.getElementById("currentInstiutionMembersRoles").getElementsByClassName("currentInstiutionMemberRole");
+            roleNumber = 0;
             retrieveRoles(actualInstitutionName, (returnedObject) => {
                 retrieveRolesHtml(returnedObject, rolesSpans);
             });
@@ -637,13 +663,14 @@ function membersAddHtml(data, spanLocation) {
 
 function retrieveRolesHtml(data, spanLocation) {
     var htmlString = "";
-    htmlString += "<span class='institutionItemSpan'><br> Roles:";
+    htmlString += "<span class='institutionItemSpan' id='institutionItemSpan'><br> Roles:";
     if (data.roles.length == 0)
         var htmlString = "<span class='institutionItemSpan'>There are no roles currently created for this institution";
     else {
         for (i = 0; i < data.roles.length; i++) {
             htmlString += '<div class="institutionItemDiv" id=' + "role" + i + "><p>" +
                 data.roles[i].name + '</p><button class="modifyAsta" > Modify</button>  <button class="stergeAsta" > Delete</button></div>';
+            roleNumber++;
         }
     }
     htmlString += "</span>";
@@ -827,10 +854,12 @@ var retrieveRoles = function(institutionName, callback) { //institution Retrieve
     xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
         console.log("ERROR");
     };
+
     xmlhttp.onload = function() {
         if (xmlhttp.status != 200) {
             callback({});
         } else {
+            rolesMembersRights = JSON.parse(xmlhttp.responseText);
             console.log('RESPONSE: members info: ' + xmlhttp.responseText);
             var newJson = JSON.parse(xmlhttp.responseText);
             callback(newJson.returnedObject)
@@ -869,47 +898,57 @@ $('#membersRolesTabAddRole').on("click", function() {
 
     function f(e) {
         e.preventDefault();
-        createRoleWrapper.style.display = "none";
+        console.log(e.timeStamp);
+        if (timeStamp == 0 || timeStamp != e.timeStamp) {
+            timeStamp = e.timeStamp;
+            createRoleWrapper.style.display = "none";
 
-        createRoleForm = document.getElementById("createRoleForm");
-        var loginData = toJSONString(createRoleForm);
-        console.log(loginData);
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "/institutionDashboard/institutionCreateRole");
-        xmlhttp.setRequestHeader("Content-Type", "application/javascript");
-        xmlhttp.send(loginData);
-        xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
-            console.log("ERROR");
-        };
+            createRoleForm = document.getElementById("createRoleForm");
+            var loginData = toJSONString(createRoleForm);
+            console.log(loginData);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "/institutionDashboard/institutionCreateRole");
+            xmlhttp.setRequestHeader("Content-Type", "application/javascript");
+            xmlhttp.send(loginData);
+            xmlhttp.onerror = function() { // only triggers if the request couldn't be made at all
+                console.log("ERROR");
+            };
 
-        xmlhttp.onload = function() {
-            if (xmlhttp.status != 200) {
-                alert(xmlhttp.responseText);
-            } else {
-                var newData = JSON.parse(xmlhttp.responseText);
-                console.log(newData.responseStatus.error);
+            xmlhttp.onload = function() {
+                if (xmlhttp.status != 200) {
+                    alert(xmlhttp.responseText);
+                } else {
+                    var newData = JSON.parse(xmlhttp.responseText);
+                    console.log(newData.responseStatus.error);
 
-                if (newData.responseStatus.error == "")
-                    alert("Role created");
+                    if (newData.responseStatus.error == "") {
+                        var json = JSON.parse(loginData);
+                        var htmlString = "";
+                        htmlString += '<div class="institutionItemDiv" id=' + "role" + roleNumber + "><p>" +
+                            json.roleName + '</p><button class="modifyAsta" > Modify</button>  <button class="stergeAsta" > Delete</button></div>';
+                        roleNumber++;
+                        var documentDom = document.getElementById("institutionItemSpan");
+                        documentDom.insertAdjacentHTML("beforeend", htmlString);
+                        alert("Role created");
+                    } else if (newData.responseStatus.error == "DUPLICATE_ROLE")
+                        alert("DUPLICATE ROLE");
 
-                else if (newData.responseStatus.error == "DUPLICATE_ROLE")
-                    alert("DUPLICATE ROLE");
+                    else if (newData.responseStatus.error == "ROLE_DUPLICATE_SAME_RIGHTS")
+                        alert("REDUNDANT ROLE: THE ROLE YOU ARE TRYING TO CREATE\n HAS THE SAME RIGHTS AS AN ALREADY EXISTING ROLE");
 
-                else if (newData.responseStatus.error == "ROLE_DUPLICATE_SAME_RIGHTS")
-                    alert("REDUNDANT ROLE: THE ROLE YOU ARE TRYING TO CREATE\n HAS THE SAME RIGHTS AS AN ALREADY EXISTING ROLE");
+                    else if (newData.responseStatus.error == "WRONG_PASSWORD")
+                        alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
 
-                else if (newData.responseStatus.error == "WRONG_PASSWORD")
-                    alert("WRONG PASSWORD. PLEASE MAKE SURE YOU TYPED YOUR PASSWORD CORRECTLY");
+                    else if (newData.responseStatus.error == "USER_NOT_FOUND")
+                        alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
 
-                else if (newData.responseStatus.error == "USER_NOT_FOUND")
-                    alert("USER NOT FOUND. PLEASE MAKE SURE YOU TYPED YOUR E-MAIL ADDRESS CORRECTLY");
-
-                else {
-                    alert(JSON.stringify(newData));
+                    else {
+                        alert(JSON.stringify(newData));
+                    }
                 }
-            }
-        };
+            };
 
-        createRoleForm.removeEventListener("submit", f);
+            createRoleForm.removeEventListener("submit", f);
+        }
     }
 });
