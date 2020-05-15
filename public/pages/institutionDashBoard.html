@@ -133,7 +133,8 @@
     </header>
 
     <div class="flexContainer">
-        <div id="wrapperInstitutions" class="wrapperInstitutions">
+        <div class="wrapperInstitutions">
+
 
             <p id="titleAndButton">
                 <span class="font" id="myOrAllInstitutions">My Institutions:</span>
@@ -155,12 +156,14 @@
                 </ul>
                 <!-- menu aici se verifica si tipul de -->
                 <div id="myDropdown" class="dropdown-content">
+
                     <a class="dropdown-element" href="#">Info</a>
                     <a class="dropdown-element" href="#modifyInstitutionWrapper">Edit</a>
                     <a class="dropdown-element" href="#">Roles Dashboard</a>
                     <a class="dropdown-element" href="#">Send Document</a>
                     <a class="dropdown-element" href="#">Document History</a>
                     <a class="dropdown-element" href="#">Members Dashboard</a>
+
                     <a type="submit" class="dropdown-element" href="#">Delete</a>
                 </div>
             </div>
@@ -205,10 +208,26 @@
 
                 <form id="createRoleForm">
 
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="createRoleEmail" type="email" placeholder="User Email" required />
+                    </div>
+
                     <label>Institution Name</label>
                     <div class="inputContainer">
                         <input name="institutionName" id="createRoleInstitutionName" type="text" placeholder="Institution Name" readonly required />
+<<<<<<< HEAD
+=======
                     </div>
+
+
+
+                    <label>Password</label>
+                    <div class="inputContainer">
+                        <input name="password" id="createRolePassword" type="password" id="PasswordRequired1" placeholder="Password" required />
+>>>>>>> origin/frontEndDocuments
+                    </div>
+
 
                     <label>Role</label>
                     <div class="inputContainer">
@@ -229,6 +248,13 @@
                 </form>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> origin/frontEndDocuments
         <!-- Formularul de modificat rolul -->
 
         <div class="modifyRoleWrapper" id="modifyRoleWrapper">
@@ -240,6 +266,18 @@
                     <div class="inputContainer">
                         <input name="institutionName" id="institutionName" type="text" placeholder="Institution Name" readonly required />
                     </div>
+
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="email" type="email" placeholder="User Email" required />
+                    </div>
+
+
+                    <label>Password</label>
+                    <div class="inputContainer">
+                        <input name="password" id="password" type="password" id="PasswordRequired1" placeholder="Password" required />
+                    </div>
+
 
                     <label>Old Role</label>
                     <div class="inputContainer">
@@ -344,7 +382,11 @@
 
                         <div class="labelAndInput">
                             <input class="rightsInput" type="checkbox" id="Can_Deassign_Roles" name="Can_Deassign_Roles" value="1">
+<<<<<<< HEAD
                             <label class="rightsLabel" for="Can_Deassign_Roles">Can Deassign Roles</label>
+=======
+                            <label class=".rightsLabel" for="Can_Deassign_Roles">Can Deassign Roles</label>
+>>>>>>> origin/frontEndDocuments
                         </div>
 
                         <br>
@@ -472,11 +514,37 @@
 
     <div class="institutionInfo">
 
-        <div class="documents">
-            <p class="font" id="documentsTitle">Documents: </p>
-        </div>
-    </div>
+    <div class="documents">
 
+        <p class="font" id="documentsTitle">Documents: </p>
+
+        <button id="buttonOpenUpload" onclick="popUpWindowUpload()">Upload Documents</button>
+        <!-- /*aici e magia de upload si are si pentru drag and drop support multiple files*/     -->
+        <div id="myModal" class="modal">
+                <div class="wrapperModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="wrapperModalContent">
+                            <div id="uploads"></div>
+                            <div class="dropzone" id ="dropzone">Drop files here to upload</div>
+                        </div>
+                        <div class="buttonWrapper">
+                            <label for="file-upload" class="custom-file-upload">
+                                <input id="file-upload" type="file"/>
+                                Upload
+                            </label>
+                            <input class="submitButton" type="button" name="submitButton" id="submitUploadButton" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <button class ="submitButton" id="buttonReceipt" ><a href="createReceipt">Create & send receipt</a></button>
+        <button class ="submitButton" id="buttonInvoice"><a  href="createInvoice">Create & send invoice</a></button>
+        <button class ="submitButton" id="buttonInvoice"><a  href="receivedDocuments">View received documents</a></button>
+
+        
+    </div>
 
 
     <footer>
