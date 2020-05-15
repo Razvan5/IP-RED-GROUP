@@ -133,7 +133,8 @@
     </header>
 
     <div class="flexContainer">
-        <div id="wrapperInstitutions" class="wrapperInstitutions">
+        <div class="wrapperInstitutions">
+
 
             <p id="titleAndButton">
                 <span class="font" id="myOrAllInstitutions">My Institutions:</span>
@@ -155,14 +156,15 @@
                 </ul>
                 <!-- menu aici se verifica si tipul de -->
                 <div id="myDropdown" class="dropdown-content">
-                    <a class="dropdown-element" href="#">Info</a>
-                    <a class="dropdown-element" href="#modifyInstitutionWrapper">Edit</a>
-                    <a class="dropdown-element" href="#">Create Role</a>
-                    <a class="dropdown-element" href="#">Retrieve Roles</a>
-                    <a class="dropdown-element" href="#">Modify Role</a>
-                    <a class="dropdown-element" href="#">Send Document</a>
-                    <a class="dropdown-element" href="#">Document History</a>
-                    <a class="dropdown-element" href="#">Members Dashboard</a>
+                    <a class="dropdown-element">Info</a>
+                    <a class="dropdown-element">Edit</a>
+                    <a class="dropdown-element">Create Role</a>
+                    <a class="dropdown-element">Retrieve Roles</a>
+                    <a class="dropdown-element">Modify Role</a>
+                    <a class="dropdown-element">Send Document</a>
+                    <a class="dropdown-element">Document History</a>
+                    <a class="dropdown-element">Get Members</a>
+                    <a class="dropdown-element">Add Members</a>
                     <a type="submit" class="dropdown-element" href="#">Delete</a>
                 </div>
             </div>
@@ -179,11 +181,23 @@
 
                 <form id="createRoleForm">
 
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="createRoleEmail" type="email" placeholder="User Email" required />
+                    </div>
+
                     <label>Institution Name</label>
                     <div class="inputContainer">
-                        <input name="institutionName" id="createRoleInstitutionName" type="text"
-                            placeholder="Institution Name" readonly required />
+                        <input name="institutionName" id="createRoleInstitutionName" type="text" placeholder="Institution Name" readonly required />
                     </div>
+
+
+
+                    <label>Password</label>
+                    <div class="inputContainer">
+                        <input name="password" id="createRolePassword" type="password" id="PasswordRequired1" placeholder="Password" required />
+                    </div>
+
 
                     <label>Role</label>
                     <div class="inputContainer">
@@ -205,18 +219,8 @@
             </div>
         </div>
 
-        <!-- Formularul de MEMBER DASHBOARD -->
 
-        <div id="membersDashboardTab" class="wrapperInstitutions institutionList">
-            <div id = "instNameAndAddButton">
-                <label id="actualInstitutionName" class="font"></label>
-                <button id="membersDashboardTabAddMember" class="formButtons">Add Member</button>
-            </div>
-            <div id="currentInstiutionMembers">
-                <span class="currentInstiutionMember"></span> <!--   ADD HERE SOMETHING TO WORK!-->
-            </div>
-            <button id="membersDashboardTabBack" class="formButtons2">Back</button>
-        </div>
+
 
         <!-- Formularul de modificat rolul -->
 
@@ -227,9 +231,20 @@
                 <form id="modifyRoleForm">
                     <label>Institution Name</label>
                     <div class="inputContainer">
-                        <input name="institutionName" id="institutionName" type="text" placeholder="Institution Name"
-                            readonly required />
+                        <input name="institutionName" id="institutionName" type="text" placeholder="Institution Name" readonly required />
                     </div>
+
+                    <label>User Email</label>
+                    <div class="inputContainer">
+                        <input name="email" id="email" type="email" placeholder="User Email" required />
+                    </div>
+
+
+                    <label>Password</label>
+                    <div class="inputContainer">
+                        <input name="password" id="password" type="password" id="PasswordRequired1" placeholder="Password" required />
+                    </div>
+
 
                     <label>Old Role</label>
                     <div class="inputContainer">
@@ -247,110 +262,93 @@
                     <br><br>
                     <div class="inputContainer" id="rightsContainer">
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Modify_Institution"
-                                name="Can_Modify_Institution" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Modify_Institution" name="Can_Modify_Institution" value="1">
                             <label class="rightsLabel" for="Can_Modify_Institution">Can Modify Institution</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Delete_Institution"
-                                name="Can_Delete_Institution" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Delete_Institution" name="Can_Delete_Institution" value="1">
                             <label class="rightsLabel" for="Can_Delete_Institution">Can Delete Institution</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Add_Members" name="Can_Add_Members"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Add_Members" name="Can_Add_Members" value="1">
                             <label class="rightsLabel" for="Can_Add_Members">Can Add Members</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Remove_Members" name="Can_Remove_Members"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Members" name="Can_Remove_Members" value="1">
                             <label class="rightsLabel" for="Can_Remove_Members">Can Remove Members</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Upload_Documents"
-                                name="Can_Upload_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Upload_Documents" name="Can_Upload_Documents" value="1">
                             <label class="rightsLabel" for="Can_Upload_Documents">Can Upload Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Preview_Uploaded_Documents"
-                                name="Can_Preview_Uploaded_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Uploaded_Documents" name="Can_Preview_Uploaded_Documents" value="1">
                             <label class="rightsLabel" for="Can_Preview_Uploaded_Documents">Can Preview Uploaded
                                 Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Remove_Uploaded_Documents"
-                                name="Can_Remove_Uploaded_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Uploaded_Documents" name="Can_Remove_Uploaded_Documents" value="1">
                             <label class="rightsLabel" for="Can_Remove_Uploaded_Documents">Can Remove Uploaded
                                 Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Send_Documents" name="Can_Send_Documents"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Send_Documents" name="Can_Send_Documents" value="1">
                             <label class="rightsLabel" for="Can_Send_Documents">Can Send Documents</label>
                         </div>
 
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Preview_Received_Documents"
-                                name="Can_Preview_Received_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Received_Documents" name="Can_Preview_Received_Documents" value="1">
                             <label class="rightsLabel" for="Can_Preview_Received_Documents">Can Preview Received
                                 Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Preview_Specific_Received_Document"
-                                name="Can_Preview_Specific_Received_Document" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Preview_Specific_Received_Document" name="Can_Preview_Specific_Received_Document" value="1">
                             <label class="rightsLabel" for="Can_Preview_Specific_Received_Document">Can Preview
                                 Specific Received Document</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Remove_Received_Documents"
-                                name="Can_Remove_Received_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Received_Documents" name="Can_Remove_Received_Documents" value="1">
                             <label class="rightsLabel" for="Can_Remove_Received_Documents">Can Remove Received
                                 Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Download_Documents"
-                                name="Can_Download_Documents" value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Download_Documents" name="Can_Download_Documents" value="1">
                             <label class="rightsLabel" for="Can_Download_Documents">Can Download Documents</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Add_Roles" name="Can_Add_Roles"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Add_Roles" name="Can_Add_Roles" value="1">
                             <label class="rightsLabel" for="Can_Add_Roles">Can Add Roles</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Remove_Roles" name="Can_Remove_Roles"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Remove_Roles" name="Can_Remove_Roles" value="1">
                             <label class="rightsLabel" for="Can_Remove_Roles">Can Remove Roles</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Modify_Roles" name="Can_Modify_Roles"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Modify_Roles" name="Can_Modify_Roles" value="1">
                             <label class="rightsLabel" for="Can_Modify_Roles">Can Modify Roles</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Assign_Roles" name="Can_Assign_Roles"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Assign_Roles" name="Can_Assign_Roles" value="1">
                             <label class="rightsLabel" for="Can_Assign_Roles">Can Assign Roles</label>
                         </div>
 
                         <div class="labelAndInput">
-                            <input class="rightsInput" type="checkbox" id="Can_Deassign_Roles" name="Can_Deassign_Roles"
-                                value="1">
+                            <input class="rightsInput" type="checkbox" id="Can_Deassign_Roles" name="Can_Deassign_Roles" value="1">
                             <label class=".rightsLabel" for="Can_Deassign_Roles">Can Deassign Roles</label>
                         </div>
 
@@ -388,8 +386,7 @@
 
                     <label>Institution Name</label>
                     <div class="inputContainer">
-                        <input name="institutionName" id="addMembersInstitutionName" type="text"
-                            placeholder="Institution Name" readonly required />
+                        <input name="institutionName" id="addMembersInstitutionName" type="text" placeholder="Institution Name" readonly required />
                     </div>
 
                     <label>Role</label>
@@ -480,11 +477,37 @@
 
     <div class="institutionInfo">
 
-        <div class="documents">
-            <p class="font" id="documentsTitle">Documents: </p>
-        </div>
-    </div>
+    <div class="documents">
 
+        <p class="font" id="documentsTitle">Documents: </p>
+
+        <button id="buttonOpenUpload" onclick="popUpWindowUpload()">Upload Documents</button>
+        <!-- /*aici e magia de upload si are si pentru drag and drop support multiple files*/     -->
+        <div id="myModal" class="modal">
+                <div class="wrapperModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="wrapperModalContent">
+                            <div id="uploads"></div>
+                            <div class="dropzone" id ="dropzone">Drop files here to upload</div>
+                        </div>
+                        <div class="buttonWrapper">
+                            <label for="file-upload" class="custom-file-upload">
+                                <input id="file-upload" type="file"/>
+                                Upload
+                            </label>
+                            <input class="submitButton" type="button" name="submitButton" id="submitUploadButton" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <button class ="submitButton" id="buttonReceipt" ><a href="createReceipt">Create & send receipt</a></button>
+        <button class ="submitButton" id="buttonInvoice"><a  href="createInvoice">Create & send invoice</a></button>
+        <button class ="submitButton" id="buttonInvoice"><a  href="receivedDocuments">View received documents</a></button>
+
+        
+    </div>
 
 
     <footer>

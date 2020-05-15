@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset='UTF-8'>
+<title>Editable Invoice</title>
+<link rel='stylesheet' href='stylesheets/createInvoice.css'>
+<link rel='stylesheet' href='stylesheets/print.css' media="print">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='javascripts/createInvoice.js' ></script>
+</head>
+<body>
+<div id="page-wrap">
+<textarea id="header">INVOICE</textarea>
+<div id="identity">
+<textarea id="address">
+Sender:
+
+Address:
+
+Phone:
+</textarea>
+<div id="logo">
+<div id="logoctr">
+<a href="javascript:;" id="change-logo" title="Change logo">Change Logo</a>
+<a href="javascript:;" id="save-logo" title="Save changes">Save</a>
+|
+<a href="javascript:;" id="delete-logo" title="Delete logo">Delete Logo</a>
+<a href="javascript:;" id="cancel-logo" title="Cancel changes">Cancel</a>
+</div>
+<div id="logohelp">
+<input id="imageloc" type="text" size="50" value="" /><br />
+(max width: 540px, max height: 100px)
+</div>
+<img id="image" src="images/default-logo.png" alt="logo" />
+</div>
+</div>
+<div style="clear:both"></div>
+<div id="customer">
+<textarea id="customer-title">Company Name</textarea>
+
+<table id="meta">
+<tr>
+<td class="meta-head">Invoice #</td>
+<td><textarea>000000</textarea></td>
+</tr>
+<tr>
+<td class="meta-head">Date</td>
+<td><textarea id="date">May 15,2020</textarea></td>
+</tr>
+<tr>
+<td class="meta-head">Amount Due</td>
+<td><div class="due">$0.00</div></td>
+</tr>
+</table>
+</div>
+
+<table id="items">
+<tr>
+<th>Item Number</th>
+<th>Item</th>
+<th>Description</th>
+<th>Price without tax</th>
+<th>Tax</th>
+<th>Price with tax</th>
+</tr>
+<tr class="item-row">
+<td class="item-number"><div class="delete-wpr"><textarea>#1</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+<td class="item-name"><textarea>First Item</textarea></td>
+<td><textarea class="description">First Description</textarea></td>
+<td><textarea class="price">$0</textarea></td>
+<td><textarea class="tax">$0</textarea></td>
+<td><textarea class="price-without-tax">$0</textarea></td>
+</tr>
+<tr class="item-row">
+<td class="item-number"><div class="delete-wpr"><textarea>#2</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+<td class="item-name"><textarea>Second Item</textarea></td>
+<td><textarea class="description">Second Description</textarea></td>
+<td><textarea class="price">$0</textarea></td>
+<td><textarea class="tax">$0</textarea></td>
+<td><textarea class="price-without-tax">$0</textarea></td>
+</tr>
+<tr id="hiderow">
+<td colspan="6"><a id="addrow" href="javascript:;" title="Add a row">Add a row</a></td>
+</tr>
+<tr>
+<td colspan="3" class="blank"> </td>
+<td colspan="2" class="total-line">Subtotal</td>
+<td class="total-value"><div id="subtotal">$0.00</div></td>
+</tr>
+<tr>
+<td colspan="3" class="blank"> </td>
+<td colspan="2" class="total-line">Total</td>
+<td class="total-value"><div id="total">$0.00</div></td>
+</tr>
+<tr>
+<td colspan="3" class="blank"> </td>
+<td colspan="2" class="total-line">Amount Paid</td>
+<td class="total-value"><textarea id="paid">$0.00</textarea></td>
+</tr>
+<tr>
+<td colspan="3" class="blank"> </td>
+<td colspan="2" class="total-line balance">Balance Due</td>
+<td class="total-value balance"><div class="due">$0.00</div></td>
+</tr>
+</table>
+
+<div id="terms">
+ <h5>Terms</h5>
+<textarea>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
+</div>
+</div>
+<div class="wrapperSubmit">
+    <input class="submitButton" type="button" name="submitButton" id="sendButton" value="Send Invoice">
+</div>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="a4a628ed349a9a293a83326d-|49" defer=""></script></body>
+</html>

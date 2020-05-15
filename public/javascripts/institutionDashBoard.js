@@ -839,3 +839,67 @@ var validateData = function(institution) {
 
     return true;
 }
+
+/*drag and drop*/
+(function(){
+    var dropzone = document.getElementById('dropzone');
+    var displayUploads = function(data){
+        var uploads = document.getElementById('uploads'),
+        anchor,
+        x;
+        for(x = 0;x<data.length;x=x+1){
+            anchor=document.createElement('a');
+            anchor.href = data[x].file;
+            anchor.innerText = data[x].name;
+            uploads.appendChild(anchor);
+        }
+    };
+    var upload = function(files){
+        var formData = new FormData(),
+        xhr = new XMLHttpRequest();
+        var x;
+        for(x=0;x<files.length;x=x+1){
+            formData.append('file[]',files[x]);
+        }
+        xhr.onload = function(){
+            var data = JSON.parse(this.responseText);
+            displayUploads(data);
+        }
+        xhr.open('post','upload.php');
+        xhr.send(formData);
+    };
+    dropzone.ondrop = function(e){
+        e.preventDefault();
+        this.className = 'dropzone';
+        upload(e.dataTransfer.files);
+    };
+    dropzone.ondragover = function(){
+        this.className='dropzone dragover';
+        return false;
+    };
+    dropzone.ondragleave = function(){
+        this.className='dropzone';
+        return false;
+    };
+}());
+function popUpWindowUpload(){
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("buttonOpenUpload");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}

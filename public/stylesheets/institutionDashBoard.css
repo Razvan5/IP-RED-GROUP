@@ -24,7 +24,6 @@ body {
 .font {
     font-size: 2em;
     color: var(--milkyWhite);
-    margin-left: 10%;
 }
 
 .institutionList {
@@ -39,6 +38,10 @@ body {
     display: flex;
     justify-content: left;
     flex-flow: column;
+}
+
+#myOrAllInstitutions{
+    margin-left:10%;
 }
 
 .institutionItemDiv {
@@ -245,6 +248,7 @@ input[type=email] {
 .modifyRole,
 .createRole,
 .addMembers {
+    margin-top: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -390,6 +394,8 @@ input[name="Submit"]:hover {
 }
 
 .submitButton {
+    cursor: pointer;
+
     margin-left: 20px;
     width: 15vw;
     height: 5vh;
@@ -538,35 +544,155 @@ label {
     /* Chrome, Safari, Opera */
     transform: rotate(-90deg);
 }
+
+
 /*red x sign*/
 
-#membersDashboardTab{
-    display: none;
-    padding-left: 2em;
-}
-#membersDashboardTab > *{
-    margin: 1em;
-}
-#actualInstitutionName{
-    margin: 0em;
-}
-#instNameAndAddButton{
-    display: block;
-}
-#membersDashboardTabAddMember{
-    margin:0;
-    width: auto;
-    height: 3em;
+
+/*upload files*/
+.documents{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonOpenUpload{
+    width: 15vw;
+    height: 5vh;
+    border-radius: 12px;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border: 2px solid var(--deepOrange);
+    transition: 0.5s;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    position: relative;
+}
+
+#buttonOpenUpload:hover{
+    border-radius: 20px;
+    transition: 0.5s;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.dropzone{
+    width:300px;
+    height:300px;
+    border:2px dashed #ccc;
+    color:#ccc;
+    line-height: 300px;
+    text-align:center;
+}
+
+.dropzone.dragover{
+    border-color: #000;
+    color: #000;
+}
+.wrapperModal{
+ display: flex;
+ justify-content: center;
+ align-content: space-around;
+}
+.modal {
+    position: fixed; 
+    z-index: 20;
+    padding-top: 100px; 
+    display: none; 
+    left: 0;
+    top:0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    margin-top:10vh;
+    background-color:var(--deepGray);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55vh; 
+    height: 50vh; 
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #cccccc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: var(--deepOrange);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+  #submitUploadButton{
+      border:1px solid white;
+      top:72.5vh;
+      position: absolute;
+  }
+
+.wrapperModalContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.custom-file-upload {
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 20px;
+    width: 15vw;
+    height: 2.9vh;
+    border-radius: 12px;
+    color: var(--milkyWhite);
+    background-color: var(--deepOrange);
+    border: 2px solid var(--deepOrange);
+    transition: 0.5s;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    border:1px solid white;
+
+    display: flex;
+    justify-content: center;
     align-content: center;
-
-}
-#membersDashboardTabBack{
-    margin-top: 3em;
-    margin-left: 0em;
-    margin-bottom: 1em;
+    
 }
 
+.custom-file-upload:hover {
+    border-radius: 20px;
+    transition: 0.5s;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
 
-
-/*red x sign*/
+.buttonWrapper{
+    height:5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

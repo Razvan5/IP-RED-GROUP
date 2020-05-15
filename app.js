@@ -17,6 +17,9 @@ var institutionDashboardRouter = require('./routes/institutionDashboard');
 var contactRouter = require('./routes/contact');
 var termsRouter = require('./routes/terms');
 var logoutRouter = require('./routes/logout');
+/*new*/
+var createInvoiceRouter = require('./routes/createInvoice');
+var createReceiptRouter = require('./routes/createReceipt');
 
 var app = express();
 
@@ -50,6 +53,9 @@ app.use('/createInstitution', createInstitutionRouter);
 app.use('/contact', contactRouter);
 app.use('/terms', termsRouter);
 app.use('/logout', logoutRouter);
+/*new*/
+app.use('/createInvoice',createInvoiceRouter);
+app.use('/createReceipt',createReceiptRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
