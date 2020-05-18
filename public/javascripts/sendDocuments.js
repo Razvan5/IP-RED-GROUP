@@ -18,19 +18,19 @@ var institutionData;
 var myDocuments = document.getElementById("fNameForm");
 var newData;
 
-window.onload = function (event) {
+window.onload = function(event) {
 
 
     var xmlhttp2 = new XMLHttpRequest();
     xmlhttp2.open("GET", "sendDocuments/RetrieveAll", false);
-    xmlhttp2.onload = function () {
+    xmlhttp2.onload = function() {
         institutionData = JSON.parse(xmlhttp2.responseText);
         console.log(institutionData);
     };
     xmlhttp2.send("2");
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "sendDocuments/retrieveUserCreatedDocs", false);
-    xmlhttp.onload = function () {
+    xmlhttp.onload = function() {
         newData = JSON.parse(xmlhttp.responseText);
         console.log(newData);
         retrieveUserCreatedDocsHTML(newData);
@@ -49,14 +49,14 @@ function retrieveUserCreatedDocsHTML(data) {
                 senderInstitutionName = institutionData.returnedObject.institutions[j].name;
         }
 
-        htmlString += '<div class="inputContainer"><input class="Edit" name="Edit" type="button" value="Send"><input class="Edit" name="Edit" type="button" value="Delete" data-institution_name="' + senderInstitutionName + '" data-document_id="' + data.returnedObject.documents[i].ID + '"><pre><h3>   Document ID: <span>' + data.returnedObject.documents[i].ID + '</span>; From Institution: ' + '<span>' + senderInstitutionName + '</span><br>   Send to the following Institution: <br>   <input type="text" required placeholder="Institution Name"></h3></pre></div><br>';
+        htmlString += '<div class="inputContainer"><input class="Edit" name="Edit" type="button" value="Send"><input class="Edit" name="Edit" type="button" value="Preview"><input class="Edit" name="Edit" type="button" value="Delete" data-institution_name="' + senderInstitutionName + '" data-document_id="' + data.returnedObject.documents[i].ID + '"><pre><h3>   Document ID: <span>' + data.returnedObject.documents[i].ID + '</span>; From Institution: ' + '<span>' + senderInstitutionName + '</span><br>   Send to the following Institution: <br>   <input type="text" required placeholder="Institution Name"></h3></pre></div><br>';
     }
     myDocuments.innerHTML = htmlString;
 
 };
 
 
-window.onclick = function (event) {
+window.onclick = function(event) {
     if (event.target.value == 'Delete') {
         const xmlhttp3 = new XMLHttpRequest()
         xmlhttp3.open("POST", "/sendDocuments/deleteDocument")
@@ -67,10 +67,10 @@ window.onclick = function (event) {
             documentID: event.target.dataset.document_id
         }))
 
-        xmlhttp3.onerror = function () {
+        xmlhttp3.onerror = function() {
             console.log("Error")
         }
-        xmlhttp3.onload = function () {
+        xmlhttp3.onload = function() {
             if (xmlhttp3.status !== 200)
                 console.log("Service failure")
             else {
@@ -85,12 +85,11 @@ window.onclick = function (event) {
 
             window.location.href = window.location.href
         }
-    }
-    else if (event.target.value == 'Send') {
+    } else if (event.target.value == 'Send') {
         var buton = event.target;
         var parinte = buton.parentNode;
         var elemente = parinte.children;
-        elemente = elemente[1];
+        elemente = elemente[3];
         elemente = elemente.children[0].children;
         console.log(elemente);
         console.log(elemente[0].innerText);
@@ -107,22 +106,22 @@ window.onclick = function (event) {
             var myJSON = JSON.stringify(data);
             data = myJSON;
             console.log(data);
-            var xmlhttp3= new XMLHttpRequest();
+            var xmlhttp3 = new XMLHttpRequest();
             xmlhttp3.open("POST", "/sendDocuments/sendThatDocument");
             xmlhttp3.setRequestHeader("Content-Type", "application/javascript");
             xmlhttp3.send(data);
-            xmlhttp3.onerror = function () { // only triggers if the request couldn't be made at all
+            xmlhttp3.onerror = function() { // only triggers if the request couldn't be made at all
                 console.log("ERROR");
             };
-            xmlhttp3.onload = function () {
+            xmlhttp3.onload = function() {
                 if (xmlhttp3.status != 200) {
                     alert("NOT WORKING");
                 } else {
                     console.log(xmlhttp3.responseText);
                     var newJson = JSON.parse(xmlhttp3.responseText);
                     if (newJson.responseStatus.status === "SUCCESS")
-                          alert("Document sent");
-                    else if(newJson.responseStatus.error === "INVALID_RECEIVER_INSTITUTION")
+                        alert("Document sent");
+                    else if (newJson.responseStatus.error === "INVALID_RECEIVER_INSTITUTION")
                         alert("Invalid Institution");
                     else {
                         alert("Document already sent");
@@ -131,5 +130,26 @@ window.onclick = function (event) {
             }
 
         }
+    } else if (event.target.value == 'Preview') {
+        var buton = event.target;
+        var parinte = buton.parentNode;
+        var elemente = parinte.children;
+        elemente = elemente[3];
+        elemente = elemente.children[0].children;
+        console.log(elemente);
+        console.log(elemente[0].innerText);
+        console.log(elemente[1].innerText);
+        console.log(elemente[4].value);
+        var receiverInstID;
+        for (i = 0; i < this.institutionData.returnedObject.institutions.length; i++)
+            if (elemente[4].value == institutionData.returnedObject.institutions[i].name)
+                receiverInstID = institutionData.returnedObject.institutions[i].ID;
+        var data = { senderInstitutionName: elemente[1].innerText, documentID: elemente[0].innerText, receiverInstitutionID: receiverInstID };
+        this.document.cookie = 'institutionName=' + elemente[1].innerText;
+        this.document.cookie = 'documentID=' + elemente[0].innerText;
+        window.location = '/preview';
+
+
+
     }
 };

@@ -89,10 +89,12 @@
    .edit #image, #save-logo, #cancel-logo, .edit #change-logo, .edit #delete-logo {
     display: none;
     }
-   #customer-title {
+   #institution-title {
     font-size: 20px;
     font-weight: bold;
     float: left;
+    min-height: 10vh;
+    border:1px solid black;
     }
    
    #meta {
