@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Preview</title>
+    <link rel='stylesheet' href='stylesheets/createReceipt.css'>
+    <link rel='stylesheet' href='stylesheets/print.css' media="print">
+    <script src="javascripts/preview.js"></script>
+</head>
+
+<body>
+    <div id="page-wrap">
+        <textarea id="header" readonly>Preview</textarea>
+        <div id="customer">
+            <table id="meta">
+                <tr>
+                    <td class="meta-head"><span id="previewType"></span> #</td>
+                    <td><span id="receiptId"></span></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">Date</td>
+                    <td><span id="date"></span></td>
+                </tr>
+            </table>
+        </div>
+        <table id="items">
+            <tr id="here-Items">
+                <th>Item Number</th>
+                <th>Item</th>
+                <th>Price without tax</th>
+                <th>Tax</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="2" class="total-line">Total</td>
+                <td class="total-value">
+                    <div id="total">0</div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="terms">
+            <h5>Terms</h5>
+            <span>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</span>
+        </div>
+    </div>
+</body>
+
+</html>
