@@ -130,5 +130,44 @@ router.post('/sendThatDocument', function(req, res, next) {
     });
 });
 
+router.post('/deleteDocument', function(req, res) {
+    let body = ''
+    req.on('data', (chunk) => {
+        body += chunk
+    })
+
+    req.on('end', () => {
+        const bodyObject = JSON.parse(body)
+        const institutionName = bodyObject.institutionName
+        const documentID = bodyObject.documentID
+
+        const options = {
+            hostname: rootPath,
+            port: 80,
+            path: 'http://fiscaldocumentsapi.azurewebsites.net/Account/ChangePassword.php',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        const apiRequest = http.request(options, (apiResponse) => {
+            let apiResponseBody = ''
+            apiResponse.on('data', (d) => {
+                apiResponseBody += d
+            })
+            apiResponse.on('end', () => {
+                res.send(apiResponseBody)
+            })
+            apiResponse.on('error', () => {
+                res.send(error)
+                console.log(error)
+            })
+        })
+
+        apiRequest.write('email=' + req.session.email + '&hashedPassword=' + req.session.password + '&institutionName=' + institutionName + '&documentID=' + documentID)
+        apiRequest.end()
+    })
+})
 
 module.exports = router;

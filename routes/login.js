@@ -61,4 +61,37 @@ router.post('/', function (req, res, next) {
     apiRequest.end();
   });
 });
+
+router.post('/changePassword', function(req, res) {
+    let body = ''
+    req.on('data', (chunk) => {
+        body += chunk
+    })
+    req.on('end', () => {
+        email = JSON.parse(body).email
+
+        const options = {
+            hostname: rootPath,
+            port: 80,
+            path: '/Account/ChangePassword.php',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        const apiRequest = http.request(options,(apiResponse) => {
+            let responseBody = ''
+            apiResponse.on('data', (d) => {
+                responseBody += d
+            })
+            apiResponse.on('end', () => {
+                console.log(responseBody)
+            })
+        })
+        apiRequest.write('email=' + email)
+        apiRequest.end()
+    })
+})
+
 module.exports = router;

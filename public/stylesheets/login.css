@@ -164,6 +164,18 @@ input[type=username], input[type=password] ,input[type=email],input[type=lastnam
   border-radius: 15px;
 }
 
+#forgotPasswordSend {
+  background-color: var(--loginGreen);
+  color: rgb(255, 255, 255);
+  margin: none;
+  border: none;
+  cursor: pointer;
+  width: 35%;
+  height:5%;
+  display: block;
+  border-radius: 15px;
+}
+
 #loginButton:hover, #forgotPassword:hover {
   opacity: 0.5;
   transition:opacity 1s ease-out;

@@ -10,6 +10,38 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../public/pages/createInstitution.html'));
 });
 
+router.post('/addContactInformation', function(req, res) {
+    const institutionName = req.body.institutionName
+    const inputEmail = req.body.email
+    const inputPhone = req.body.phone
+    const inputFax = req.body.fax
+
+    axios({
+      method: 'post',
+      url: 'https://fiscaldocumentsapi.azurewebsites.net/Institution/Contact/Insert.php',
+      data: qs.stringify({
+        email: req.session.email,
+        hashedPassword: req.session.password,
+        institutionName: institutionName,
+        contactEmail: inputEmail,
+        contactPhone: inputPhone,
+        contactFax: inputFax
+      }),
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      }
+    })
+    .then(function (response) {
+      console.log(response.data);
+      return res.status(200).json({
+        success: true
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+})
+
 router.post('/create' , function(req,res,next){
   //console.log(req.body.institution);
 
