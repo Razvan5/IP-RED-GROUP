@@ -154,3 +154,55 @@ function f(e) {
 }
 
 
+/*nou*/
+window.onload = function(event) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "institutionDashboard/RetrieveYourInstitutions");
+    xmlhttp.onload = function() {
+        var newData = JSON.parse(xmlhttp.responseText);
+        retrieveYourInstitutionsHTML(newData);
+    };
+    xmlhttp.send("1");
+}
+
+function retrieveYourInstitutionsHTML(data) {
+    // listInstitution[0].innerHTML = "";
+    // var htmlString = "";
+    // for (i = 0; i < data.returnedObject.institution.length; i++) {
+    //     htmlString += "<article class=\"searchedItem\"><a class=\"nav-link\" href=\"/institutionDashBoard\">"+data.returnedObject.institution[i].institutionName +"</a></article>"
+    // }
+    // listInstitution[0].insertAdjacentHTML('beforeend', htmlString);
+    // nowAdd();
+    var mainNode = document.getElementById("searchInstitution");
+    for (i = 0; i < data.returnedObject.institution.length; i++) {
+        const article=document.createElement("ARTICLE");
+        article.className="searchedItem";
+        const ahref =document.createElement("A");
+        ahref.className="nav-link search";
+        ahref.textContent=data.returnedObject.institution[i].institutionName;
+        ahref.href="/institutionDashBoard";
+        article.appendChild(ahref);
+        mainNode.appendChild(article);
+    }
+    
+};
+
+var searchInstitution = document.getElementById('search-txt');
+var searchedarticle = document.getElementsByClassName('searchedItem');
+
+searchInstitution.onkeyup = function() {
+
+    var searchedItems = document.getElementsByClassName("search");
+
+    for (i = 0; i < searchedItems.length; i++) {
+        var filter = this.value.toUpperCase();
+        if (searchedItems[i].textContent.toUpperCase().indexOf(filter) > -1) {
+            searchedItems[i].style.display = "";
+            searchedarticle[i].style.display="";
+        } else {
+            searchedItems[i].style.display = "none";
+            searchedarticle[i].style.display="none";
+        }
+    }
+   
+};

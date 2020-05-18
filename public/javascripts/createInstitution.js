@@ -45,6 +45,21 @@ $('#submitButton').on("click",function() {
             }
         });
 
+        $.ajax({
+            type: "POST",
+            url: "/createInstitution/addContactInformation",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: JSON.stringify({ institutionName: institution.name,email: document.getElementById('institutionContactEmail').value, phone: document.getElementById('institutionContactPhoneNumber').value, fax: document.getElementById('institutionContactFax').value }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                alert("Added Institution Contact Information. Please Refresh");
+                window.location.href = '/institutionDashBoard'
+            },
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
     }
     else{
         console.log('error');

@@ -44,12 +44,13 @@
                         <label for="email">Email</label>
                         <input type="email" placeholder="Enter Email" name="email" required id="email" maxlength="50">
                     
-                        <label for="psw">Password</label>
+                        <label for="psw" id="loginPasswordLabel">Password</label>
                         <input type="password" placeholder="Enter Password" name="password" required id="loginPassword"  maxlength="50">
-
-                        <button id="forgotPassword" type="button">Forgot Password?</button>
                             
                         <button id="loginButton" type="submit">Login</button>
+
+                        <button id="forgotPasswordSend" onclick="forgotPasswordSendClick()" style="display: none">Recover Password</button>
+                        <button id="forgotPassword" onclick="forgotPasswordClick()">Forgot Password?</button>
                         <!--<label>
                             <span class="remember_me">
                                 <input type="checkbox" checked="checked" name="remember"> Remember me

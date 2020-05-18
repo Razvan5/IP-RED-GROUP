@@ -49,7 +49,7 @@ function retrieveUserCreatedDocsHTML(data) {
                 senderInstitutionName = institutionData.returnedObject.institutions[j].name;
         }
 
-        htmlString += '<div class="inputContainer"><input class="Edit" name="Edit" type="button" value="Send"><pre><h3>   Document ID: <span>' + data.returnedObject.documents[i].ID + '</span>; From Institution: ' + '<span>' + senderInstitutionName + '</span><br>   Send to the following Institution: <br>   <input type="text" required placeholder="Institution Name"></h3></pre></div><br>';
+        htmlString += '<div class="inputContainer"><input class="Edit" name="Edit" type="button" value="Send"><input class="Edit" name="Edit" type="button" value="Delete" data-institution_name="' + senderInstitutionName + '" data-document_id="' + data.returnedObject.documents[i].ID + '"><pre><h3>   Document ID: <span>' + data.returnedObject.documents[i].ID + '</span>; From Institution: ' + '<span>' + senderInstitutionName + '</span><br>   Send to the following Institution: <br>   <input type="text" required placeholder="Institution Name"></h3></pre></div><br>';
     }
     myDocuments.innerHTML = htmlString;
 
@@ -57,7 +57,36 @@ function retrieveUserCreatedDocsHTML(data) {
 
 
 window.onclick = function (event) {
-    if (event.target.value == 'Send') {
+    if (event.target.value == 'Delete') {
+        const xmlhttp3 = new XMLHttpRequest()
+        xmlhttp3.open("POST", "/sendDocuments/deleteDocument")
+        xmlhttp3.setRequestHeader("Content-Type", "application/javascript")
+
+        xmlhttp3.send(JSON.stringify({
+            institutionName: event.target.dataset.institutionName,
+            documentID: event.target.dataset.document_id
+        }))
+
+        xmlhttp3.onerror = function () {
+            console.log("Error")
+        }
+        xmlhttp3.onload = function () {
+            if (xmlhttp3.status !== 200)
+                console.log("Service failure")
+            else {
+                console.log(xmlhttp3.responseText)
+
+                const newJson = JSON.parse(xmlhttp3.responseText)
+                if (newJson.responseStatus.status === "SUCCESS")
+                    console.log("Document removed")
+                else
+                    console.log("Document removal failed: " + newJson.responseStatus.error)
+            }
+
+            window.location.href = window.location.href
+        }
+    }
+    else if (event.target.value == 'Send') {
         var buton = event.target;
         var parinte = buton.parentNode;
         var elemente = parinte.children;
