@@ -4,7 +4,7 @@ const axios = require('axios');
 const qs = require('qs');
 const path = require('path');
 var http = require('http');
-const rootPath = 'fiscaldocumentsapi.azurewebsites.net'
+const rootPath = 'fiscaldocumentsapi.azurewebsites.net';
 router.get('/', function(req, res, next) {
     if (req.session.loggedIn === true) {
         console.log('Pass: ' + req.session.password);
