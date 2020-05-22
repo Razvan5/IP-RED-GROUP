@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="page-wrap">
-<textarea id="header">INVOICE</textarea>
+<textarea id="header" readonly>INVOICE</textarea>
 <div id="identity">
 <textarea id="receiver">
 Sender:
@@ -37,7 +37,8 @@ Phone:
 </div>
 <div style="clear:both"></div>
 <div id="customer">
-<textarea id="customer-title">Company Name</textarea>
+    <label>Institution Name:</label><br>
+<textarea id="institutionName" placeholder="Type Your Institution's Name"></textarea>
 
 <table id="meta">
 <tr>
@@ -45,12 +46,12 @@ Phone:
 <td><textarea>000000</textarea></td>
 </tr>
 <tr>
-<td class="meta-head">Date</td>
-<td><textarea id="date">May 15,2020</textarea></td>
+<td class="meta-head">Currency</td>
+<td><textarea id="currency" placeholder="currency" required></textarea></td>
 </tr>
 <tr>
 <td class="meta-head">Amount Due</td>
-<td><div class="due">$0.00</div></td>
+<td><div class="due">0.00</div></td>
 </tr>
 </table>
 </div>
@@ -61,24 +62,24 @@ Phone:
 <th>Item</th>
 <th>Description</th>
 <th>Price without tax</th>
-<th>Tax</th>
-<th>Price with tax</th>
+<th>Tax percentage</th>
+<th>Quantity</th>
 </tr>
 <tr class="item-row">
-<td class="item-number"><div class="delete-wpr"><textarea>#1</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-<td class="item-name"><textarea>First Item</textarea></td>
+<td class="item-number"><div class="delete-wpr"><textarea class="productNumber">1</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+<td class="item-name"><textarea class="title">First Item</textarea></td>
 <td><textarea class="description">First Description</textarea></td>
-<td><textarea class="price">$0</textarea></td>
-<td><textarea class="tax">$0</textarea></td>
-<td><textarea class="price-without-tax">$0</textarea></td>
+<td><textarea class="valueBeforeTax">0</textarea></td>
+<td><textarea class="taxPercentage">0</textarea></td>
+<td><textarea class="quantity">0</textarea></td>
 </tr>
 <tr class="item-row">
-<td class="item-number"><div class="delete-wpr"><textarea>#2</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-<td class="item-name"><textarea>Second Item</textarea></td>
+<td class="item-number"><div class="delete-wpr"><textarea class="productNumber">2</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+<td class="item-name"><textarea class="title">Second Item</textarea></td>
 <td><textarea class="description">Second Description</textarea></td>
-<td><textarea class="price">$0</textarea></td>
-<td><textarea class="tax">$0</textarea></td>
-<td><textarea class="price-without-tax">$0</textarea></td>
+<td><textarea class="valueBeforeTax">0</textarea></td>
+<td><textarea class="taxPercentage">0</textarea></td>
+<td><textarea class="quantity">0</textarea></td>
 </tr>
 <tr id="hiderow">
 <td colspan="6"><a id="addrow" href="javascript:;" title="Add a row">Add a row</a></td>
@@ -86,22 +87,22 @@ Phone:
 <tr>
 <td colspan="3" class="blank"> </td>
 <td colspan="2" class="total-line">Subtotal</td>
-<td class="total-value"><div id="subtotal">$0.00</div></td>
+<td class="total-value"><div id="subtotal">0.00</div></td>
 </tr>
 <tr>
 <td colspan="3" class="blank"> </td>
 <td colspan="2" class="total-line">Total</td>
-<td class="total-value"><div id="total">$0.00</div></td>
+<td class="total-value"><div id="total">0.00</div></td>
 </tr>
 <tr>
 <td colspan="3" class="blank"> </td>
 <td colspan="2" class="total-line">Amount Paid</td>
-<td class="total-value"><textarea id="paid">$0.00</textarea></td>
+<td class="total-value"><textarea id="paid">0.00</textarea></td>
 </tr>
 <tr>
 <td colspan="3" class="blank"> </td>
 <td colspan="2" class="total-line balance">Balance Due</td>
-<td class="total-value balance"><div class="due">$0.00</div></td>
+<td class="total-value balance"><div class="due" id="due">0.00</div></td>
 </tr>
 </table>
 
